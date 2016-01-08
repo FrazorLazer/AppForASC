@@ -14,6 +14,12 @@ public class Character {
         this._reward = reward;
     }
 
+    public Character(String name, String reward, int id){
+        this._name = name;
+        this._reward = reward;
+        this._id = id;
+    }
+
     public String get_name() {
         return _name;
     }

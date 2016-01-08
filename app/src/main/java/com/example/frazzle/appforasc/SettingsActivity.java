@@ -20,7 +20,7 @@ import android.widget.Toast;
 
 public class SettingsActivity extends AppCompatActivity {
 
-    EditText backColour;
+
     ListView settingsView;
     ListAdapter arrayAdapter;
     RelativeLayout layout;
@@ -32,7 +32,7 @@ public class SettingsActivity extends AppCompatActivity {
 
         settingsView = (ListView) findViewById(R.id.settingsList);
         String settingsOptions[] = new String[] {"Background Colour", "Font Size", "Vibration"};
-        arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, settingsOptions);
+        arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, settingsOptions);
         settingsView.setAdapter(arrayAdapter);
 
         settingsView.setOnItemClickListener(

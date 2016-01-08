@@ -6,7 +6,11 @@ import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -18,6 +22,9 @@ public class CharactersActivity extends AppCompatActivity {
     EditText charReward;
     TextView databaseText;
     CharacterDBHandler dbHandler;
+    ListView characterList;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,9 +33,28 @@ public class CharactersActivity extends AppCompatActivity {
 
         charName = (EditText) findViewById(R.id.charName);
         charReward = (EditText) findViewById(R.id.charReward);
-        databaseText = (TextView) findViewById(R.id.databaseText);
+        //databaseText = (TextView) findViewById(R.id.databaseText);
         dbHandler = new CharacterDBHandler(this, null, null, 1);
-        printDB();
+
+        Character [] characters = dbHandler.returnCharacters();
+
+        characterList = (ListView) findViewById(R.id.characterList);
+        //String settingsOptions[] = new String[] {"Background Colour", "Font Size", "Vibration"};
+        ListAdapter arrayAdapter = new characterRowAdapter(this, characters);
+        characterList.setAdapter(arrayAdapter);
+        /*
+        settingsView.setOnItemClickListener(
+                new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        settingsView.showContextMenuForChild(view);
+                    }
+                }
+        );
+
+        */
+
+        //printDB();
     }
 
     public void printDB(){
@@ -45,7 +71,7 @@ public class CharactersActivity extends AppCompatActivity {
         Character character = new Character(name, reward);
 
         dbHandler.addCharacter(character);
-        printDB();
+       // printDB();
     }
 
 

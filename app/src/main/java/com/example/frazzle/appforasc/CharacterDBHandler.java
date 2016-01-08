@@ -80,4 +80,36 @@ public class CharacterDBHandler extends SQLiteOpenHelper {
         db.close();
         return dbString;
     }
+
+    public Character[] returnCharacters(){
+
+        SQLiteDatabase db = getWritableDatabase();
+        String query = "SELECT * FROM " + TABLE_CHARACTERS + " WHERE 1";
+
+
+        Cursor c = db.rawQuery(query, null);
+        int numberOfCharacters = c.getCount();
+        System.out.println("\n YOU POOOOOOOOO " + numberOfCharacters + "\n" );
+        c.close();
+        Character[] characters = new Character[numberOfCharacters];
+
+
+        Cursor c2 = db.rawQuery(query, null);
+        c2.moveToFirst();
+        int i = 0;
+        while(!c2.isAfterLast()){
+            String name = c2.getString(c2.getColumnIndex("_name"));
+            String reward = c2.getString(c2.getColumnIndex("_reward"));
+            int id = Integer.parseInt(c2.getString(c2.getColumnIndex("_id")));
+
+            characters[i] = new Character(name, reward, id);
+            i++;
+            c2.moveToNext();
+        }
+
+        c2.close();
+        db.close();
+        return characters;
+
+    }
 }

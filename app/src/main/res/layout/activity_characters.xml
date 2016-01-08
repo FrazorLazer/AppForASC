@@ -28,10 +28,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:width="300dp"
-        android:layout_marginTop="142dp"
+        android:id="@+id/charName"
         android:layout_below="@+id/textView3"
         android:layout_toStartOf="@+id/textView3"
-        android:id="@+id/charName" />
+        android:layout_marginTop="62dp" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -48,17 +48,15 @@
         android:id="@+id/button5"
         android:onClick="addAndUpdate"
         android:layout_alignTop="@+id/charReward"
-        android:layout_alignEnd="@+id/databaseText" />
+        android:layout_toEndOf="@+id/textView3"
+        android:layout_marginStart="64dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/databaseText"
-        android:width="1000dp"
-        android:typeface="serif"
-        android:height="400dp"
+    <ListView
+        android:layout_width="700dp"
+        android:layout_height="400dp"
+        android:id="@+id/characterList"
+        android:layout_marginBottom="44dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:textColor="#FFF" />
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>
