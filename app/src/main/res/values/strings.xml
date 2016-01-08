@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">AppForASC</string>
+
+    <!-- HomeActivity String Resources -->
+    <string name="HomeScreenTitle">WELCOME TO CHARADIES</string>
+    <string name="HomeScreenPlay">PLAY</string>
+    <string name="HomeScreenCharacters">CHARACTERS</string>
+    <string name="HomeScreenSettings">SETTINGS</string>
+    <string name="HomeScreenTutorial">TUTORIAL</string>
+
+    <!-- ChooseStoryActivity String Resources -->
+    <string name="ChooseStoryTitle">CHOOSE A STORY</string>
+
+    <!-- CharactersActivity String Resources -->
+    <string name="CharactersTitle">CHARACTERS</string>
+
+    <!-- CharactersActivity String Resources -->
+    <string name="SettingsTitle">Settings</string>
+    <string name="ChangeColour">Background Colours</string>
+
+    <!-- CharactersActivity String Resources -->
+    <string name="TutorialTitle">Tutorial</string>
+
+
+</resources>
