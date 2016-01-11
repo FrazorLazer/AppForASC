@@ -44,6 +44,19 @@ public class CharacterDBHandler extends SQLiteOpenHelper {
     }
 
 
+    public void updateCharacter(int id, String name, String reward){
+
+        SQLiteDatabase db = getWritableDatabase();
+        String query = "UPDATE " + TABLE_CHARACTERS +
+                " SET " + COLUMN_NAME +  " = \"" + name +
+                "\" , " + COLUMN_REWARD +  " = \"" + reward +
+                "\" WHERE " + COLUMN_ID + " = " + id + ";";
+
+        db.execSQL(query);
+        db.close();
+
+    }
+
     public void addCharacter(com.example.frazzle.appforasc.Character character){
 
         ContentValues values = new ContentValues();
@@ -58,6 +71,7 @@ public class CharacterDBHandler extends SQLiteOpenHelper {
     public void deleteCharacter(int id){
         SQLiteDatabase db = getWritableDatabase();
         db.execSQL("DELETE FROM " + TABLE_CHARACTERS + " WHERE " + COLUMN_ID + " = " + id + ";");
+        db.close();
     }
 
     public String dbToString(){

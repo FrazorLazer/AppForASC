@@ -17,6 +17,7 @@ public class CharacterCreate extends Activity {
     String reward;
     Button deleteButton;
     int id;
+    Boolean isNew = false;
 
 
     @Override
@@ -38,6 +39,7 @@ public class CharacterCreate extends Activity {
         Bundle charData = getIntent().getExtras();
         if (charData == null){
             deleteButton.setEnabled(false);
+            isNew = true;
             return;
         }
 
@@ -53,14 +55,17 @@ public class CharacterCreate extends Activity {
 
     public void saveCharacter(View view) {
 
-        String name = nameInput.getText().toString();
-        String reward = rewardInput.getText().toString();
-        Character character = new Character(name, reward);
+        String newName = nameInput.getText().toString();
+        String newReward = rewardInput.getText().toString();
 
-        dbHandler.addCharacter(character);
+        if (isNew){
+            Character character = new Character(newName, newReward);
+            dbHandler.addCharacter(character);
+        }else{
+            dbHandler.updateCharacter(id, newName, newReward);
+        }
 
         this.finish();
-
 
     }
 

@@ -24,32 +24,6 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:width="300dp"
-        android:id="@+id/charName"
-        android:layout_alignParentTop="true"
-        android:layout_toStartOf="@+id/charReward" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/charReward"
-        android:width="300dp"
-        android:layout_alignTop="@+id/charName"
-        android:layout_centerHorizontal="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add Character"
-        android:id="@+id/button5"
-        android:onClick="addAndUpdate"
-        android:layout_alignTop="@+id/charReward"
-        android:layout_toEndOf="@+id/textView3"
-        android:layout_marginStart="64dp" />
-
     <ListView
         android:layout_width="700dp"
         android:layout_height="400dp"
@@ -60,23 +34,6 @@
         android:headerDividersEnabled="false"
         android:divider="#424bcc"
         android:dividerHeight="3dp" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/deleteNum"
-        android:layout_alignTop="@+id/textView3"
-        android:layout_alignParentEnd="true"
-        android:width="50dp" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Button"
-        android:id="@+id/button6"
-        android:layout_alignTop="@+id/textView3"
-        android:layout_alignStart="@+id/button5"
-        android:onClick="deleteChar" />
 
     <Button
         android:layout_width="wrap_content"

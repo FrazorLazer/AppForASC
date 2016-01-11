@@ -36,25 +36,9 @@ public class CharactersActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_characters);
 
-        charName = (EditText) findViewById(R.id.charName);
-        charReward = (EditText) findViewById(R.id.charReward);
-        deleteNum = (EditText) findViewById(R.id.deleteNum);
         dbHandler = new CharacterDBHandler(this, null, null, 1);
-
         characterList = (ListView) findViewById(R.id.characterList);
         setBackgroundColour();
-        //populateAdapter();
-        /*
-        characterList.setOnItemClickListener(
-                new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        openCharacterView(characters[position]);
-                    }
-                }
-        );
-
-        */
     }
 
     public void populateAdapter(){
@@ -78,30 +62,10 @@ public class CharactersActivity extends AppCompatActivity {
         startActivity(i);
     }
 
-    public void deleteChar(View view){
-        int num = Integer.parseInt(deleteNum.getText().toString());
-        dbHandler.deleteCharacter(num);
-        populateAdapter();
-    }
 
-    public void addAndUpdate(View view){
-
-        String name = charName.getText().toString();
-        String reward = charReward.getText().toString();
-        Character character = new Character(name, reward);
-
-        charName.setText("");
-        charReward.setText("");
-
-        dbHandler.addCharacter(character);
-
-        populateAdapter();
-
-    }
 
     public void openCharacterView(Character c){
 
-        Toast.makeText(CharactersActivity.this, "HERE", Toast.LENGTH_SHORT).show();
         Intent i = new Intent(CharactersActivity.this, CharacterCreate.class);
 
         i.putExtra("name", c.get_name());
@@ -116,8 +80,6 @@ public class CharactersActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         populateAdapter();
-
-
     }
 
 
