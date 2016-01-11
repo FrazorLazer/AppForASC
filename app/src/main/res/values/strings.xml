@@ -20,6 +20,7 @@
 
     <!-- CharactersActivity String Resources -->
     <string name="TutorialTitle">Tutorial</string>
+    <string name="title_activity_character_create">CharacterCreate</string>
 
 
 </resources>

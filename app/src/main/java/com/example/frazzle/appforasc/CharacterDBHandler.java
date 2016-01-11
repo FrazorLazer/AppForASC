@@ -57,7 +57,7 @@ public class CharacterDBHandler extends SQLiteOpenHelper {
 
     public void deleteCharacter(int id){
         SQLiteDatabase db = getWritableDatabase();
-        db.execSQL("DELETE FROM " + TABLE_CHARACTERS + "WHERE COLUMN_ID = " + id + ";");
+        db.execSQL("DELETE FROM " + TABLE_CHARACTERS + " WHERE " + COLUMN_ID + " = " + id + ";");
     }
 
     public String dbToString(){

@@ -1,6 +1,7 @@
 package com.example.frazzle.appforasc;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -20,9 +21,12 @@ public class CharactersActivity extends AppCompatActivity {
     RelativeLayout layout;
     EditText charName;
     EditText charReward;
-    TextView databaseText;
+    EditText charID;
     CharacterDBHandler dbHandler;
     ListView characterList;
+    ArrayAdapter arrayAdapter;
+    EditText deleteNum;
+    Character [] characters;
 
 
 
@@ -33,35 +37,34 @@ public class CharactersActivity extends AppCompatActivity {
 
         charName = (EditText) findViewById(R.id.charName);
         charReward = (EditText) findViewById(R.id.charReward);
-        //databaseText = (TextView) findViewById(R.id.databaseText);
+        deleteNum = (EditText) findViewById(R.id.deleteNum);
         dbHandler = new CharacterDBHandler(this, null, null, 1);
 
-        Character [] characters = dbHandler.returnCharacters();
-
         characterList = (ListView) findViewById(R.id.characterList);
-        //String settingsOptions[] = new String[] {"Background Colour", "Font Size", "Vibration"};
-        ListAdapter arrayAdapter = new characterRowAdapter(this, characters);
-        characterList.setAdapter(arrayAdapter);
-        /*
-        settingsView.setOnItemClickListener(
-                new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        settingsView.showContextMenuForChild(view);
-                    }
-                }
-        );
 
-        */
+        populateAdapter();
 
-        //printDB();
     }
 
-    public void printDB(){
-        String dbString = dbHandler.dbToString();
-        databaseText.setText(dbString);
-        charName.setText("");
-        charReward.setText("");
+
+
+    public void populateAdapter(){
+
+        characters = dbHandler.returnCharacters();
+        arrayAdapter = new characterRowAdapter(this, characters);
+        characterList.setAdapter(arrayAdapter);
+
+    }
+
+    public void createCharacter(View view){
+        Intent i = new Intent(CharactersActivity.this, CharacterCreate.class);
+        startActivity(i);
+    }
+
+    public void deleteChar(View view){
+        int num = Integer.parseInt(deleteNum.getText().toString());
+        dbHandler.deleteCharacter(num);
+        populateAdapter();
     }
 
     public void addAndUpdate(View view){
@@ -70,7 +73,13 @@ public class CharactersActivity extends AppCompatActivity {
         String reward = charReward.getText().toString();
         Character character = new Character(name, reward);
 
+        charName.setText("");
+        charReward.setText("");
+
         dbHandler.addCharacter(character);
+
+        populateAdapter();
+       // arrayAdapter.notifyDataSetChanged();
        // printDB();
     }
 

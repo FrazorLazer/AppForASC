@@ -57,6 +57,35 @@
         android:id="@+id/characterList"
         android:layout_marginBottom="44dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:headerDividersEnabled="false"
+        android:divider="#424bcc"
+        android:dividerHeight="3dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/deleteNum"
+        android:layout_alignTop="@+id/textView3"
+        android:layout_alignParentEnd="true"
+        android:width="50dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Button"
+        android:id="@+id/button6"
+        android:layout_alignTop="@+id/textView3"
+        android:layout_alignStart="@+id/button5"
+        android:onClick="deleteChar" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Button"
+        android:id="@+id/button7"
+        android:layout_above="@+id/button6"
+        android:layout_toStartOf="@+id/characterList"
+        android:onClick="createCharacter" />
 
 </RelativeLayout>
