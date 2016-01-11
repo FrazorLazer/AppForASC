@@ -30,12 +30,4 @@
         android:layout_marginTop="40dp"
         android:textColor="#fff" />
 
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Delete"
-        android:id="@+id/dltButton"
-        android:layout_marginTop="40dp"
-        android:layout_marginLeft="100dp" />
 </LinearLayout>

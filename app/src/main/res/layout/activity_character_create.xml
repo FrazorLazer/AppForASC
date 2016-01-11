@@ -7,16 +7,99 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.frazzle.appforasc.CharacterCreate">
+    tools:context="com.example.frazzle.appforasc.CharacterCreate"
+    android:background="#495dd2">
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:id="@+id/profilePhoto"
+        android:background="#fff"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="70dp"
+        />
+
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="70dp"
+        android:text="Take Photo"
+        android:id="@+id/takePhotoButton"
+        android:height="70dp"
+        android:layout_below="@+id/profilePhoto"
+        android:layout_alignLeft="@id/profilePhoto"
+        />
+
+    <Button
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:text="Save Character"
+        android:id="@+id/saveButton"
+        android:layout_below="@+id/takePhotoButton"
+        android:layout_alignLeft="@id/profilePhoto"
+        android:layout_marginTop="70dp"
+        android:layout_marginLeft="50dp"
+        android:onClick="saveCharacter"
+        />
+    <Button
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:text="Delete Character"
+        android:id="@+id/deleteCharacter"
+        android:layout_below="@+id/takePhotoButton"
+        android:layout_toRightOf="@id/saveButton"
+        android:layout_alignTop="@id/saveButton"
+        android:layout_marginLeft="50dp"
+        android:onClick="deleteCharacter"
+        />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="POPUP"
-        android:id="@+id/textView6"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="192dp"
-        android:textSize="40dp" />
+        android:text="Name"
+        android:id="@+id/nameLabel"
+        android:layout_marginLeft="150dp"
+        android:textSize="30sp"
+        android:textColor="@color/BackgroundWhite"
+        android:layout_alignTop="@+id/profilePhoto"
+        android:layout_toRightOf="@+id/profilePhoto"
+
+
+        />
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:id="@+id/nameInput"
+        android:textColor="@color/BackgroundWhite"
+        android:layout_alignLeft="@id/nameLabel"
+        android:layout_below="@id/nameLabel"
+        />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Reward"
+        android:id="@+id/rewardLabel"
+        android:textSize="30sp"
+        android:layout_marginTop="70dp"
+        android:textColor="@color/BackgroundWhite"
+        android:layout_below="@id/nameInput"
+        android:layout_alignLeft="@+id/nameLabel" />
+
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/rewardInput"
+        android:height="60dp"
+        android:width="300dp"
+        android:layout_alignStart="@+id/nameInput"
+        android:layout_below="@id/rewardLabel"/>
+
+
+
+
 </RelativeLayout>

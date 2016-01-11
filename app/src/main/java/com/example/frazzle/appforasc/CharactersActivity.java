@@ -14,6 +14,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class CharactersActivity extends AppCompatActivity {
@@ -41,18 +42,34 @@ public class CharactersActivity extends AppCompatActivity {
         dbHandler = new CharacterDBHandler(this, null, null, 1);
 
         characterList = (ListView) findViewById(R.id.characterList);
+        setBackgroundColour();
+        //populateAdapter();
+        /*
+        characterList.setOnItemClickListener(
+                new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        openCharacterView(characters[position]);
+                    }
+                }
+        );
 
-        populateAdapter();
-
+        */
     }
-
-
 
     public void populateAdapter(){
 
         characters = dbHandler.returnCharacters();
         arrayAdapter = new characterRowAdapter(this, characters);
         characterList.setAdapter(arrayAdapter);
+        characterList.setOnItemClickListener(
+                new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        openCharacterView(characters[position]);
+                    }
+                }
+        );
 
     }
 
@@ -79,15 +96,28 @@ public class CharactersActivity extends AppCompatActivity {
         dbHandler.addCharacter(character);
 
         populateAdapter();
-       // arrayAdapter.notifyDataSetChanged();
-       // printDB();
+
+    }
+
+    public void openCharacterView(Character c){
+
+        Toast.makeText(CharactersActivity.this, "HERE", Toast.LENGTH_SHORT).show();
+        Intent i = new Intent(CharactersActivity.this, CharacterCreate.class);
+
+        i.putExtra("name", c.get_name());
+        i.putExtra("reward", c.get_reward());
+        i.putExtra("id", c.get_id());
+        startActivity(i);
+
     }
 
 
     @Override
     protected void onResume() {
         super.onResume();
-        setBackgroundColour();
+        populateAdapter();
+
+
     }
 
 
