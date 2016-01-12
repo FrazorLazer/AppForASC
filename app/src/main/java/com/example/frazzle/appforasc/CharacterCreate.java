@@ -3,6 +3,7 @@ package com.example.frazzle.appforasc;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.media.MediaPlayer;
 import android.preference.DialogPreference;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -91,6 +92,46 @@ public class CharacterCreate extends Activity {
 
     }
 
+    public void playAudio(View view){
+
+        MediaPlayer player;
+
+        switch(newReward){
+            case "Bell":
+                player = MediaPlayer.create(this, R.raw.bell);
+                player.start();
+                return;
+
+            case "Cheer":
+                player = MediaPlayer.create(this, R.raw.cheer);
+                player.start();
+                return;
+
+            case "Guitar":
+                player = MediaPlayer.create(this, R.raw.guitar);
+                player.start();
+                return;
+
+            case "Harp":
+                player = MediaPlayer.create(this, R.raw.harp);
+                player.start();
+                return;
+
+            case "Horn":
+                player = MediaPlayer.create(this, R.raw.horn);
+                player.start();
+                return;
+
+            case "Tropical":
+                player = MediaPlayer.create(this, R.raw.tropical);
+                player.start();
+                return;
+
+            default: return;
+        }
+
+    }
+
     public void saveCharacter(View view) {
 
         newName = nameInput.getText().toString();
@@ -151,11 +192,12 @@ public class CharacterCreate extends Activity {
     public int getSpinnerPos(){
         switch(reward){
             case "No Sound": return 0;
-            case "Horn": return 1;
-            case "Cheer": return 2;
-            case "Drums": return 3;
-            case "Song": return 4;
-            case "Ping": return 5;
+            case "Cheer": return 1;
+            case "Guitar": return 2;
+            case "Harp": return 3;
+            case "Horn": return 4;
+            case "Tropical": return 5;
+            case "Bell": return 6;
             default:return 0;
         }
 

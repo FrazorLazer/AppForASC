@@ -26,11 +26,12 @@
     <!-- CharactersCreate String Resources -->
     <string-array name="rewardSounds">
         <item>No Sound</item>
-        <item>Horn</item>
         <item>Cheer</item>
-        <item>Drums</item>
-        <item>Song</item>
-        <item>Ping</item>
+        <item>Guitar</item>
+        <item>Harp</item>
+        <item>Horn</item>
+        <item>Tropical</item>
+        <item>Bell</item>
     </string-array>
 
 
