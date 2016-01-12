@@ -90,16 +90,24 @@
         android:layout_alignLeft="@+id/nameLabel" />
 
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/rewardInput"
-        android:height="60dp"
-        android:width="300dp"
+
+    <Spinner
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:id="@+id/rewardSpinner"
         android:layout_alignStart="@+id/nameInput"
-        android:layout_below="@id/rewardLabel"/>
+        android:layout_below="@id/rewardLabel"  />
 
-
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="30dp"
+        android:layout_height="35dp"
+        android:text="X"
+        android:id="@+id/closeButton"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/nameInput"
+        android:textSize="10sp"
+        android:onClick="closeWindow"/>
 
 
 </RelativeLayout>
