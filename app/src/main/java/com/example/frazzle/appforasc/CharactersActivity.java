@@ -20,15 +20,10 @@ import android.widget.Toast;
 public class CharactersActivity extends AppCompatActivity {
 
     RelativeLayout layout;
-    EditText charName;
-    EditText charReward;
-    EditText charID;
     CharacterDBHandler dbHandler;
-    ListView characterList;
+    ListView characterListView;
     ArrayAdapter arrayAdapter;
-    EditText deleteNum;
     Character [] characters;
-
 
 
     @Override
@@ -37,16 +32,23 @@ public class CharactersActivity extends AppCompatActivity {
         setContentView(R.layout.activity_characters);
 
         dbHandler = new CharacterDBHandler(this, null, null, 1);
-        characterList = (ListView) findViewById(R.id.characterList);
+        characterListView = (ListView) findViewById(R.id.characterList);
         setBackgroundColour();
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        populateAdapter();
+    }
+
 
     public void populateAdapter(){
 
         characters = dbHandler.returnCharacters();
         arrayAdapter = new characterRowAdapter(this, characters);
-        characterList.setAdapter(arrayAdapter);
-        characterList.setOnItemClickListener(
+        characterListView.setAdapter(arrayAdapter);
+        characterListView.setOnItemClickListener(
                 new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -57,29 +59,19 @@ public class CharactersActivity extends AppCompatActivity {
 
     }
 
-    public void createCharacter(View view){
-        Intent i = new Intent(CharactersActivity.this, CharacterCreate.class);
-        startActivity(i);
-    }
-
-
-
     public void openCharacterView(Character c){
-
         Intent i = new Intent(CharactersActivity.this, CharacterCreate.class);
 
         i.putExtra("name", c.get_name());
         i.putExtra("reward", c.get_reward());
         i.putExtra("id", c.get_id());
         startActivity(i);
-
     }
 
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        populateAdapter();
+    public void createCharacter(View view){
+        Intent i = new Intent(CharactersActivity.this, CharacterCreate.class);
+        startActivity(i);
     }
 
 

@@ -44,12 +44,12 @@ public class CharacterDBHandler extends SQLiteOpenHelper {
     }
 
 
-    public void updateCharacter(int id, String name, String reward){
+    public void updateCharacter(int id, String newName, String newReward){
 
         SQLiteDatabase db = getWritableDatabase();
         String query = "UPDATE " + TABLE_CHARACTERS +
-                " SET " + COLUMN_NAME +  " = \"" + name +
-                "\" , " + COLUMN_REWARD +  " = \"" + reward +
+                " SET " + COLUMN_NAME +  " = \"" + newName +
+                "\" , " + COLUMN_REWARD +  " = \"" + newReward +
                 "\" WHERE " + COLUMN_ID + " = " + id + ";";
 
         db.execSQL(query);
@@ -100,13 +100,10 @@ public class CharacterDBHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = getWritableDatabase();
         String query = "SELECT * FROM " + TABLE_CHARACTERS + " WHERE 1";
 
-
         Cursor c = db.rawQuery(query, null);
         int numberOfCharacters = c.getCount();
-        System.out.println("\n YOU POOOOOOOOO " + numberOfCharacters + "\n" );
-        c.close();
         Character[] characters = new Character[numberOfCharacters];
-
+        c.close();
 
         Cursor c2 = db.rawQuery(query, null);
         c2.moveToFirst();

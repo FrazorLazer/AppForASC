@@ -4,8 +4,6 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.media.MediaPlayer;
-import android.preference.DialogPreference;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
@@ -14,21 +12,18 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
+
 
 public class CharacterCreate extends Activity {
 
-    EditText nameInput;
-    EditText rewardInput;
     CharacterDBHandler dbHandler;
     String name;
     String reward;
-    Button deleteButton;
     int id;
     Boolean isNew = false;
+    Button deleteButton;
+    EditText nameInput;
     Spinner rewardSpinner;
-    String newName;
-    String newReward;
 
 
 
@@ -43,28 +38,23 @@ public class CharacterCreate extends Activity {
         int height = dm.heightPixels;
         getWindow().setLayout((int) (width*.8) , (int) (height*.7));
 
-        nameInput = (EditText) findViewById(R.id.nameInput);
-
-
         dbHandler = new CharacterDBHandler(this, null, null, 1);
+        nameInput = (EditText) findViewById(R.id.nameInput);
         deleteButton = (Button) findViewById(R.id.deleteCharacter);
 
-        Bundle charData = getIntent().getExtras();
-        if (charData == null){
+        Bundle characterData = getIntent().getExtras();
+        if (characterData == null){
             reward = "No Sound";
             deleteButton.setEnabled(false);
             isNew = true;
             setSpinner();
             return;
         }
-
-        name = charData.getString("name");
-        reward = charData.getString("reward");
-        id = charData.getInt("id");
-
+        name = characterData.getString("name");
+        reward = characterData.getString("reward");
+        id = characterData.getInt("id");
         nameInput.setText(name);
         setSpinner();
-
 
     }
 
@@ -80,12 +70,10 @@ public class CharacterCreate extends Activity {
         rewardSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                newReward = parent.getItemAtPosition(position).toString();
+                reward = parent.getItemAtPosition(position).toString();
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
             }
         });
 
@@ -96,7 +84,7 @@ public class CharacterCreate extends Activity {
 
         MediaPlayer player;
 
-        switch(newReward){
+        switch(reward){
             case "Bell":
                 player = MediaPlayer.create(this, R.raw.bell);
                 player.start();
@@ -134,13 +122,13 @@ public class CharacterCreate extends Activity {
 
     public void saveCharacter(View view) {
 
-        newName = nameInput.getText().toString();
+        name = nameInput.getText().toString();
 
         if (isNew){
-            Character character = new Character(newName, newReward);
+            Character character = new Character(name, reward);
             dbHandler.addCharacter(character);
         }else{
-            dbHandler.updateCharacter(id, newName, newReward);
+            dbHandler.updateCharacter(id, name, reward);
         }
 
         this.finish();
@@ -148,18 +136,15 @@ public class CharacterCreate extends Activity {
     }
 
     public void deleteCharacter(View view){
-
-        AlertDialog alertDialog = createDialog();
-        alertDialog.show();
-        //closeWindow(view);
-
+        AlertDialog deleteDialog = createDialog();
+        deleteDialog.show();
     }
 
 
     private AlertDialog createDialog() {
 
 
-        AlertDialog alertdia = new AlertDialog.Builder(this)
+        AlertDialog alertdialog = new AlertDialog.Builder(this)
         .setMessage("Are you sure you want to delete this character")
         .setCancelable(false)
 
@@ -179,7 +164,7 @@ public class CharacterCreate extends Activity {
             }
         })
         .create();
-        return alertdia;
+        return alertdialog;
 
     }
 
@@ -190,6 +175,7 @@ public class CharacterCreate extends Activity {
 
 
     public int getSpinnerPos(){
+
         switch(reward){
             case "No Sound": return 0;
             case "Cheer": return 1;
@@ -200,7 +186,6 @@ public class CharacterCreate extends Activity {
             case "Bell": return 6;
             default:return 0;
         }
-
 
     }
 

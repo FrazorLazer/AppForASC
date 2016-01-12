@@ -22,4 +22,14 @@
         android:layout_marginTop="93dp"
         android:textSize="60sp"
         android:textColor="#FFF" />
+
+    <TextView
+        android:layout_width="1000dp"
+        android:layout_height="500dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/displayDB"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:textSize="30dp"
+        android:textColor="#fff" />
 </RelativeLayout>

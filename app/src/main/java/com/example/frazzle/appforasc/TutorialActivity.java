@@ -6,15 +6,23 @@ import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 public class TutorialActivity extends AppCompatActivity {
 
     RelativeLayout layout;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tutorial);
+
+        CharacterDBHandler dbHandler = new CharacterDBHandler(this, null, null, 1);
+        String x = dbHandler.dbToString();
+        TextView displayDB = (TextView) findViewById(R.id.displayDB);
+        displayDB.setText(x);
+
     }
 
     @Override
