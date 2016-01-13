@@ -10,79 +10,59 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
-import android.widget.Toast;
 
-
-public class CharactersActivity extends AppCompatActivity {
+public class CharacterChoiceOne extends AppCompatActivity {
 
     RelativeLayout layout;
     CharacterDBHandler dbHandler;
     ListView characterListView;
-    ArrayAdapter arrayAdapter;
-    Character [] characters;
+    Character[] characters;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_characters);
+        setContentView(R.layout.activity_character_choice_one);
 
         dbHandler = new CharacterDBHandler(this, null, null, 1);
-        characterListView = (ListView) findViewById(R.id.characterList);
+        characterListView = (ListView) findViewById(R.id.characterList1);
         setBackgroundColour();
-
-
-        String s = ((ExtendedApp) this.getApplication()).getStory();
-        Toast.makeText(CharactersActivity.this, s, Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
         populateAdapter();
+
+
     }
 
 
     public void populateAdapter(){
 
         characters = dbHandler.returnCharacters();
-        arrayAdapter = new characterRowAdapter(this, characters);
+        ArrayAdapter arrayAdapter = new characterRowAdapter(this, characters);
         characterListView.setAdapter(arrayAdapter);
         characterListView.setOnItemClickListener(
                 new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        openCharacterView(characters[position]);
+                        ((ExtendedApp) getApplication()).setCharacterOne(characters[position]);
+                        openCharacterChoice();
                     }
                 }
         );
 
     }
 
-    public void openCharacterView(Character c){
-        Intent i = new Intent(CharactersActivity.this, CharacterCreate.class);
-
-        i.putExtra("name", c.get_name());
-        i.putExtra("reward", c.get_reward());
-        i.putExtra("id", c.get_id());
+    private void openCharacterChoice(){
+        Intent i = new Intent(this, CharacterChoiceTwo.class);
         startActivity(i);
     }
 
-
-    public void createCharacter(View view){
-        Intent i = new Intent(CharactersActivity.this, CharacterCreate.class);
-        startActivity(i);
-    }
 
 
     public void setBackgroundColour(){
         SharedPreferences sharedPref = getSharedPreferences("colourInfo", Context.MODE_PRIVATE);
         String backgroundColour = sharedPref.getString("backgroundC", "");
-        layout = (RelativeLayout) findViewById(R.id.charactersAct);
+        layout = (RelativeLayout) findViewById(R.id.CharacterChoiceOneAct);
         int colour;
 
         switch(backgroundColour) {
@@ -111,6 +91,4 @@ public class CharactersActivity extends AppCompatActivity {
 
         }
     }
-
-
 }

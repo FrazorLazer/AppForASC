@@ -20,6 +20,8 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        ((ExtendedApp) this.getApplication()).setStory("Sandwich");
+
     }
 
 
@@ -57,35 +59,12 @@ public class HomeActivity extends AppCompatActivity {
 
     public void setBackgroundColour(){
         SharedPreferences sharedPref = getSharedPreferences("colourInfo", Context.MODE_PRIVATE);
-        String backgroundColour = sharedPref.getString("backgroundC", "");
+        String backgroundColour = "Background" + sharedPref.getString("backgroundC", "");
         layout = (RelativeLayout) findViewById(R.id.homeAct);
-        int colour;
+        int colourID = ((ExtendedApp) getApplication()).getColorResourceId(backgroundColour);
+        int colour = new ResourcesCompat().getColor(getResources(), colourID, null);
+        layout.setBackgroundColor(colour);
 
-        switch(backgroundColour) {
-            case ("Red"):
-                colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundRed, null);
-                layout.setBackgroundColor(colour);
-                //Toast.makeText(this, "RedSet", Toast.LENGTH_LONG).show();
-                break;
-
-            case ("Blue"):
-                colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundBlue, null);
-                layout.setBackgroundColor(colour);
-                //Toast.makeText(this, "BlueSet", Toast.LENGTH_LONG).show();
-                break;
-
-            case ("White"):
-                colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundWhite, null);
-                layout.setBackgroundColor(colour);
-                //Toast.makeText(this, "RedSet", Toast.LENGTH_LONG).show();
-                break;
-
-            default:
-                colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundBlue, null);
-                layout.setBackgroundColor(colour);
-                break;
-
-        }
     }
 
 }

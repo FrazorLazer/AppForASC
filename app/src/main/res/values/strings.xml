@@ -10,6 +10,10 @@
 
     <!-- ChooseStoryActivity String Resources -->
     <string name="ChooseStoryTitle">CHOOSE A STORY</string>
+    <string-array name="storyNames">
+        <item>Going to the Park</item>
+        <item>Visiting a Grandparent</item>
+    </string-array>
 
     <!-- CharactersActivity String Resources -->
     <string name="CharactersTitle">CHARACTERS</string>

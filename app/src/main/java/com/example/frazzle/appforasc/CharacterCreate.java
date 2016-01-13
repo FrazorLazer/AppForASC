@@ -6,12 +6,15 @@ import android.content.DialogInterface;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+
+import java.lang.reflect.Field;
 
 
 public class CharacterCreate extends Activity {
@@ -24,7 +27,6 @@ public class CharacterCreate extends Activity {
     Button deleteButton;
     EditText nameInput;
     Spinner rewardSpinner;
-
 
 
     @Override
@@ -80,43 +82,19 @@ public class CharacterCreate extends Activity {
 
     }
 
+
+
     public void playAudio(View view){
 
-        MediaPlayer player;
-
-        switch(reward){
-            case "Bell":
-                player = MediaPlayer.create(this, R.raw.bell);
-                player.start();
-                return;
-
-            case "Cheer":
-                player = MediaPlayer.create(this, R.raw.cheer);
-                player.start();
-                return;
-
-            case "Guitar":
-                player = MediaPlayer.create(this, R.raw.guitar);
-                player.start();
-                return;
-
-            case "Harp":
-                player = MediaPlayer.create(this, R.raw.harp);
-                player.start();
-                return;
-
-            case "Horn":
-                player = MediaPlayer.create(this, R.raw.horn);
-                player.start();
-                return;
-
-            case "Tropical":
-                player = MediaPlayer.create(this, R.raw.tropical);
-                player.start();
-                return;
-
-            default: return;
+        if (reward.equals("No Sound")){
+            return;
         }
+
+        String lowercaseReward = reward.toLowerCase();
+        int x = ((ExtendedApp) this.getApplication()).getRawResourceId(lowercaseReward);
+        MediaPlayer player;
+        player = MediaPlayer.create(this, x);
+        player.start();
 
     }
 

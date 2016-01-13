@@ -1,8 +1,5 @@
 package com.example.frazzle.appforasc;
 
-/**
- * Created by Frazzle on 08/01/2016.
- */
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Button;
+
 
 class characterRowAdapter extends ArrayAdapter<Character> {
 
