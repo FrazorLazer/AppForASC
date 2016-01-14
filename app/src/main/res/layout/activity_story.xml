@@ -11,16 +11,16 @@
     android:id="@+id/storyAct">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="1000dp"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/storyTitle"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="101dp"
-        android:textSize="60sp"
+        android:layout_marginTop="48dp"
+        android:textSize="30sp"
         android:minWidth="100dp"
-        android:textColor="#fff" />
+        android:textColor="#fff"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="300dp"
@@ -42,5 +42,14 @@
         android:layout_alignTop="@+id/player1Deetz"
         android:layout_alignParentEnd="true"
         android:textColor="#fff" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Next"
+        android:id="@+id/nextButton"
+        android:layout_alignBottom="@+id/player1Deetz"
+        android:layout_centerHorizontal="true"
+        android:onClick="progressStory" />
 
 </RelativeLayout>

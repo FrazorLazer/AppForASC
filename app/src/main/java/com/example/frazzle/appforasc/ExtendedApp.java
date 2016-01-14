@@ -13,7 +13,7 @@ public class ExtendedApp extends Application{
     private Character characterOne;
     private Character characterTwo;
     private String story;
-    private int storyProgress = 0;
+    private int storyProgress = 1;
 
     public Character getCharacterOne() {
         return characterOne;
@@ -47,6 +47,10 @@ public class ExtendedApp extends Application{
         this.storyProgress = storyProgress;
     }
 
+    public void incrementStoryProgress(){
+        this.storyProgress = this.storyProgress + 1;
+    }
+
 
     public int getRawResourceId(String reward)
     {
@@ -76,4 +80,19 @@ public class ExtendedApp extends Application{
 
         return 0;
     }
+
+    public int getStringResourceId(String stringName)
+    {
+        try {
+            Class res = R.string.class;
+            Field field = res.getField(stringName);
+            return field.getInt(null);
+        }
+        catch (Exception e) {
+            Log.e("MyTag", "Failure to get raw id.", e);
+        }
+
+        return 0;
+    }
+
 }

@@ -37,7 +37,11 @@ public class ChooseStory extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String storyName = parent.getItemAtPosition(position).toString();
-                ((ExtendedApp) getApplication()).setStory(storyName);
+                if (storyName.equals("Going to the Park")){
+                    ((ExtendedApp) getApplication()).setStory("Park");
+                }else{
+                    ((ExtendedApp) getApplication()).setStory("Grandparent");
+                }
                 openCharacterChoice();
             }
         });

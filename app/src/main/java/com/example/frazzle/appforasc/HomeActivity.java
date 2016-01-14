@@ -49,6 +49,11 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(i);
     }
 
+    public void openSwipeTest(View view){
+        Intent i = new Intent(this, SwipeTest.class);
+        startActivity(i);
+    }
+
 
     @Override
     protected void onResume() {

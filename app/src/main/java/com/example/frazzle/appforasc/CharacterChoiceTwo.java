@@ -57,6 +57,8 @@ public class CharacterChoiceTwo extends AppCompatActivity {
 
 
 
+
+
     public void setBackgroundColour(){
         SharedPreferences sharedPref = getSharedPreferences("colourInfo", Context.MODE_PRIVATE);
         String backgroundColour = sharedPref.getString("backgroundC", "");

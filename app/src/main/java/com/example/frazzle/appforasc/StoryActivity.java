@@ -1,13 +1,17 @@
 package com.example.frazzle.appforasc;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class StoryActivity extends AppCompatActivity {
 
@@ -27,15 +31,59 @@ public class StoryActivity extends AppCompatActivity {
 
         Character character1 = ((ExtendedApp) getApplication()).getCharacterOne();
         Character character2 = ((ExtendedApp) getApplication()).getCharacterTwo();
-        String storyName = ((ExtendedApp) getApplication()).getStory();
 
-        player1Deetz.setText("Player1\n\nName: " + character1.get_name() + "\nReward: " + character1.get_reward());
-        player2Deetz.setText("Player2\n\nName: " + character2.get_name() + "\nReward: " + character2.get_reward());
-        storyTitle.setText(storyName);
+        player1Deetz.setText(findTheString("Act", character1.get_name(), character2.get_name()));
+        player2Deetz.setText(findTheString("Guess", character1.get_name(), character2.get_name()));
+        storyTitle.setText(findTheString("Story", character1.get_name(), character2.get_name()));
 
         setBackgroundColour();
 
     }
+
+
+    public String findTheString(String context, String transferred1, String transferred2){
+
+        String keyword = "";
+        keyword += ((ExtendedApp) getApplication()).getStory();
+        keyword += context;
+        keyword += Integer.toString(((ExtendedApp) getApplication()).getStoryProgress());
+
+        int id = (((ExtendedApp) getApplication()).getStringResourceId(keyword));
+        String raw = getResources().getString(id);
+        String replace = raw.replaceAll("James", transferred1);
+        replace = replace.replaceAll("Sarah", transferred2);
+        return replace;
+
+    }
+
+    public void progressStory(View view){
+
+        String storyName = ((ExtendedApp) getApplication()).getStory();
+        int progress = ((ExtendedApp) getApplication()).getStoryProgress();
+
+        if(storyName.equals("Park") && progress > 7){
+            ((ExtendedApp) getApplication()).setStoryProgress(1);
+            Intent i = new Intent(this, HomeActivity.class);
+            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(i);
+            return;
+
+        }
+
+        if(storyName.equals("Grandparent") && progress > 4){
+            ((ExtendedApp) getApplication()).setStoryProgress(1);
+            Intent i = new Intent(this, HomeActivity.class);
+            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(i);
+        }
+
+        ((ExtendedApp) getApplication()).incrementStoryProgress();
+        Intent i = new Intent(this, StoryActivity.class);
+        startActivity(i);
+        this.finish();
+
+    }
+
 
     public void setBackgroundColour() {
         SharedPreferences sharedPref = getSharedPreferences("colourInfo", Context.MODE_PRIVATE);
