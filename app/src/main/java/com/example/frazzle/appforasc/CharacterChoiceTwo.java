@@ -51,7 +51,7 @@ public class CharacterChoiceTwo extends AppCompatActivity {
     }
 
     private void openCharacterChoice(){
-        Intent i = new Intent(this, StoryActivity.class);
+        Intent i = new Intent(this, BeginStory.class);
         startActivity(i);
     }
 

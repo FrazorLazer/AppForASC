@@ -50,7 +50,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public void openSwipeTest(View view){
-        Intent i = new Intent(this, SwipeTest.class);
+        Intent i = new Intent(this, BeginStory.class);
         startActivity(i);
     }
 

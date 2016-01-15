@@ -98,8 +98,6 @@ public class SwipeTest extends AppCompatActivity implements ViewPager.OnPageChan
         MyFragmentPagerAdapter myFrag = new MyFragmentPagerAdapter(getSupportFragmentManager(), listFragments);
         viewPager.setAdapter(myFrag);
 
-        viewPager.setOnPageChangeListener();Listener(this);
-
         viewPager.setCurrentItem(1);
     }
 
