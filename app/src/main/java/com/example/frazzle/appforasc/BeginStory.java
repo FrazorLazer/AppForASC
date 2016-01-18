@@ -1,6 +1,7 @@
 package com.example.frazzle.appforasc;
 
 
+import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,6 +13,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,21 +24,8 @@ import fragments.Fragment1;
 import fragments.Fragment2;
 import fragments.Fragment3;
 
-public class BeginStory extends AppCompatActivity implements Fragment1.Fragment1Listener {
+public class BeginStory extends AppCompatActivity {
 
-    MyFragmentPagerAdapter mDemoCollectionPagerAdapter;
-    ViewPager mViewPager;
-
-
-    @Override
-    public void moveLeft() {
-        mViewPager.setCurrentItem(0);
-    }
-
-    @Override
-    public void moveRight() {
-        mViewPager.setCurrentItem(2);
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,10 +41,30 @@ public class BeginStory extends AppCompatActivity implements Fragment1.Fragment1
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mDemoCollectionPagerAdapter);
         mViewPager.setCurrentItem(1);
-*/
+
+ */
+        TextView player1Deetz = (TextView) findViewById(R.id.player1Deetz);
+        TextView player2Deetz = (TextView) findViewById(R.id.player2Deetz);
+        TextView storyTitle = (TextView) findViewById(R.id.storyTitle);
+
+        String character1Name = ((ExtendedApp) getApplication()).getCharacterOne().get_name();
+        String character2Name = ((ExtendedApp) getApplication()).getCharacterTwo().get_name();
+        String storyName = ((ExtendedApp) getApplication()).getStory();
+
+
+        player1Deetz.setText("Player 1\n\n" + character1Name);
+        player2Deetz.setText("Player 2\n\n" + character2Name);
+
+        if (storyName.equals("Park")) {
+            storyTitle.setText("At the Park");
+        }else{
+            storyTitle.setText("With a Grandparent");
+        }
+
         setBackgroundColour();
 
     }
+
 
 
     public void beginStory(View view){

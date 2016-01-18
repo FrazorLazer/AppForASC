@@ -15,6 +15,7 @@ public class ExtendedApp extends Application{
     private String story;
     private int storyProgress = 1;
 
+
     public Character getCharacterOne() {
         return characterOne;
     }
