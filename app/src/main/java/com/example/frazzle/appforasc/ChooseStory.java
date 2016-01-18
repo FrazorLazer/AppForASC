@@ -39,8 +39,10 @@ public class ChooseStory extends AppCompatActivity {
                 String storyName = parent.getItemAtPosition(position).toString();
                 if (storyName.equals("Going to the Park")){
                     ((ExtendedApp) getApplication()).setStory("Park");
+                    ((ExtendedApp) getApplication()).setStoryFormat("Options");
                 }else{
                     ((ExtendedApp) getApplication()).setStory("Grandparent");
+                    ((ExtendedApp) getApplication()).setStoryFormat("NoOptions");
                 }
                 openCharacterChoice();
             }

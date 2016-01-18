@@ -74,5 +74,8 @@
     <string name="ParkGuess7">Why did James stop playing football</string>
     <string name="ParkGuess8">What would Sarah like to do before they leave the park?</string>
 
+    <string name="ParkSequence">12122121</string>
+    <string name="GrandParentSequence">2112</string>
+
 
 </resources>

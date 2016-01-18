@@ -13,8 +13,16 @@ public class ExtendedApp extends Application{
     private Character characterOne;
     private Character characterTwo;
     private String story;
+    private String storyFormat;
     private int storyProgress = 1;
 
+    public String getStoryFormat() {
+        return storyFormat;
+    }
+
+    public void setStoryFormat(String storyFormat) {
+        this.storyFormat = storyFormat;
+    }
 
     public Character getCharacterOne() {
         return characterOne;

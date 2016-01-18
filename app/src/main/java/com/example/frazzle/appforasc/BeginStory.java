@@ -68,7 +68,15 @@ public class BeginStory extends AppCompatActivity {
 
 
     public void beginStory(View view){
-        Intent i = new Intent(this, StoryActivity.class);
+
+        String storyFormat = ((ExtendedApp) getApplication()).getStoryFormat();
+        Intent i;
+        if (storyFormat.equals("Options")) {
+            i = new Intent(this, StoryActivity.class);
+        }else{
+            i = new Intent(this, StoryActivityAlt.class);
+        }
+
         startActivity(i);
     }
 

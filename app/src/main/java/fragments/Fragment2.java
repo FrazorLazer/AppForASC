@@ -1,5 +1,6 @@
 package fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -15,13 +16,8 @@ public class Fragment2 extends Fragment {
 
     View v;
     int colour;
-    //Button toMiddle;
-
     Fragment2Listener activityCommander;
 
-    public interface Fragment2Listener{
-        public void backToMiddle();
-    }
 
     @Nullable
     @Override
@@ -35,16 +31,41 @@ public class Fragment2 extends Fragment {
         String index = args.getString("act");
         colour = args.getInt("colour");
 
-        //toMiddle = (Button) v.findViewById(R.id.backButton);
+        Button toMiddle = (Button) v.findViewById(R.id.backButton);
         TextView storyText = (TextView) v.findViewById(R.id.actText);
         storyText.setText(index);
+
+        toMiddle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toMiddle(v);
+            }
+        });
         
 
         return v;
 
     }
 
-    public void toMiddle(){
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        try{
+            activityCommander = (Fragment2Listener) context;
+        }catch (ClassCastException e){
+            throw new ClassCastException(context.toString());
+        }
+    }
+
+
+
+
+    public interface Fragment2Listener{
+        public void backToMiddle();
+    }
+
+    public void toMiddle(View view){
         activityCommander.backToMiddle();
     }
 

@@ -38,7 +38,7 @@ public class StoryActivity extends AppCompatActivity implements Fragment1.Fragme
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_story);
 
-        setUpFragments();
+        setUpFragments(findSequence());
 
         mDemoCollectionPagerAdapter = new MyFragmentPagerAdapter(getSupportFragmentManager(), fragmentList);
         mViewPager = (ViewPager) findViewById(R.id.pager);
@@ -64,17 +64,15 @@ public class StoryActivity extends AppCompatActivity implements Fragment1.Fragme
 
     }
 
-    public void setUpFragments(){
+    public void setUpFragments(int sequence){
 
         int colour = getBackgroundColour();
-
 
         Fragment1 frag1 = new Fragment1();
         Bundle args1 = new Bundle();
         args1.putString("story", findTheString2("Story"));
         args1.putInt("colour", colour);
         frag1.setArguments(args1);
-
 
         Fragment2 frag2 = new Fragment2();
         Bundle args2 = new Bundle();
@@ -88,9 +86,16 @@ public class StoryActivity extends AppCompatActivity implements Fragment1.Fragme
         args3.putInt("colour", colour);
         frag3.setArguments(args3);
 
-        fragmentList.add(frag2);
-        fragmentList.add(frag1);
-        fragmentList.add(frag3);
+
+        if (sequence == 1) {
+            fragmentList.add(frag3);
+            fragmentList.add(frag1);
+            fragmentList.add(frag2);
+        }else{
+            fragmentList.add(frag2);
+            fragmentList.add(frag1);
+            fragmentList.add(frag3);
+        }
 
     }
 
@@ -169,6 +174,23 @@ public class StoryActivity extends AppCompatActivity implements Fragment1.Fragme
         String replace = raw.replaceAll("James", transferred1);
         replace = replace.replaceAll("Sarah", transferred2);
         return replace;
+
+    }
+
+    public int findSequence(){
+
+        String keyword = "";
+        keyword += ((ExtendedApp) getApplication()).getStory();
+        keyword += "Sequence";
+        int prog = (((ExtendedApp) getApplication()).getStoryProgress());
+
+
+
+        int id = (((ExtendedApp) getApplication()).getStringResourceId(keyword));
+        String raw = getResources().getString(id);
+
+        int seq = (raw.charAt(prog-1)) - '0';
+        return seq;
 
     }
 

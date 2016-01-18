@@ -67,6 +67,12 @@ public class HomeActivity extends AppCompatActivity {
         String backgroundColour = "Background" + sharedPref.getString("backgroundC", "");
         layout = (RelativeLayout) findViewById(R.id.homeAct);
         int colourID = ((ExtendedApp) getApplication()).getColorResourceId(backgroundColour);
+
+        if (colourID == 0x0){
+            layout.setBackgroundColor(Integer.parseInt("142a78", 16));
+            return;
+        }
+
         int colour = new ResourcesCompat().getColor(getResources(), colourID, null);
         layout.setBackgroundColor(colour);
 

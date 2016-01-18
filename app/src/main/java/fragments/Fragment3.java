@@ -1,11 +1,13 @@
 package fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.frazzle.appforasc.R;
@@ -33,12 +35,29 @@ public class Fragment3 extends Fragment {
         TextView storyText = (TextView) v.findViewById(R.id.guessText);
         storyText.setText(index);
 
-        return v;
+        Button toMiddle = (Button) v.findViewById(R.id.backButton2);
+        toMiddle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toMiddle(v);
+            }
+        });
 
+        return v;
     }
 
 
-    public void toMiddle(){
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        try{
+            activityCommander = (Fragment3Listener) context;
+        }catch (ClassCastException e){
+            throw new ClassCastException(context.toString());
+        }
+    }
+
+    public void toMiddle(View view){
         activityCommander.backToMiddle();
     }
 
