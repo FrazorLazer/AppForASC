@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.frazzle.appforasc">
 
+    <uses-feature android:name="android.hardware.camera2" android:required="true"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:name=".ExtendedApp"
         android:allowBackup="true"
@@ -45,7 +48,8 @@
         <activity android:name=".SwipeTest" />
         <activity
             android:name=".BeginStory"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".CongratulationsActivity"></activity>
     </application>
 
 </manifest>

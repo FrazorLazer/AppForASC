@@ -3,18 +3,30 @@ package com.example.frazzle.appforasc;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.lang.reflect.Field;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 public class CharacterCreate extends Activity {
@@ -22,11 +34,17 @@ public class CharacterCreate extends Activity {
     CharacterDBHandler dbHandler;
     String name;
     String reward;
+    String pathname;
     int id;
     Boolean isNew = false;
     Button deleteButton;
     EditText nameInput;
     Spinner rewardSpinner;
+    static final int REQUEST_IMAGE_CAPTURE = 1;
+    ImageView profilePhoto;
+    Bitmap photo;
+    Boolean newPhoto = false;
+
 
 
     @Override
@@ -34,6 +52,7 @@ public class CharacterCreate extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_character_create);
 
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
         int width = dm.widthPixels;
@@ -43,6 +62,8 @@ public class CharacterCreate extends Activity {
         dbHandler = new CharacterDBHandler(this, null, null, 1);
         nameInput = (EditText) findViewById(R.id.nameInput);
         deleteButton = (Button) findViewById(R.id.deleteCharacter);
+        Button takePhotoButton = (Button) findViewById(R.id.takePhotoButton);
+        profilePhoto = (ImageView) findViewById(R.id.profilePhotoView);
 
         Bundle characterData = getIntent().getExtras();
         if (characterData == null){
@@ -54,10 +75,26 @@ public class CharacterCreate extends Activity {
         }
         name = characterData.getString("name");
         reward = characterData.getString("reward");
+        pathname = characterData.getString("pathname");
         id = characterData.getInt("id");
         nameInput.setText(name);
         setSpinner();
 
+        photo = BitmapFactory.decodeFile(pathname);
+        if (profilePhoto != null){
+            profilePhoto.setImageBitmap(photo);
+        }
+
+
+        if (!hasCamera()){
+            takePhotoButton.setEnabled(false);
+        }
+
+    }
+
+
+    private boolean hasCamera(){
+        return getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY);
     }
 
     public void setSpinner(){
@@ -74,6 +111,7 @@ public class CharacterCreate extends Activity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 reward = parent.getItemAtPosition(position).toString();
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
             }
@@ -102,12 +140,41 @@ public class CharacterCreate extends Activity {
 
         name = nameInput.getText().toString();
 
-        if (isNew){
-            Character character = new Character(name, reward);
-            dbHandler.addCharacter(character);
+        if (newPhoto){
+            String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+            String filename = name + "_" + timeStamp;
+            File sd = Environment.getExternalStorageDirectory();
+            File dest = new File(sd, filename);
+
+            try {
+                FileOutputStream out = new FileOutputStream(dest);
+                photo.compress(Bitmap.CompressFormat.PNG, 90, out);
+                out.flush();
+                out.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+
+            pathname = dest.getAbsolutePath();
+            if (isNew){
+                Character character = new Character(name, reward, pathname);
+                dbHandler.addCharacter(character);
+            }else{
+                dbHandler.updateCharacter(id, name, reward, pathname);
+            }
+
         }else{
-            dbHandler.updateCharacter(id, name, reward);
+
+            if (isNew){
+                Character character = new Character(name, reward, pathname);
+                dbHandler.addCharacter(character);
+            }else{
+                dbHandler.updateCharacter(id, name, reward, pathname);
+            }
         }
+
+
 
         this.finish();
 
@@ -167,4 +234,44 @@ public class CharacterCreate extends Activity {
 
     }
 
+
+    public void launchCamera(View view){
+
+        Intent i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        startActivityForResult(i, REQUEST_IMAGE_CAPTURE);
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        newPhoto = true;
+
+        if(requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK){
+
+            Bundle extras = data.getExtras();
+            Bitmap temp = (Bitmap) extras.get("data");
+
+            int height = temp.getHeight();
+            int width = temp.getWidth();
+
+            if (width > height){
+                int topStart = (width - height) / 2;
+                photo = Bitmap.createBitmap(temp, topStart, 0, height, height);
+                profilePhoto.setImageBitmap(photo);
+                return;
+            }
+
+            if (height > width){
+                int topStart = (height - width) / 2;
+                photo = Bitmap.createBitmap(temp, 0, topStart, width, width);
+                profilePhoto.setImageBitmap(photo);
+                return;
+            }
+
+            photo = Bitmap.createBitmap(temp);
+
+        }
+
+    }
 }

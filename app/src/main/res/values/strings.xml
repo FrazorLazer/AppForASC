@@ -74,8 +74,60 @@
     <string name="ParkGuess7">Why did James stop playing football</string>
     <string name="ParkGuess8">What would Sarah like to do before they leave the park?</string>
 
+    <string-array name="ParkAnswers1">
+        <item>Hello</item>
+        <item>Goodbye</item>
+        <item>Go Away</item>
+    </string-array>
+
+    <string-array name="ParkAnswers2">
+        <item>Golf</item>
+        <item>Tennis</item>
+        <item>Football</item>
+    </string-array>
+
+    <string-array name="ParkAnswers3">
+        <item>She has to tie her shoelaces</item>
+        <item>She forgot her hat</item>
+        <item>She has a headache</item>
+    </string-array>
+
+    <string-array name="ParkAnswers4">
+        <item>A dog</item>
+        <item>A bird</item>
+        <item>A snake</item>
+    </string-array>
+
+    <string-array name="ParkAnswers5">
+        <item>Black</item>
+        <item>Yellow</item>
+        <item>Blue</item>
+    </string-array>
+
+    <string-array name="ParkAnswers6">
+        <item>Climbing trees</item>
+        <item>Swimming in the outdoor pool</item>
+        <item>Playing football</item>
+    </string-array>
+
+    <string-array name="ParkAnswers7">
+        <item>He hurt his leg</item>
+        <item>He saw another bird</item>
+        <item>He is getting a phone call</item>
+    </string-array>
+
+    <string-array name="ParkAnswers8">
+        <item>Buy a drink at the shop</item>
+        <item>Get an ice cream</item>
+        <item>Go swimming in the outdoor pool</item>
+    </string-array>
+
+
+
     <string name="ParkSequence">12122121</string>
     <string name="GrandParentSequence">2112</string>
+
+    <string name="ParkAnswerSequence">13123232</string>
 
 
 </resources>

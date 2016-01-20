@@ -9,13 +9,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.frazzle.appforasc.R;
+import com.example.frazzle.appforasc.StoryActivity;
 
 public class Fragment2 extends Fragment {
 
     View v;
     int colour;
+
     Fragment2Listener activityCommander;
 
 
@@ -31,6 +34,7 @@ public class Fragment2 extends Fragment {
         String index = args.getString("act");
         colour = args.getInt("colour");
 
+
         Button toMiddle = (Button) v.findViewById(R.id.backButton);
         TextView storyText = (TextView) v.findViewById(R.id.actText);
         storyText.setText(index);
@@ -41,7 +45,6 @@ public class Fragment2 extends Fragment {
                 toMiddle(v);
             }
         });
-        
 
         return v;
 
@@ -68,6 +71,8 @@ public class Fragment2 extends Fragment {
     public void toMiddle(View view){
         activityCommander.backToMiddle();
     }
+
+
 
 
     @Override

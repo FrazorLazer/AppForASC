@@ -2,9 +2,12 @@ package com.example.frazzle.appforasc;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -22,6 +25,14 @@ public class TutorialActivity extends AppCompatActivity {
         String x = dbHandler.dbToString();
         TextView displayDB = (TextView) findViewById(R.id.displayDB);
         displayDB.setText(x);
+
+        ImageView imageVieww = (ImageView) findViewById(R.id.imageVieww);
+        String path = ((ExtendedApp) getApplication()).getPathname();
+        Bitmap bot = BitmapFactory.decodeFile(path);
+
+        if (bot != null){
+            imageVieww.setImageBitmap(bot);
+        }
 
     }
 

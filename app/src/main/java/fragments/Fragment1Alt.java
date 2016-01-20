@@ -22,13 +22,13 @@ public class Fragment1Alt extends Fragment{
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        v = inflater.inflate(R.layout.fragment1_layout, container, false);
+        v = inflater.inflate(R.layout.fragment1_alt_layout, container, false);
 
         Bundle args = getArguments();
         String index = args.getString("story");
         colour = args.getInt("colour");
 
-
+        return v;
     }
 
     @Override
@@ -41,6 +41,27 @@ public class Fragment1Alt extends Fragment{
         }
     }
 
-    public interface Fragment1AltListener{
+    @Override
+    public void onStart() {
+        super.onStart();
+        v.setBackgroundColor(colour);
     }
+
+
+    public interface Fragment1AltListener{
+            public void moveLeft();
+            public void moveRight();
+            public void progressStory(View view);
+    }
+
+    public void goLeft(View view){
+        activityCommander.moveLeft();
+    }
+
+    public void goRight(View view){
+        activityCommander.moveRight();
+    }
+
+
+
 }

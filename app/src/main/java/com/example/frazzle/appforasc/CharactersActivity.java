@@ -37,7 +37,7 @@ public class CharactersActivity extends AppCompatActivity {
 
 
         String s = ((ExtendedApp) this.getApplication()).getStory();
-        Toast.makeText(CharactersActivity.this, s, Toast.LENGTH_SHORT).show();
+
     }
 
     @Override
@@ -69,6 +69,7 @@ public class CharactersActivity extends AppCompatActivity {
         i.putExtra("name", c.get_name());
         i.putExtra("reward", c.get_reward());
         i.putExtra("id", c.get_id());
+        i.putExtra("pathname", c.get_profileImagePath());
         startActivity(i);
     }
 

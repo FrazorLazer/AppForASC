@@ -10,11 +10,20 @@ import java.lang.reflect.Field;
  */
 public class ExtendedApp extends Application{
 
-    private Character characterOne;
-    private Character characterTwo;
-    private String story;
-    private String storyFormat;
+    private Character characterOne = new Character("","","");
+    private Character characterTwo = new Character("","","");;
+    private String story ="";
+    private String storyFormat = "";
     private int storyProgress = 1;
+    private String pathname = "";
+
+    public String getPathname() {
+        return pathname;
+    }
+
+    public void setPathname(String pathname) {
+        this.pathname = pathname;
+    }
 
     public String getStoryFormat() {
         return storyFormat;
@@ -94,6 +103,20 @@ public class ExtendedApp extends Application{
     {
         try {
             Class res = R.string.class;
+            Field field = res.getField(stringName);
+            return field.getInt(null);
+        }
+        catch (Exception e) {
+            Log.e("MyTag", "Failure to get raw id.", e);
+        }
+
+        return 0;
+    }
+
+    public int getStringArrayResourceId(String stringName)
+    {
+        try {
+            Class res = R.array.class;
             Field field = res.getField(stringName);
             return field.getInt(null);
         }

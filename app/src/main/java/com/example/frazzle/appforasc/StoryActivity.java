@@ -21,8 +21,11 @@ import java.util.List;
 
 import adapters.MyFragmentPagerAdapter;
 import fragments.Fragment1;
+import fragments.Fragment1Alt;
 import fragments.Fragment2;
+import fragments.Fragment2Alt;
 import fragments.Fragment3;
+import fragments.Fragment3Alt;
 
 public class StoryActivity extends AppCompatActivity implements Fragment1.Fragment1Listener, Fragment2.Fragment2Listener, Fragment3.Fragment3Listener {
 
@@ -38,7 +41,14 @@ public class StoryActivity extends AppCompatActivity implements Fragment1.Fragme
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_story);
 
-        setUpFragments(findSequence());
+        String storyFormat = ((ExtendedApp) getApplication()).getStoryFormat();
+
+        if (storyFormat.equals("Options")){
+            setUpFragments(findSequence());
+        }else{
+            setUpAltFragments(findSequence());
+        }
+
 
         mDemoCollectionPagerAdapter = new MyFragmentPagerAdapter(getSupportFragmentManager(), fragmentList);
         mViewPager = (ViewPager) findViewById(R.id.pager);
@@ -84,6 +94,45 @@ public class StoryActivity extends AppCompatActivity implements Fragment1.Fragme
         Bundle args3 = new Bundle();
         args3.putString("guess", findTheString2("Guess"));
         args3.putInt("colour", colour);
+        args3.putInt("answer", findTheAnswer());
+        args3.putStringArray("options", findTheOptions());
+        frag3.setArguments(args3);
+
+
+        if (sequence == 1) {
+            fragmentList.add(frag3);
+            fragmentList.add(frag1);
+            fragmentList.add(frag2);
+        }else{
+            fragmentList.add(frag2);
+            fragmentList.add(frag1);
+            fragmentList.add(frag3);
+        }
+
+    }
+
+    public void setUpAltFragments(int sequence){
+
+        int colour = getBackgroundColour();
+
+        Fragment1Alt frag1 = new Fragment1Alt();
+        Bundle args1 = new Bundle();
+        args1.putString("story", findTheString2("Story"));
+        args1.putInt("colour", colour);
+        frag1.setArguments(args1);
+
+        Fragment2Alt frag2 = new Fragment2Alt();
+        Bundle args2 = new Bundle();
+        args2.putString("act", findTheString2("Act"));
+        args2.putInt("colour", colour);
+        frag2.setArguments(args2);
+
+        Fragment3Alt frag3 = new Fragment3Alt();
+        Bundle args3 = new Bundle();
+        args3.putString("guess", findTheString2("Guess"));
+        args3.putInt("colour", colour);
+
+
         frag3.setArguments(args3);
 
 
@@ -135,12 +184,17 @@ public class StoryActivity extends AppCompatActivity implements Fragment1.Fragme
             Intent i = new Intent(this, HomeActivity.class);
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(i);
+            return;
         }
 
         ((ExtendedApp) getApplication()).incrementStoryProgress();
         Intent i = new Intent(this, StoryActivity.class);
         startActivity(i);
         this.finish();
+
+        Intent i2 = new Intent(this, CongratulationsActivity.class);
+        startActivity(i2);
+
 
     }
 
@@ -184,7 +238,37 @@ public class StoryActivity extends AppCompatActivity implements Fragment1.Fragme
         keyword += "Sequence";
         int prog = (((ExtendedApp) getApplication()).getStoryProgress());
 
+        int id = (((ExtendedApp) getApplication()).getStringResourceId(keyword));
+        String raw = getResources().getString(id);
 
+        int seq = (raw.charAt(prog-1)) - '0';
+        return seq;
+
+    }
+
+    public String[] findTheOptions(){
+
+        String keyword = "";
+        keyword += ((ExtendedApp) getApplication()).getStory();
+        keyword += "Answers";
+        int prog = ((ExtendedApp) getApplication()).getStoryProgress();
+        String pro = Integer.toString(prog);
+        keyword += pro;
+
+        Log.d("MYTAGGGGGGGGGG", "findTheOptions: " + keyword);
+
+        int id = (((ExtendedApp) getApplication()).getStringArrayResourceId(keyword));
+        String [] raw = getResources().getStringArray(id);
+
+        return raw;
+    }
+
+    public int findTheAnswer(){
+
+        String keyword = "";
+        keyword += ((ExtendedApp) getApplication()).getStory();
+        keyword += "AnswerSequence";
+        int prog = (((ExtendedApp) getApplication()).getStoryProgress());
 
         int id = (((ExtendedApp) getApplication()).getStringResourceId(keyword));
         String raw = getResources().getString(id);
