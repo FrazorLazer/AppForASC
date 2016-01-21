@@ -1,6 +1,8 @@
 package com.example.frazzle.appforasc;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -97,6 +99,11 @@ public class StoryActivity extends AppCompatActivity implements
         Bundle args2 = new Bundle();
         args2.putString("act", findTheString2("Act"));
         args2.putInt("colour", colour);
+        if (sequence == 1){
+            args2.putString("orientation", "Right");
+        }else{
+            args2.putString("orientation", "Left");
+        }
         frag2.setArguments(args2);
 
         Fragment3 frag3 = new Fragment3();
@@ -105,6 +112,11 @@ public class StoryActivity extends AppCompatActivity implements
         args3.putInt("colour", colour);
         args3.putInt("answer", findTheAnswer());
         args3.putStringArray("options", findTheOptions());
+        if (sequence == 1){
+            args3.putString("orientation", "left");
+        }else{
+            args3.putString("orientation", "right");
+        }
         frag3.setArguments(args3);
 
 
@@ -133,13 +145,13 @@ public class StoryActivity extends AppCompatActivity implements
         Fragment2Alt frag2 = new Fragment2Alt();
         Bundle args2 = new Bundle();
         //args2.putString("act", findTheString2("Act"));
-        //args2.putInt("colour", colour);
+        args2.putInt("colour", colour);
         frag2.setArguments(args2);
 
         Fragment3Alt frag3 = new Fragment3Alt();
         Bundle args3 = new Bundle();
         //args3.putString("guess", findTheString2("Guess"));
-        //args3.putInt("colour", colour);
+        args3.putInt("colour", colour);
         frag3.setArguments(args3);
 
 
@@ -171,6 +183,48 @@ public class StoryActivity extends AppCompatActivity implements
         mViewPager.setCurrentItem(1);
     }
 
+
+    @Override
+    public void exitStory(View view){
+
+        AlertDialog deleteDialog = createDialog();
+        deleteDialog.show();
+    }
+
+    public void actuallyClose(){
+        ((ExtendedApp) getApplication()).setStoryProgress(1);
+        Intent i = new Intent(this, HomeActivity.class);
+        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(i);
+
+    }
+
+
+    private AlertDialog createDialog() {
+
+
+        AlertDialog alertdialog = new AlertDialog.Builder(this)
+                .setMessage("Are you sure you want to exit the story? Your progress will be lost.")
+                .setCancelable(false)
+
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        actuallyClose();
+                    }
+                })
+
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
+                .create();
+        return alertdialog;
+
+    }
+
     @Override
     public void progressStory(View view){
 
@@ -186,7 +240,7 @@ public class StoryActivity extends AppCompatActivity implements
 
         }
 
-        if(storyName.equals("Grandparent") && progress > 4){
+        if(storyName.equals("Grandparent") && progress > 3){
             ((ExtendedApp) getApplication()).incrementStoryProgress();
             Intent i2 = new Intent(this, EndStoryActivity.class);
             i2.putExtra("lastLine", findTheString2("Story"));

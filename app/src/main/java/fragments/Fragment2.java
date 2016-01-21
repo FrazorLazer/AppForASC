@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,7 +19,7 @@ public class Fragment2 extends Fragment {
 
     View v;
     int colour;
-
+    Button toMiddle;
     Fragment2Listener activityCommander;
 
 
@@ -28,16 +29,16 @@ public class Fragment2 extends Fragment {
 
         v = inflater.inflate(R.layout.fragment2_layout, container, false);
 
-
-
         Bundle args = getArguments();
         String index = args.getString("act");
         colour = args.getInt("colour");
 
-
-        Button toMiddle = (Button) v.findViewById(R.id.backButton);
+        toMiddle = (Button) v.findViewById(R.id.backButton);
         TextView storyText = (TextView) v.findViewById(R.id.actText);
         storyText.setText(index);
+
+        String orient = args.getString("orientation");
+        moveButton(orient);
 
         toMiddle.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,6 +51,22 @@ public class Fragment2 extends Fragment {
 
     }
 
+
+    private void moveButton(String orient){
+        ViewGroup.LayoutParams vg_lp = toMiddle.getLayoutParams();
+        RelativeLayout.LayoutParams rl_lp = new RelativeLayout.LayoutParams(vg_lp);
+
+        if (orient.equals("left")){
+            rl_lp.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+            rl_lp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+
+        }else{
+            rl_lp.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
+            rl_lp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+        }
+
+        toMiddle.setLayoutParams(rl_lp);
+    }
 
     @Override
     public void onAttach(Context context) {

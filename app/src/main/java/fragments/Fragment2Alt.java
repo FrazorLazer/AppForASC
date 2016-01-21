@@ -15,7 +15,6 @@ import com.example.frazzle.appforasc.R;
 public class Fragment2Alt extends Fragment{
 
     int colour;
-
     View v;
 
     @Nullable
@@ -30,7 +29,11 @@ public class Fragment2Alt extends Fragment{
         return v;
     }
 
-
+    @Override
+    public void onStart() {
+        super.onStart();
+        v.setBackgroundColor(colour);
+    }
 
 }
 

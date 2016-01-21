@@ -36,6 +36,7 @@ public class Fragment1 extends Fragment {
         goLeft = (Button) v.findViewById(R.id.goLeft);
         goRight = (Button) v.findViewById(R.id.goRight);
         progressButton = (Button) v.findViewById(R.id.progressButton);
+        Button exitButton = (Button) v.findViewById(R.id.exitButton);
 
         Bundle args = getArguments();
         String index = args.getString("story");
@@ -68,6 +69,12 @@ public class Fragment1 extends Fragment {
             }
         });
 
+        exitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                exit(v);
+            }
+        });
 
         return v;
 
@@ -84,6 +91,7 @@ public class Fragment1 extends Fragment {
         public void moveLeft();
         public void moveRight();
         public void progressStory(View view);
+        public void exitStory(View view);
     }
 
     @Override
@@ -108,5 +116,8 @@ public class Fragment1 extends Fragment {
         activityCommander.progressStory(view);
     }
 
+    public void exit(View view){
+        activityCommander.exitStory(view);
+    }
 
 }

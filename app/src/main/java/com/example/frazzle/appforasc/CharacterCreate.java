@@ -217,25 +217,25 @@ public class CharacterCreate extends Activity {
 
 
         AlertDialog alertdialog = new AlertDialog.Builder(this)
-        .setMessage("Are you sure you want to delete this character")
-        .setCancelable(false)
+                .setMessage("Are you sure you want to delete this character")
+                .setCancelable(false)
 
-        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dbHandler.deleteCharacter(id);
-                dialog.dismiss();
-                finish();
-            }
-        })
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dbHandler.deleteCharacter(id);
+                        dialog.dismiss();
+                        finish();
+                    }
+                })
 
-        .setNegativeButton("No", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        })
-        .create();
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
+                .create();
         return alertdialog;
 
     }

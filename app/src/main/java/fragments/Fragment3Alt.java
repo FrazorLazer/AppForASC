@@ -31,5 +31,11 @@ public class Fragment3Alt extends Fragment{
     }
 
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        v.setBackgroundColor(colour);
+    }
+
 
 }
