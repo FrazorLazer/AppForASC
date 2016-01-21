@@ -3,6 +3,10 @@ package fragments;
 
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -10,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -41,11 +46,23 @@ public class Fragment1 extends Fragment {
         Bundle args = getArguments();
         String index = args.getString("story");
         colour = args.getInt("colour");
-        //getView().setBackgroundColor(colour);
-        //RelativeLayout layout = (RelativeLayout) getView().findViewById(R.id.frament1);
-        // layout.setBackgroundColor(colour);
+        String pathname1 = args.getString("pathname1");
+        String pathname2 = args.getString("pathname2");
+        String charName1 = args.getString("name1");
+        String charName2 = args.getString("name2");
+
         TextView storyText = (TextView) v.findViewById(R.id.storyText);
         storyText.setText(index);
+
+        Drawable song1 = BitmapDrawable.createFromPath(pathname1);
+        song1.setBounds(0, 0, 120, 120);
+        goLeft.setCompoundDrawables(null, null, song1, null);
+        goLeft.setText("< " + charName1);
+
+        Drawable song2 = BitmapDrawable.createFromPath(pathname2);
+        song2.setBounds(0,0,120,120);
+        goRight.setCompoundDrawables(song2, null, null, null);
+        goRight.setText(charName2 + " >");
 
         //v.setBackgroundColor(colour);
         goLeft.setOnClickListener(new View.OnClickListener() {

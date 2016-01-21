@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -17,25 +18,24 @@
         android:textColor="#fff"/>
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="240dp"
         android:layout_height="wrap_content"
-        android:text="Go Right"
         android:id="@+id/goRight"
-        android:layout_gravity="right"
-        android:layout_marginEnd="89dp"
+        android:gravity="center"
+        android:layout_marginEnd="20dp"
         android:layout_alignTop="@+id/goLeft"
         android:layout_alignParentEnd="true" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="240dp"
         android:layout_height="wrap_content"
-        android:text="Go Left"
         android:id="@+id/goLeft"
-        android:layout_marginBottom="257dp"
+        android:layout_marginBottom="150dp"
+        android:gravity="center"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="74dp"
-        android:layout_marginLeft="100dp" />
+        android:layout_marginLeft="20dp"
+        />
 
     <Button
         android:layout_width="wrap_content"
@@ -44,7 +44,7 @@
         android:id="@+id/progressButton"
         android:layout_below="@+id/goRight"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="103dp"
+        android:layout_marginTop="10dp"
         android:singleLine="true" />
 
     <Button
@@ -52,7 +52,6 @@
         android:layout_height="wrap_content"
         android:text="Exit Story"
         android:id="@+id/exitButton"/>
-
 
 
 </RelativeLayout>

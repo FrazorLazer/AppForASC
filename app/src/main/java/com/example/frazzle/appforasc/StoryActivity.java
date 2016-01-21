@@ -93,16 +93,21 @@ public class StoryActivity extends AppCompatActivity implements
         Bundle args1 = new Bundle();
         args1.putString("story", findTheString2("Story"));
         args1.putInt("colour", colour);
+        args1.putString("pathname1", c1.get_profileImagePath());
+        args1.putString("pathname2", c2.get_profileImagePath());
+        args1.putString("name1", c1.get_name());
+        args1.putString("name2", c2.get_name());
         frag1.setArguments(args1);
+
 
         Fragment2 frag2 = new Fragment2();
         Bundle args2 = new Bundle();
         args2.putString("act", findTheString2("Act"));
         args2.putInt("colour", colour);
         if (sequence == 1){
-            args2.putString("orientation", "Right");
+            args2.putString("orientation", "right");
         }else{
-            args2.putString("orientation", "Left");
+            args2.putString("orientation", "left");
         }
         frag2.setArguments(args2);
 
