@@ -9,6 +9,15 @@ public class Character {
     private String _name;
     private String _reward;
     private String _profileImagePath;
+    private String _gender;
+
+    public String get_gender() {
+        return _gender;
+    }
+
+    public void set_gender(String _gender) {
+        this._gender = _gender;
+    }
 
     public String get_profileImagePath() {
         return _profileImagePath;
@@ -18,17 +27,19 @@ public class Character {
         this._profileImagePath = _profileImagePath;
     }
 
-    public Character(String name, String reward, String path){
+    public Character(String name, String reward, String path, String gender){
         this._name = name;
         this._reward = reward;
         this._profileImagePath = path;
+        this._gender = gender;
     }
 
-    public Character(String name, String reward, int id, String path){
+    public Character(String name, String reward, int id, String path, String gender){
         this._name = name;
         this._reward = reward;
         this._id = id;
         this._profileImagePath = path;
+        this._gender = gender;
     }
 
     public String get_name() {

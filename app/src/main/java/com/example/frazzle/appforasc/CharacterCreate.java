@@ -36,14 +36,17 @@ public class CharacterCreate extends Activity {
     String reward;
     String pathname;
     int id;
+    String gender;
     Boolean isNew = false;
     Button deleteButton;
     EditText nameInput;
     Spinner rewardSpinner;
+    Spinner genderSpinner;
     static final int REQUEST_IMAGE_CAPTURE = 1;
     ImageView profilePhoto;
     Bitmap photo;
     Boolean newPhoto = false;
+
 
 
 
@@ -68,17 +71,19 @@ public class CharacterCreate extends Activity {
         Bundle characterData = getIntent().getExtras();
         if (characterData == null){
             reward = "No Sound";
+            gender = "None";
             deleteButton.setEnabled(false);
             isNew = true;
-            setSpinner();
+            setSpinners();
             return;
         }
         name = characterData.getString("name");
         reward = characterData.getString("reward");
         pathname = characterData.getString("pathname");
+        gender = characterData.getString("gender");
         id = characterData.getInt("id");
         nameInput.setText(name);
-        setSpinner();
+        setSpinners();
 
         photo = BitmapFactory.decodeFile(pathname);
         if (profilePhoto != null){
@@ -97,7 +102,7 @@ public class CharacterCreate extends Activity {
         return getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY);
     }
 
-    public void setSpinner(){
+    public void setSpinners(){
 
         rewardSpinner = (Spinner) findViewById(R.id.rewardSpinner);
         ArrayAdapter<CharSequence> rewardsList = ArrayAdapter.createFromResource(this,
@@ -116,6 +121,28 @@ public class CharacterCreate extends Activity {
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
+
+
+        genderSpinner = (Spinner) findViewById(R.id.genderSpinner);
+        ArrayAdapter<CharSequence> genderList = ArrayAdapter.createFromResource(this,
+                R.array.genderOptions, android.R.layout.simple_spinner_item);
+        genderList.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        genderSpinner.setAdapter(genderList);
+        genderSpinner.setSelection(getGenderSpinnerPos());
+
+        genderSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                gender = parent.getItemAtPosition(position).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+
+
+
 
 
     }
@@ -158,19 +185,19 @@ public class CharacterCreate extends Activity {
 
             pathname = dest.getAbsolutePath();
             if (isNew){
-                Character character = new Character(name, reward, pathname);
+                Character character = new Character(name, reward, pathname, gender);
                 dbHandler.addCharacter(character);
             }else{
-                dbHandler.updateCharacter(id, name, reward, pathname);
+                dbHandler.updateCharacter(id, name, reward, pathname, gender);
             }
 
         }else{
 
             if (isNew){
-                Character character = new Character(name, reward, pathname);
+                Character character = new Character(name, reward, pathname, gender);
                 dbHandler.addCharacter(character);
             }else{
-                dbHandler.updateCharacter(id, name, reward, pathname);
+                dbHandler.updateCharacter(id, name, reward, pathname, gender);
             }
         }
 
@@ -232,6 +259,15 @@ public class CharacterCreate extends Activity {
             default:return 0;
         }
 
+    }
+
+    public int getGenderSpinnerPos(){
+        switch(gender){
+            case "None": return 0;
+            case "Girl": return 1;
+            case "Boy": return 2;
+            default:return 0;
+        }
     }
 
 

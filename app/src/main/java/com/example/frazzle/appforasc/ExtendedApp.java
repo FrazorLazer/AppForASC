@@ -10,8 +10,8 @@ import java.lang.reflect.Field;
  */
 public class ExtendedApp extends Application{
 
-    private Character characterOne = new Character("","","");
-    private Character characterTwo = new Character("","","");;
+    private Character characterOne = new Character("","","","");
+    private Character characterTwo = new Character("","","","");;
     private String story ="";
     private String storyFormat = "";
     private int storyProgress = 1;

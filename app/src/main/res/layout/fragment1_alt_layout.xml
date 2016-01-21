@@ -13,4 +13,23 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="139dp"
         android:textColor="#fff" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Button"
+        android:id="@+id/leftButton"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="132dp"
+        android:layout_marginBottom="169dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Button"
+        android:id="@+id/rightButton"
+        android:layout_alignTop="@+id/leftButton"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="200dp" />
 </RelativeLayout>

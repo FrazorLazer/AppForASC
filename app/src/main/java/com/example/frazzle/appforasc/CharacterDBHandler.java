@@ -13,11 +13,12 @@ import android.content.ContentValues;
 
 public class CharacterDBHandler extends SQLiteOpenHelper {
 
-    private static final int DATABASE_VERSION = 3;
+    private static final int DATABASE_VERSION = 4;
     private static final String DATABASE_NAME = "characters.db";
     public static final String TABLE_CHARACTERS = "characters";
     public static final String COLUMN_ID = "_id";
     public static final String COLUMN_NAME = "_name";
+    public static final String COLUMN_GENDER = "_gender";
     public static final String COLUMN_REWARD = "_reward";
     public static final String COLUMN_PATHNAME = "_profileImagePath";
 
@@ -32,6 +33,7 @@ public class CharacterDBHandler extends SQLiteOpenHelper {
         String createQuery = "CREATE TABLE " + TABLE_CHARACTERS + "(" +
                 COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COLUMN_NAME + " TEXT, " +
+                COLUMN_GENDER + " TEXT, " +
                 COLUMN_REWARD + " TEXT, " +
                 COLUMN_PATHNAME + " TEXT " +
                 ");";
@@ -46,11 +48,12 @@ public class CharacterDBHandler extends SQLiteOpenHelper {
     }
 
 
-    public void updateCharacter(int id, String newName, String newReward, String newPath){
+    public void updateCharacter(int id, String newName, String newReward, String newPath, String newGender){
 
         SQLiteDatabase db = getWritableDatabase();
         String query = "UPDATE " + TABLE_CHARACTERS +
                 " SET " + COLUMN_NAME +  " = \"" + newName +
+                "\" , " + COLUMN_GENDER +  " = \"" + newGender +
                 "\" , " + COLUMN_REWARD +  " = \"" + newReward +
                 "\" , " + COLUMN_PATHNAME +  " = \"" + newPath +
                 "\" WHERE " + COLUMN_ID + " = " + id + ";";
@@ -64,6 +67,7 @@ public class CharacterDBHandler extends SQLiteOpenHelper {
 
         ContentValues values = new ContentValues();
         values.put(COLUMN_NAME, character.get_name());
+        values.put(COLUMN_GENDER, character.get_gender());
         values.put(COLUMN_REWARD, character.get_reward());
         values.put(COLUMN_PATHNAME, character.get_profileImagePath());
         SQLiteDatabase db = getWritableDatabase();
@@ -89,6 +93,7 @@ public class CharacterDBHandler extends SQLiteOpenHelper {
         while(!c.isAfterLast()){
             dbString = dbString + c.getString(c.getColumnIndex("_id"))+ "   "
                     + c.getString(c.getColumnIndex("_name")) + "   "
+                    + c.getString(c.getColumnIndex("_gender")) + "   "
                     + c.getString(c.getColumnIndex("_reward")) + "  "
                     + c.getString(c.getColumnIndex("_profileImagePath"))
                     + "\n";
@@ -117,9 +122,10 @@ public class CharacterDBHandler extends SQLiteOpenHelper {
             String name = c2.getString(c2.getColumnIndex("_name"));
             String reward = c2.getString(c2.getColumnIndex("_reward"));
             String pathname = c2.getString(c2.getColumnIndex("_profileImagePath"));
+            String gen = c2.getString(c2.getColumnIndex("_gender"));
             int id = Integer.parseInt(c2.getString(c2.getColumnIndex("_id")));
 
-            characters[i] = new Character(name, reward, id, pathname);
+            characters[i] = new Character(name, reward, id, pathname, gen);
             i++;
             c2.moveToNext();
         }

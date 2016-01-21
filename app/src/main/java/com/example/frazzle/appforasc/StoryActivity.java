@@ -27,12 +27,17 @@ import fragments.Fragment2Alt;
 import fragments.Fragment3;
 import fragments.Fragment3Alt;
 
-public class StoryActivity extends AppCompatActivity implements Fragment1.Fragment1Listener, Fragment2.Fragment2Listener, Fragment3.Fragment3Listener {
+public class StoryActivity extends AppCompatActivity implements
+        Fragment1.Fragment1Listener,
+        Fragment2.Fragment2Listener,
+        Fragment3.Fragment3Listener,
+        Fragment1Alt.Fragment1AltListener {
 
     MyFragmentPagerAdapter mDemoCollectionPagerAdapter;
     ViewPager mViewPager;
     List<Fragment> fragmentList = new ArrayList<>();
-
+    Character c1;
+    Character c2;
 
 
 
@@ -42,12 +47,16 @@ public class StoryActivity extends AppCompatActivity implements Fragment1.Fragme
         setContentView(R.layout.activity_story);
 
         String storyFormat = ((ExtendedApp) getApplication()).getStoryFormat();
+        c1 = ((ExtendedApp) getApplication()).getCharacterOne();
+        c2 = ((ExtendedApp) getApplication()).getCharacterTwo();
 
         if (storyFormat.equals("Options")){
             setUpFragments(findSequence());
         }else{
             setUpAltFragments(findSequence());
         }
+
+
 
 
         mDemoCollectionPagerAdapter = new MyFragmentPagerAdapter(getSupportFragmentManager(), fragmentList);
@@ -123,16 +132,14 @@ public class StoryActivity extends AppCompatActivity implements Fragment1.Fragme
 
         Fragment2Alt frag2 = new Fragment2Alt();
         Bundle args2 = new Bundle();
-        args2.putString("act", findTheString2("Act"));
-        args2.putInt("colour", colour);
+        //args2.putString("act", findTheString2("Act"));
+        //args2.putInt("colour", colour);
         frag2.setArguments(args2);
 
         Fragment3Alt frag3 = new Fragment3Alt();
         Bundle args3 = new Bundle();
-        args3.putString("guess", findTheString2("Guess"));
-        args3.putInt("colour", colour);
-
-
+        //args3.putString("guess", findTheString2("Guess"));
+        //args3.putInt("colour", colour);
         frag3.setArguments(args3);
 
 
@@ -171,19 +178,19 @@ public class StoryActivity extends AppCompatActivity implements Fragment1.Fragme
         int progress = ((ExtendedApp) getApplication()).getStoryProgress();
 
         if(storyName.equals("Park") && progress > 7){
-            ((ExtendedApp) getApplication()).setStoryProgress(1);
-            Intent i = new Intent(this, HomeActivity.class);
-            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(i);
+            ((ExtendedApp) getApplication()).incrementStoryProgress();
+            Intent i2 = new Intent(this, EndStoryActivity.class);
+            i2.putExtra("lastLine", findTheString2("Story"));
+            startActivity(i2);
             return;
 
         }
 
         if(storyName.equals("Grandparent") && progress > 4){
-            ((ExtendedApp) getApplication()).setStoryProgress(1);
-            Intent i = new Intent(this, HomeActivity.class);
-            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(i);
+            ((ExtendedApp) getApplication()).incrementStoryProgress();
+            Intent i2 = new Intent(this, EndStoryActivity.class);
+            i2.putExtra("lastLine", findTheString2("Story"));
+            startActivity(i2);
             return;
         }
 
@@ -199,8 +206,6 @@ public class StoryActivity extends AppCompatActivity implements Fragment1.Fragme
     }
 
 
-
-
     public String findTheString2(String context){
 
         String keyword = "";
@@ -210,26 +215,14 @@ public class StoryActivity extends AppCompatActivity implements Fragment1.Fragme
 
         int id = (((ExtendedApp) getApplication()).getStringResourceId(keyword));
         String raw = getResources().getString(id);
-        String replace = raw.replaceAll("James", ((ExtendedApp) getApplication()).getCharacterOne().get_name() );
-        replace = replace.replaceAll("Sarah", ((ExtendedApp) getApplication()).getCharacterTwo().get_name() );
+        //String replace = raw.replaceAll("James", ((ExtendedApp) getApplication()).getCharacterOne().get_name() );
+        //replace = replace.replaceAll("Sarah", ((ExtendedApp) getApplication()).getCharacterTwo().get_name() );
+
+        String replace = personaliseString(raw);
         return replace;
 
     }
 
-    public String findTheString(String context, String transferred1, String transferred2){
-
-        String keyword = "";
-        keyword += ((ExtendedApp) getApplication()).getStory();
-        keyword += context;
-        keyword += Integer.toString(((ExtendedApp) getApplication()).getStoryProgress());
-
-        int id = (((ExtendedApp) getApplication()).getStringResourceId(keyword));
-        String raw = getResources().getString(id);
-        String replace = raw.replaceAll("James", transferred1);
-        replace = replace.replaceAll("Sarah", transferred2);
-        return replace;
-
-    }
 
     public int findSequence(){
 
@@ -255,10 +248,14 @@ public class StoryActivity extends AppCompatActivity implements Fragment1.Fragme
         String pro = Integer.toString(prog);
         keyword += pro;
 
-        Log.d("MYTAGGGGGGGGGG", "findTheOptions: " + keyword);
+        //Log.d("MYTAGGGGGGGGGG", "findTheOptions: " + keyword);
 
         int id = (((ExtendedApp) getApplication()).getStringArrayResourceId(keyword));
         String [] raw = getResources().getStringArray(id);
+
+        for (int i = 0; i<3; i++){
+            raw[i] = personaliseString(raw[i]);
+        }
 
         return raw;
     }
@@ -298,6 +295,141 @@ public class StoryActivity extends AppCompatActivity implements Fragment1.Fragme
         int colourID = ((ExtendedApp) getApplication()).getColorResourceId(backgroundColour);
         int c = new ResourcesCompat().getColor(getResources(), colourID, null);
         return c;
+
+    }
+
+
+    public String personaliseString(String input){
+
+        String output = "";
+
+        String gender1 = c1.get_gender();
+        String gender2 = c2.get_gender();
+        String name1 = c1.get_name();
+        String name2 = c2.get_name();
+
+        output = input.replaceAll("NAME1", name1);
+        output = output.replaceAll("NAME2", name2);
+
+        if (gender1.equals("Boy") && gender2.equals("Boy")){
+            output = output.replaceAll("ThirdPron1", "he");
+            output = output.replaceAll("ThirdPron2", "he");
+            output = output.replaceAll("ThirdPos1", "his");
+            output = output.replaceAll("ThirdPos2", "his");
+            output = output.replaceAll("ThirdXPos1", "him");
+            output = output.replaceAll("ThirdXPos2", "him");
+            output = output.replaceAll("ThirdYPos1", "himself");
+            output = output.replaceAll("ThirdYPos2", "himself");
+
+            return output;
+        }
+
+        if (gender1.equals("Boy") && gender2.equals("Girl")){
+            output = output.replaceAll("ThirdPron1", "he");
+            output = output.replaceAll("ThirdPron2", "she");
+            output = output.replaceAll("ThirdPos1", "his");
+            output = output.replaceAll("ThirdPos2", "her");
+            output = output.replaceAll("ThirdXPos1", "him");
+            output = output.replaceAll("ThirdXPos2", "her");
+            output = output.replaceAll("ThirdYPos1", "himself");
+            output = output.replaceAll("ThirdYPos2", "herself");
+
+            return output;
+        }
+
+        if (gender1.equals("Girl") && gender2.equals("Boy")){
+            output = output.replaceAll("ThirdPron2", "he");
+            output = output.replaceAll("ThirdPron1", "she");
+            output = output.replaceAll("ThirdPos2", "his");
+            output = output.replaceAll("ThirdPos1", "her");
+            output = output.replaceAll("ThirdXPos2", "him");
+            output = output.replaceAll("ThirdXPos1", "her");
+            output = output.replaceAll("ThirdYPos2", "himself");
+            output = output.replaceAll("ThirdYPos1", "herself");
+
+            return output;
+        }
+
+        if (gender1.equals("Girl") && gender2.equals("Girl")){
+            output = output.replaceAll("ThirdPron2", "she");
+            output = output.replaceAll("ThirdPron1", "she");
+            output = output.replaceAll("ThirdPos2", "her");
+            output = output.replaceAll("ThirdPos1", "her");
+            output = output.replaceAll("ThirdXPos2", "her");
+            output = output.replaceAll("ThirdXPos1", "her");
+            output = output.replaceAll("ThirdYPos2", "herself");
+            output = output.replaceAll("ThirdYPos1", "herself");
+
+            return output;
+        }
+
+        if (gender1.equals("None") && gender2.equals("Boy")){
+            output = output.replaceAll("ThirdPron2", "he");
+            output = output.replaceAll("ThirdPron1", "he");
+            output = output.replaceAll("ThirdPos2", "his");
+            output = output.replaceAll("ThirdPos1", "his");
+            output = output.replaceAll("ThirdXPos2", "him");
+            output = output.replaceAll("ThirdXPos1", "her");
+            output = output.replaceAll("ThirdYPos2", "himself");
+            output = output.replaceAll("ThirdYPos1", "herself");
+            return output;
+        }
+
+        if (gender1.equals("None") && gender2.equals("Girl")){
+            output = output.replaceAll("ThirdPron1", "he");
+            output = output.replaceAll("ThirdPron2", "she");
+            output = output.replaceAll("ThirdPos1", "his");
+            output = output.replaceAll("ThirdPos2", "her");
+            output = output.replaceAll("ThirdXPos1", "him");
+            output = output.replaceAll("ThirdXPos2", "her");
+            output = output.replaceAll("ThirdYPos1", "himself");
+            output = output.replaceAll("ThirdYPos2", "herself");
+
+            return output;
+        }
+
+        if (gender1.equals("Boy") && gender2.equals("None")){
+            output = output.replaceAll("ThirdPron1", "he");
+            output = output.replaceAll("ThirdPron2", "she");
+            output = output.replaceAll("ThirdPos1", "his");
+            output = output.replaceAll("ThirdPos2", "her");
+            output = output.replaceAll("ThirdXPos1", "him");
+            output = output.replaceAll("ThirdXPos2", "her");
+            output = output.replaceAll("ThirdYPos1", "himself");
+            output = output.replaceAll("ThirdYPos2", "herself");
+
+            return output;
+        }
+
+
+        if (gender1.equals("Girl") && gender2.equals("None")){
+            output = output.replaceAll("ThirdPron2", "she");
+            output = output.replaceAll("ThirdPron1", "she");
+            output = output.replaceAll("ThirdPos2", "her");
+            output = output.replaceAll("ThirdPos1", "her");
+            output = output.replaceAll("ThirdXPos2", "her");
+            output = output.replaceAll("ThirdXPos1", "her");
+            output = output.replaceAll("ThirdYPos2", "herself");
+            output = output.replaceAll("ThirdYPos1", "herself");
+
+            return output;
+        }
+
+
+        if (gender1.equals("None") && gender2.equals("None")){
+            output = output.replaceAll("ThirdPron2", "she");
+            output = output.replaceAll("ThirdPron1", "he");
+            output = output.replaceAll("ThirdPos2", "her");
+            output = output.replaceAll("ThirdPos1", "his");
+            output = output.replaceAll("ThirdXPos2", "her");
+            output = output.replaceAll("ThirdXPos1", "him");
+            output = output.replaceAll("ThirdYPos2", "herself");
+            output = output.replaceAll("ThirdYPos1", "himself");
+
+            return output;
+        }
+
+        return output;
 
     }
 }

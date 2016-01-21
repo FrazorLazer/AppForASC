@@ -70,6 +70,7 @@ public class CharactersActivity extends AppCompatActivity {
         i.putExtra("reward", c.get_reward());
         i.putExtra("id", c.get_id());
         i.putExtra("pathname", c.get_profileImagePath());
+        i.putExtra("gender", c.get_gender());
         startActivity(i);
     }
 

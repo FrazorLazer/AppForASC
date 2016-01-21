@@ -38,17 +38,23 @@
         <item>Bell</item>
     </string-array>
 
+    <string-array name="genderOptions">
+        <item>None</item>
+        <item>Girl</item>
+        <item>Boy</item>
+    </string-array>
+
     <!-- Story Strings String Resources -->
 
-    <string name="ParkStory1">It’s a Saturday afternoon and James is bored at home. He has done all his homework and chores and now wants to go outside in the beautiful sunshine. He has decided he will go and see his friend Sarah and ask if she wants to go to the park together. James knocks on Sarah’s door and Sarah answers.</string>
-    <string name="ParkStory2">James and Sarah love playing sports in the park together. But they enjoy playing so many sports that Sarah doesn’t know which one James would like to play today.</string>
-    <string name="ParkStory3">“Excellent!”, says Sarah. She grabs her football from the shed, puts her trainers on and walks to the park with James. At this point Sarah notices a problem and has to stop. James asks what’s wrong?</string>
-    <string name="ParkStory4">Sarah ties her shoelaces so that she doesn’t trip and hurt herself. While Sarah is concentrating on tying her shoelaces, James sees a cool animal pass by him. He quickly tries to show Sarah but by the time she looks up, the animal has gone. “What kind of animal was it?”, asks Sarah.</string>
-    <string name="ParkStory5">“Wow! Cool! I wish I had seen it. What colour was the bird?” says Sarah.</string>
-    <string name="ParkStory6">James and Sarah reach the park and are talking about their favourite things about the park. Sarah says her favourite thing is:</string>
-    <string name="ParkStory7">James and Sarah start playing football and are having a great time. They play until James suddenly has to stop.</string>
-    <string name="ParkStory8">When James is finished on the phone he tells Sarah that it was his Dad, saying that dinner will be ready soon. “Ok, that’s cool.” says Sarah. But before they leave for home Sarah, hears something in the distance and wants to do something before they go home. </string>
-    <string name="ParkStory9">“Great, I’d love an ice cream!” says James. The pair get an ice cream from the van and walk home together after an excellent Saturday afternoon.</string>
+    <string name="ParkStory1">It’s a Saturday afternoon and NAME1 is bored at home. NAME1 has done all ThirdPos1 homework and chores and now wants to go outside in the beautiful sunshine. NAME1 has decided ThirdPron1 will go and see ThirdPos1 friend NAME2 and ask if ThirdPron2 wants to go to the park together. NAME1 knocks on NAME2’s door and NAME2 answers.</string>
+    <string name="ParkStory2">NAME1 and NAME2 love playing sports in the park together. But they enjoy playing so many sports that NAME2 doesn’t know which one NAME1 would like to play today.</string>
+    <string name="ParkStory3">“Excellent!”, says NAME2. NAME2 grabs ThirdPos2 football from the shed, puts ThirdPos2 trainers on and walks to the park with NAME1. At this point NAME2 notices a problem and has to stop. NAME1 asks what’s wrong?</string>
+    <string name="ParkStory4">NAME2 ties ThirdPos2 shoelaces so that ThirdPron2 doesn’t trip and hurt ThirdYPos2. While NAME2 is concentrating on tying ThirdPos2 shoelaces, NAME1 sees a cool animal pass by ThirdXPos1. NAME1 quickly tries to show NAME2 but by the time ThirdPron2 looks up, the animal has gone. “What kind of animal was it?”, asks NAME2.</string>
+    <string name="ParkStory5">“Wow! Cool! I wish I had seen it. What colour was the bird?” says NAME2.</string>
+    <string name="ParkStory6">NAME1 and NAME2 reach the park and are talking about their favourite things about the park. NAME2 says ThirdPos2 favourite thing is:</string>
+    <string name="ParkStory7">NAME1 and NAME2 start playing football and are having a great time. They play until NAME1 suddenly has to stop.</string>
+    <string name="ParkStory8">When NAME1 is finished on the phone ThirdPron1 tells NAME2 that it was ThirdPos1 Dad, saying that dinner will be ready soon. “Ok, that’s cool.” says NAME2. But before they leave for home NAME2 hears something in the distance and wants to do something before they go home. </string>
+    <string name="ParkStory9">“Great, I’d love an ice cream!” says NAME1. The pair get an ice cream from the van and walk home together after an excellent Saturday afternoon.</string>
 
     <string name="GrandparentStory1">Jessica is going to see her Grandad today. She gets in the car with Mum and Dad and drives to her Grandad’s house in the village. Sometimes Grandad’s house can be a little boring so Jessica decides to take something with her to play with.</string>
     <string name="GrandparentStory2">Mum, Dad and Jessica arrive at Grandad’s house. Jessica loves her Grandad but sometimes she gets worried about him, he is 87 years old after all (that’s 75 years older than Jessica!). When they arrive Grandad is outside but he doesn’t look very well. Jessica asks “What’s wrong?”</string>
@@ -56,23 +62,23 @@
     <string name="GrandparentStory4">They both go out to the shops and get all of Grandad’s items. It was cold outside so when they get back, Grandad and Jessica spend a long time taking off their jackets and gloves and scarves and hats and wellies and extra pairs of socks. They settle down in front of the fire with a hot chocolate. It’s still an hour until Mum and Dad come back so Jessica would like to do something before they pick her up.</string>
     <string name="GrandparentStory5">Mum and Dad arrive to pick Jessica up. Jessica gives her Grandad a hug before she goes and then they head home. </string>
 
-    <string name="ParkAct1">Sarah wants to say hello to James. Let James know you mean ‘Hello’ without talking.</string>
-    <string name="ParkAct2">Let Sarah know you want to play football with her, without talking.</string>
-    <string name="ParkAct3">Sarah was too quick when she left the house and she didn’t tie her shoelaces. Without speaking, let James know that you have to stop and tie your shoelaces.</string>
-    <string name="ParkAct4">You saw a bird. Let Sarah know that you saw a bird fly past.</string>
-    <string name="ParkAct5">Let Sarah know that the bird was blue.</string>
-    <string name="ParkAct6">Tell James your favourite thing about the park is Swimming in the outdoor pool.</string>
-    <string name="ParkAct7">James is getting a phone call. Let Sarah know you are getting a phone call.</string>
-    <string name="ParkAct8">Sarah has heard an Ice Cream van. Tell James that you would like to get an ice cream before you go home.</string>
+    <string name="ParkAct1">NAME2 wants to say hello to NAME1. Let NAME1 know you mean ‘Hello’ without talking.</string>
+    <string name="ParkAct2">Let NAME2 know you want to play football with ThirdXPos2, without talking.</string>
+    <string name="ParkAct3">NAME2 was too quick when ThirdPron2 left the house and ThirdPron2 didn’t tie ThirdPos2 shoelaces. Without speaking, let NAME1 know that you have to stop and tie your shoelaces.</string>
+    <string name="ParkAct4">You saw a bird. Let NAME2 know that you saw a bird fly past.</string>
+    <string name="ParkAct5">Let NAME2 know that the bird was blue.</string>
+    <string name="ParkAct6">Tell NAME1 your favourite thing about the park is Swimming in the outdoor pool.</string>
+    <string name="ParkAct7">NAME1 is getting a phone call. Let NAME2 know you are getting a phone call.</string>
+    <string name="ParkAct8">NAME2 has heard an Ice Cream van. Tell NAME1 that you would like to get an ice cream before you go home.</string>
 
-    <string name="ParkGuess1">What does Sarah mean when she does the action?</string>
-    <string name="ParkGuess2">What sport does James want to play today?</string>
-    <string name="ParkGuess3">Why does Sarah have to stop?</string>
-    <string name="ParkGuess4">What animal did James see?</string>
-    <string name="ParkGuess5">What colour was the bird that James saw?</string>
-    <string name="ParkGuess6">What is Sarah’s favourite thing about the park</string>
-    <string name="ParkGuess7">Why did James stop playing football</string>
-    <string name="ParkGuess8">What would Sarah like to do before they leave the park?</string>
+    <string name="ParkGuess1">What does NAME2 mean when ThirdPron2 does the action?</string>
+    <string name="ParkGuess2">What sport does NAME1 want to play today?</string>
+    <string name="ParkGuess3">Why does NAME2 have to stop?</string>
+    <string name="ParkGuess4">What animal did NAME1 see?</string>
+    <string name="ParkGuess5">What colour was the bird that NAME1 saw?</string>
+    <string name="ParkGuess6">What is NAME2’s favourite thing about the park</string>
+    <string name="ParkGuess7">Why did NAME1 stop playing football</string>
+    <string name="ParkGuess8">What would NAME2 like to do before they leave the park?</string>
 
     <string-array name="ParkAnswers1">
         <item>Hello</item>
@@ -87,9 +93,9 @@
     </string-array>
 
     <string-array name="ParkAnswers3">
-        <item>She has to tie her shoelaces</item>
-        <item>She forgot her hat</item>
-        <item>She has a headache</item>
+        <item>NAME2 has to tie ThirdPos2 shoelaces</item>
+        <item>NAME2 forgot ThirdPos2 hat</item>
+        <item>NAME2 has a headache</item>
     </string-array>
 
     <string-array name="ParkAnswers4">
@@ -111,9 +117,9 @@
     </string-array>
 
     <string-array name="ParkAnswers7">
-        <item>He hurt his leg</item>
-        <item>He saw another bird</item>
-        <item>He is getting a phone call</item>
+        <item>NAME1 hurt ThirdPos1 leg</item>
+        <item>NAME1 saw another bird</item>
+        <item>NAME1 is getting a phone call</item>
     </string-array>
 
     <string-array name="ParkAnswers8">
@@ -123,9 +129,8 @@
     </string-array>
 
 
-
     <string name="ParkSequence">12122121</string>
-    <string name="GrandParentSequence">2112</string>
+    <string name="GrandparentSequence">2112</string>
 
     <string name="ParkAnswerSequence">13123232</string>
 

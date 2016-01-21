@@ -7,12 +7,11 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.example.frazzle.appforasc.R;
 
-/**
- * Created by Frazzle on 18/01/2016.
- */
+
 public class Fragment1Alt extends Fragment{
 
     int colour;
@@ -28,8 +27,27 @@ public class Fragment1Alt extends Fragment{
         String index = args.getString("story");
         colour = args.getInt("colour");
 
+        Button goLeft = (Button) v.findViewById(R.id.leftButton);
+        Button goRight = (Button) v.findViewById(R.id.rightButton);
+
+        goLeft.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goLeft(v);
+            }
+        });
+
+        goRight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goRight(v);
+            }
+        });
+
         return v;
     }
+
+
 
     @Override
     public void onAttach(Context context) {
@@ -41,17 +59,12 @@ public class Fragment1Alt extends Fragment{
         }
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        v.setBackgroundColor(colour);
-    }
+
 
 
     public interface Fragment1AltListener{
             public void moveLeft();
             public void moveRight();
-            public void progressStory(View view);
     }
 
     public void goLeft(View view){
@@ -63,5 +76,11 @@ public class Fragment1Alt extends Fragment{
     }
 
 
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        v.setBackgroundColor(colour);
+    }
 
 }

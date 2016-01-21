@@ -76,7 +76,6 @@ public class Fragment1 extends Fragment {
 
     @Override
     public void onStart() {
-
         super.onStart();
         v.setBackgroundColor(colour);
     }
