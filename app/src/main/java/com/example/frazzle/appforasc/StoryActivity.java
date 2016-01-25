@@ -40,6 +40,7 @@ public class StoryActivity extends AppCompatActivity implements
     List<Fragment> fragmentList = new ArrayList<>();
     Character c1;
     Character c2;
+    int whoseGuessing;
 
 
 
@@ -51,37 +52,19 @@ public class StoryActivity extends AppCompatActivity implements
         String storyFormat = ((ExtendedApp) getApplication()).getStoryFormat();
         c1 = ((ExtendedApp) getApplication()).getCharacterOne();
         c2 = ((ExtendedApp) getApplication()).getCharacterTwo();
+        whoseGuessing = findSequence();
 
         if (storyFormat.equals("Options")){
-            setUpFragments(findSequence());
+            setUpFragments(whoseGuessing);
         }else{
-            setUpAltFragments(findSequence());
+            setUpAltFragments(whoseGuessing);
         }
-
-
-
 
         mDemoCollectionPagerAdapter = new MyFragmentPagerAdapter(getSupportFragmentManager(), fragmentList);
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mDemoCollectionPagerAdapter);
         mViewPager.setCurrentItem(1);
 
-        //Character character1 = ((ExtendedApp) getApplication()).getCharacterOne();
-        //Character character2 = ((ExtendedApp) getApplication()).getCharacterTwo();
-
-        /*
-        player1Deetz = (TextView) findViewById(R.id.player1Deetz);
-        player2Deetz = (TextView) findViewById(R.id.player2Deetz);
-        storyTitle = (TextView) findViewById(R.id.storyTitle);
-
-
-        player1Deetz.setText(findTheString("Act", character1.get_name(), character2.get_name()));
-        player2Deetz.setText(findTheString("Guess", character1.get_name(), character2.get_name()));
-        storyTitle.setText(findTheString("Story", character1.get_name(), character2.get_name()));
-        */
-
-
-        //setBackgroundColour();
 
     }
 
@@ -97,8 +80,9 @@ public class StoryActivity extends AppCompatActivity implements
         args1.putString("pathname2", c2.get_profileImagePath());
         args1.putString("name1", c1.get_name());
         args1.putString("name2", c2.get_name());
+        args1.putString("progress", Integer.toString(((ExtendedApp) getApplication()).getStoryProgress()));
+        args1.putInt("orientation", sequence);
         frag1.setArguments(args1);
-
 
         Fragment2 frag2 = new Fragment2();
         Bundle args2 = new Bundle();
@@ -149,13 +133,11 @@ public class StoryActivity extends AppCompatActivity implements
 
         Fragment2Alt frag2 = new Fragment2Alt();
         Bundle args2 = new Bundle();
-        //args2.putString("act", findTheString2("Act"));
         args2.putInt("colour", colour);
         frag2.setArguments(args2);
 
         Fragment3Alt frag3 = new Fragment3Alt();
         Bundle args3 = new Bundle();
-        //args3.putString("guess", findTheString2("Guess"));
         args3.putInt("colour", colour);
         frag3.setArguments(args3);
 
@@ -185,6 +167,8 @@ public class StoryActivity extends AppCompatActivity implements
 
     @Override
     public void backToMiddle(){
+        Fragment1 fra1 = (Fragment1) fragmentList.get(1);
+        fra1.hideArrows();
         mViewPager.setCurrentItem(1);
     }
 
@@ -255,10 +239,12 @@ public class StoryActivity extends AppCompatActivity implements
 
         ((ExtendedApp) getApplication()).incrementStoryProgress();
         Intent i = new Intent(this, StoryActivity.class);
+
         startActivity(i);
         this.finish();
 
         Intent i2 = new Intent(this, CongratulationsActivity.class);
+        i2.putExtra("seq", whoseGuessing);
         startActivity(i2);
 
 

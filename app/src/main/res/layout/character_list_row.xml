@@ -8,7 +8,7 @@
         android:layout_height="110dp"
         android:id="@+id/nameImage"
         android:layout_margin="5dp"
-        android:src="@drawable/bucky" />
+        android:src="@drawable/placeholder_profile_photo" />
 
     <TextView
         android:layout_width="wrap_content"

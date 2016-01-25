@@ -52,8 +52,13 @@
         <activity
             android:name=".BeginStory"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".CongratulationsActivity" />
-        <activity android:name=".EndStoryActivity"></activity>
+        <activity
+            android:name=".CongratulationsActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity
+            android:name=".EndStoryActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        </activity>
     </application>
 
 </manifest>

@@ -5,6 +5,8 @@ import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.res.ResourcesCompat;
@@ -12,6 +14,7 @@ import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -31,35 +34,50 @@ public class BeginStory extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_begin_story);
-/*
-        List<Fragment> fragmentList = new ArrayList<>();
-        fragmentList.add(new Fragment2());
-        fragmentList.add(new Fragment1());
-        fragmentList.add(new Fragment3());
 
-        mDemoCollectionPagerAdapter = new MyFragmentPagerAdapter(getSupportFragmentManager(), fragmentList);
-        mViewPager = (ViewPager) findViewById(R.id.pager);
-        mViewPager.setAdapter(mDemoCollectionPagerAdapter);
-        mViewPager.setCurrentItem(1);
-
- */
         TextView player1Deetz = (TextView) findViewById(R.id.player1Deetz);
         TextView player2Deetz = (TextView) findViewById(R.id.player2Deetz);
         TextView storyTitle = (TextView) findViewById(R.id.storyTitle);
 
-        String character1Name = ((ExtendedApp) getApplication()).getCharacterOne().get_name();
-        String character2Name = ((ExtendedApp) getApplication()).getCharacterTwo().get_name();
+        Character character1 = ((ExtendedApp) getApplication()).getCharacterOne();
+        Character character2 = ((ExtendedApp) getApplication()).getCharacterTwo();
         String storyName = ((ExtendedApp) getApplication()).getStory();
 
+        Drawable song1 = BitmapDrawable.createFromPath(character1.get_profileImagePath());
+        Drawable song2 = BitmapDrawable.createFromPath(character2.get_profileImagePath());
+        Drawable placeholder = new ResourcesCompat().getDrawable(getResources(), R.drawable.placeholder_profile_photo, null);
 
-        player1Deetz.setText("Player 1\n\n" + character1Name);
-        player2Deetz.setText("Player 2\n\n" + character2Name);
+
+        //Setting Left Player
+        if (song1 != null) {
+            song1.setBounds(0, 0, 200, 200);
+            player1Deetz.setCompoundDrawables(null, song1, null, null);
+        }else{
+            placeholder.setBounds(0, 0, 200, 200);
+            player1Deetz.setCompoundDrawables(null, placeholder, null, null);
+        }
+        player1Deetz.setText(character1.get_name());
+
+
+        //Setting Right Player
+        if (song2 != null) {
+            song2.setBounds(0, 0, 200, 200);
+            player2Deetz.setCompoundDrawables(null,  song2, null, null);
+        }else{
+            placeholder.setBounds(0, 0, 200, 200);
+            player2Deetz.setCompoundDrawables(null, placeholder, null, null);
+        }
+        player2Deetz.setText(character2.get_name());
+
+
 
         if (storyName.equals("Park")) {
             storyTitle.setText("At the Park");
         }else{
             storyTitle.setText("With a Grandparent");
         }
+
+
 
         setBackgroundColour();
 
