@@ -33,7 +33,9 @@ public class StoryActivity extends AppCompatActivity implements
         Fragment1.Fragment1Listener,
         Fragment2.Fragment2Listener,
         Fragment3.Fragment3Listener,
-        Fragment1Alt.Fragment1AltListener {
+        Fragment1Alt.Fragment1AltListener,
+        Fragment2Alt.Fragment2AltListener,
+        Fragment3Alt.Fragment3AltListener{
 
     MyFragmentPagerAdapter mDemoCollectionPagerAdapter;
     ViewPager mViewPager;
@@ -129,16 +131,37 @@ public class StoryActivity extends AppCompatActivity implements
         Bundle args1 = new Bundle();
         args1.putString("story", findTheString2("Story"));
         args1.putInt("colour", colour);
+        args1.putString("pathname1", c1.get_profileImagePath());
+        args1.putString("pathname2", c2.get_profileImagePath());
+        args1.putString("name1", c1.get_name());
+        args1.putString("name2", c2.get_name());
+        args1.putString("progress", Integer.toString(((ExtendedApp) getApplication()).getStoryProgress()));
+        args1.putInt("orientation", sequence);
         frag1.setArguments(args1);
 
         Fragment2Alt frag2 = new Fragment2Alt();
         Bundle args2 = new Bundle();
         args2.putInt("colour", colour);
+        args2.putString("act", findTheString2("Act"));
+        args2.putStringArray("ideas", findTheIdeas());
+        if (sequence == 1){
+            args2.putString("orientation", "right");
+        }else{
+            args2.putString("orientation", "left");
+        }
         frag2.setArguments(args2);
+
 
         Fragment3Alt frag3 = new Fragment3Alt();
         Bundle args3 = new Bundle();
         args3.putInt("colour", colour);
+        args3.putString("guess", findTheString2("Guess"));
+        args3.putString("hint", findTheString2("Hint"));
+        if (sequence == 1){
+            args3.putString("orientation", "left");
+        }else{
+            args3.putString("orientation", "right");
+        }
         frag3.setArguments(args3);
 
 
@@ -167,8 +190,6 @@ public class StoryActivity extends AppCompatActivity implements
 
     @Override
     public void backToMiddle(){
-        Fragment1 fra1 = (Fragment1) fragmentList.get(1);
-        fra1.hideArrows();
         mViewPager.setCurrentItem(1);
     }
 
@@ -220,16 +241,31 @@ public class StoryActivity extends AppCompatActivity implements
         String storyName = ((ExtendedApp) getApplication()).getStory();
         int progress = ((ExtendedApp) getApplication()).getStoryProgress();
 
+        if(storyName.equals("Sleepover") && progress > 7){
+            ((ExtendedApp) getApplication()).incrementStoryProgress();
+            Intent i2 = new Intent(this, EndStoryActivity.class);
+            i2.putExtra("lastLine", findTheString2("Story"));
+            startActivity(i2);
+            return;
+        }
+
         if(storyName.equals("Park") && progress > 7){
             ((ExtendedApp) getApplication()).incrementStoryProgress();
             Intent i2 = new Intent(this, EndStoryActivity.class);
             i2.putExtra("lastLine", findTheString2("Story"));
             startActivity(i2);
             return;
-
         }
 
         if(storyName.equals("Grandparent") && progress > 3){
+            ((ExtendedApp) getApplication()).incrementStoryProgress();
+            Intent i2 = new Intent(this, EndStoryActivity.class);
+            i2.putExtra("lastLine", findTheString2("Story"));
+            startActivity(i2);
+            return;
+        }
+
+        if(storyName.equals("Shopping") && progress > 5){
             ((ExtendedApp) getApplication()).incrementStoryProgress();
             Intent i2 = new Intent(this, EndStoryActivity.class);
             i2.putExtra("lastLine", findTheString2("Story"));
@@ -294,6 +330,26 @@ public class StoryActivity extends AppCompatActivity implements
         keyword += pro;
 
         //Log.d("MYTAGGGGGGGGGG", "findTheOptions: " + keyword);
+
+        int id = (((ExtendedApp) getApplication()).getStringArrayResourceId(keyword));
+        String [] raw = getResources().getStringArray(id);
+
+        for (int i = 0; i<3; i++){
+            raw[i] = personaliseString(raw[i]);
+        }
+
+        return raw;
+    }
+
+    public String[] findTheIdeas(){
+
+        String keyword = "";
+        keyword += ((ExtendedApp) getApplication()).getStory();
+        keyword += "Ideas";
+        int prog = ((ExtendedApp) getApplication()).getStoryProgress();
+        String pro = Integer.toString(prog);
+        keyword += pro;
+
 
         int id = (((ExtendedApp) getApplication()).getStringArrayResourceId(keyword));
         String [] raw = getResources().getStringArray(id);

@@ -1,4 +1,4 @@
-<resources>>
+<resources>
 
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
@@ -6,4 +6,45 @@
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
+
+    <style name="BeginStoryPlace">
+        <item name="android:layout_width">320dp</item>
+        <item name="android:layout_height">365dp</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">#7C84AE</item>
+        <item name="android:background">@drawable/borders</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:typeface">serif</item>
+        <item name="android:shadowDx">2</item>
+        <item name="android:shadowDy">2</item>
+        <item name="android:shadowColor">#000</item>
+        <item name="android:shadowRadius">2</item>
+    </style>
+
+    <style name="CharacterGrid">
+        <item name="android:layout_width">230dp</item>
+        <item name="android:layout_height">260dp</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">#7C84AE</item>
+        <item name="android:background">@drawable/borders</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:typeface">serif</item>
+        <item name="android:shadowDx">2</item>
+        <item name="android:shadowDy">2</item>
+        <item name="android:shadowColor">#000</item>
+        <item name="android:shadowRadius">2</item>
+    </style>
+
+    <style name="ButtonStyle">
+        <item name="android:textColor">#fff</item>
+        <item name="android:background">@drawable/borders</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+
 </resources>

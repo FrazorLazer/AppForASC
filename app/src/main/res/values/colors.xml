@@ -5,9 +5,39 @@
     <color name="colorAccent">#FF4081</color>
 
     <color name="black_overlay">#66000000</color>
-
+    <!--
     <color name="BackgroundBlue">#142a78</color>
-    <color name="BackgroundRed">#ff0000</color>
-    <color name="BackgroundWhite">#FFF</color>
+    -->
+
+    <!-- Colour Scheme Blue -->
+    <color name="BackgroundBlue">#313B74</color>
+    <color name="LightestBlue">#7887AB</color>
+    <color name="LightBlue">#4F628E</color>
+    <color name="DarkBlue">#162995</color>
+    <color name="DarkestBlue">#061539</color>
+
+    <!-- Colour Scheme Red -->
+    <color name="BackgroundRed">#B92529</color>
+    <color name="LightestRed">#F7797C</color>
+    <color name="LightRed">#D5474B</color>
+    <color name="DarkRed">#980E12</color>
+    <color name="DarkestRed">#6F0003</color>
+
+    <!-- Colour Scheme Green -->
+    <color name="BackgroundGreen">#2D882D</color>
+    <color name="LightestGreen">#88CC88</color>
+    <color name="LightGreen">#55AA55</color>
+    <color name="DarkGreen">#116611</color>
+    <color name="DarkestGreen">#004400</color>
+
+    <!-- Colour Scheme Purple -->
+    <color name="BackgroundPurple">#882D61</color>
+    <color name="LightestPurple">#CD88FF</color>
+    <color name="LightPurple">#AA5585</color>
+    <color name="DarkPurple">#661141</color>
+    <color name="DarkestPurple">#440027</color>
+
+
+    <color name="BackgroundWhite">#fff</color>
 
 </resources>

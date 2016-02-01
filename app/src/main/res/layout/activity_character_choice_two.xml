@@ -19,11 +19,11 @@
         android:id="@+id/titleCC2"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="88dp"
+        android:layout_marginTop="30dp"
         android:textSize="60sp"
         android:textColor="#fff" />
 
-
+<!--
     <ListView
         android:layout_width="700dp"
         android:layout_height="400dp"
@@ -34,5 +34,21 @@
         android:headerDividersEnabled="false"
         android:divider="#424bcc"
         android:dividerHeight="3dp" />
+-->
+    <GridView
+        android:id="@+id/charGridView"
+        android:layout_width="750dp"
+        android:layout_height="500dp"
+        android:columnWidth="230dp"
+        android:numColumns="3"
+        android:verticalSpacing="20dp"
+        android:horizontalSpacing="10dp"
+        android:stretchMode="spacingWidthUniform"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="44dp"
+        android:layout_alignParentBottom="true"
+
+        />
 
 </RelativeLayout>

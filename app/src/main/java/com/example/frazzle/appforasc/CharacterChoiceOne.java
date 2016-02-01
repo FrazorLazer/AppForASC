@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 
@@ -19,6 +20,7 @@ public class CharacterChoiceOne extends AppCompatActivity {
     CharacterDBHandler dbHandler;
     ListView characterListView;
     Character[] characters;
+    GridView charGrid;
 
 
     @Override
@@ -27,9 +29,10 @@ public class CharacterChoiceOne extends AppCompatActivity {
         setContentView(R.layout.activity_character_choice_one);
 
         dbHandler = new CharacterDBHandler(this, null, null, 1);
-        characterListView = (ListView) findViewById(R.id.characterList1);
+        //characterListView = (ListView) findViewById(R.id.characterList1);
+        charGrid = (GridView) findViewById(R.id.charGridView);
         setBackgroundColour();
-        populateAdapter();
+        populateAdapterGrid();
 
 
     }
@@ -41,6 +44,24 @@ public class CharacterChoiceOne extends AppCompatActivity {
         ArrayAdapter arrayAdapter = new characterRowAdapter(this, characters);
         characterListView.setAdapter(arrayAdapter);
         characterListView.setOnItemClickListener(
+                new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        ((ExtendedApp) getApplication()).setCharacterOne(characters[position]);
+                        openCharacterChoice();
+                    }
+                }
+        );
+
+    }
+
+
+    public void populateAdapterGrid(){
+
+        characters = dbHandler.returnCharacters();
+        ArrayAdapter arrayAdapter = new characterGridAdapter(this, characters);
+        charGrid.setAdapter(arrayAdapter);
+        charGrid.setOnItemClickListener(
                 new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

@@ -14,7 +14,8 @@
         android:textSize="30sp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="180dp"
-        android:textColor="#fff"/>
+        android:textColor="#fff"
+        android:gravity="center_horizontal"/>
 
     <TextView
         android:layout_width="100dp"
@@ -26,26 +27,32 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:textColor="#696dff"/>
+        android:textColor="@color/DarkBlue"/>
 
     <Button
-        android:layout_width="240dp"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:id="@+id/goRight"
         android:gravity="center"
         android:layout_marginEnd="20dp"
         android:layout_alignTop="@+id/goLeft"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:textColor="#7C84AE"
+        android:padding="10dp"
+        android:textSize="20dp"/>
 
     <Button
-        android:layout_width="240dp"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:id="@+id/goLeft"
-        android:layout_marginBottom="150dp"
+        android:padding="10dp"
+        android:layout_marginBottom="70dp"
         android:gravity="center"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:layout_marginLeft="20dp"
+        android:textColor="#7C84AE"
+        android:textSize="20dp"
         />
 
     <Button
@@ -59,28 +66,12 @@
         android:singleLine="true" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="60dp"
         android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
         android:text="Exit Story"
-        android:id="@+id/exitButton"/>
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/leftArrow"
-        android:src="@drawable/arrowleft"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="50dp"/>
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/rightArrow"
-        android:src="@drawable/arrowright"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginBottom="50dp"/>
+        android:id="@+id/exitButton"
+        style="@style/ButtonStyle"/>
 
 
 </RelativeLayout>

@@ -4,12 +4,47 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="600dp"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="What do you think your opposite player means?"
-        android:id="@+id/textView6"
+        android:text="Fragment2"
+        android:id="@+id/actText"
+        android:textSize="30sp"
+        android:layout_marginTop="100dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="139dp"
-        android:textColor="#fff" />
+        android:textColor="#fff"
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        style="@style/ButtonStyle"
+        android:layout_below="@+id/actText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="200dp"
+        android:textSize="20dp"
+        android:id="@+id/hintText"
+        android:padding="10dp"/>
+
+    <Button
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        style="@style/ButtonStyle"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:text="Need a Hint?"
+        android:textSize="20sp"
+        android:layout_marginBottom="20dp"
+        android:id="@+id/hints"
+        />
+
+    <ImageView
+        style="@style/ButtonStyle"
+        android:layout_width="60dp"
+        android:layout_height="200dp"
+        android:id="@+id/backButton2"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/arrowlleft">
+    </ImageView>
+
 </RelativeLayout>

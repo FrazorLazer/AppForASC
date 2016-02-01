@@ -2,6 +2,7 @@ package com.example.frazzle.appforasc;
 
 
 import android.app.Application;
+import android.app.Notification;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -50,10 +51,10 @@ public class BeginStory extends AppCompatActivity {
 
         //Setting Left Player
         if (song1 != null) {
-            song1.setBounds(0, 0, 200, 200);
+            song1.setBounds(0, 0, 300, 300);
             player1Deetz.setCompoundDrawables(null, song1, null, null);
         }else{
-            placeholder.setBounds(0, 0, 200, 200);
+            placeholder.setBounds(0, 0, 300, 300);
             player1Deetz.setCompoundDrawables(null, placeholder, null, null);
         }
         player1Deetz.setText(character1.get_name());
@@ -61,10 +62,10 @@ public class BeginStory extends AppCompatActivity {
 
         //Setting Right Player
         if (song2 != null) {
-            song2.setBounds(0, 0, 200, 200);
-            player2Deetz.setCompoundDrawables(null,  song2, null, null);
+            song2.setBounds(0, 0, 300, 300);
+            player2Deetz.setCompoundDrawables(null, song2, null, null);
         }else{
-            placeholder.setBounds(0, 0, 200, 200);
+            placeholder.setBounds(0, 0, 300, 300);
             player2Deetz.setCompoundDrawables(null, placeholder, null, null);
         }
         player2Deetz.setText(character2.get_name());
@@ -73,8 +74,12 @@ public class BeginStory extends AppCompatActivity {
 
         if (storyName.equals("Park")) {
             storyTitle.setText("At the Park");
-        }else{
+        }else if (storyName.equals("Grandparent")){
             storyTitle.setText("With a Grandparent");
+        }else if (storyName.equals("Shopping")){
+            storyTitle.setText("To the Shops");
+        }else{
+            storyTitle.setText("The Sleepover");
         }
 
 

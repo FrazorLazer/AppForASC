@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.GridView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -24,6 +25,7 @@ public class CharactersActivity extends AppCompatActivity {
     ListView characterListView;
     ArrayAdapter arrayAdapter;
     Character [] characters;
+    GridView grid;
 
 
     @Override
@@ -32,9 +34,9 @@ public class CharactersActivity extends AppCompatActivity {
         setContentView(R.layout.activity_characters);
 
         dbHandler = new CharacterDBHandler(this, null, null, 1);
-        characterListView = (ListView) findViewById(R.id.characterList);
+        //characterListView = (ListView) findViewById(R.id.characterList);
+        grid = (GridView) findViewById(R.id.charGridView);
         setBackgroundColour();
-
 
         String s = ((ExtendedApp) this.getApplication()).getStory();
 
@@ -43,7 +45,7 @@ public class CharactersActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        populateAdapter();
+        populateAdapterGrid();
     }
 
 
@@ -53,6 +55,22 @@ public class CharactersActivity extends AppCompatActivity {
         arrayAdapter = new characterRowAdapter(this, characters);
         characterListView.setAdapter(arrayAdapter);
         characterListView.setOnItemClickListener(
+                new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        openCharacterView(characters[position]);
+                    }
+                }
+        );
+
+    }
+
+    public void populateAdapterGrid(){
+
+        characters = dbHandler.returnCharacters();
+        arrayAdapter = new characterGridAdapter(this, characters);
+        grid.setAdapter(arrayAdapter);
+        grid.setOnItemClickListener(
                 new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

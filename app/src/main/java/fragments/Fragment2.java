@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,7 +20,7 @@ public class Fragment2 extends Fragment {
 
     View v;
     int colour;
-    Button toMiddle;
+    ImageView toMiddle;
     Fragment2Listener activityCommander;
 
 
@@ -33,7 +34,7 @@ public class Fragment2 extends Fragment {
         String index = args.getString("act");
         colour = args.getInt("colour");
 
-        toMiddle = (Button) v.findViewById(R.id.backButton);
+        toMiddle = (ImageView) v.findViewById(R.id.backButton);
         TextView storyText = (TextView) v.findViewById(R.id.actText);
         storyText.setText(index);
 
@@ -58,11 +59,12 @@ public class Fragment2 extends Fragment {
 
         if (orient.equals("left")){
             rl_lp.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
-            rl_lp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+            rl_lp.addRule(RelativeLayout.CENTER_VERTICAL);
+            toMiddle.setRotation(180);
 
         }else{
             rl_lp.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
-            rl_lp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+            rl_lp.addRule(RelativeLayout.CENTER_VERTICAL);
         }
 
         toMiddle.setLayoutParams(rl_lp);

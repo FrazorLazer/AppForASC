@@ -3,41 +3,56 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:text="1"
+        android:gravity="center"
+        android:id="@+id/storyNumber"
+        android:textSize="80sp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/LightBlue"/>
+
     <TextView
         android:layout_width="900dp"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Fragment1_Alt"
+        android:text="Fragment1"
         android:id="@+id/storyText"
-        android:layout_alignParentTop="true"
+        android:textSize="30sp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="139dp"
-        android:textColor="#fff" />
+        android:layout_marginTop="180dp"
+        android:textColor="#fff"
+        android:gravity="center_horizontal"/>
+
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:text="New Button"
-        android:id="@+id/leftButton"
-        android:layout_marginStart="202dp"
-        android:layout_marginBottom="176dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Button"
         android:id="@+id/rightButton"
-        android:layout_marginEnd="202dp"
+        android:gravity="center"
+        android:layout_marginEnd="20dp"
         android:layout_alignTop="@+id/leftButton"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:textColor="#7C84AE"
+        android:padding="10dp"
+        android:textSize="20dp"/>
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:text="Exit Story"
-        android:id="@+id/exitButton" />
+        android:id="@+id/leftButton"
+        android:padding="10dp"
+        android:layout_marginBottom="70dp"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="20dp"
+        android:textColor="#7C84AE"
+        android:textSize="20dp"
+        />
 
     <Button
         android:layout_width="wrap_content"
@@ -47,4 +62,14 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="50dp"
         android:id="@+id/progressButton"/>
+
+    <Button
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:text="Exit Story"
+        android:id="@+id/exitButton"
+        style="@style/ButtonStyle"/>
+
+
 </RelativeLayout>

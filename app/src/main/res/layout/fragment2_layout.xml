@@ -10,21 +10,21 @@
         android:text="Fragment2"
         android:id="@+id/actText"
         android:textSize="30sp"
-        android:layout_gravity="center_horizontal"
         android:layout_marginTop="63dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:textColor="#fff"/>
+        android:textColor="#fff"
+        android:gravity="center"/>/>
 
-    <Button
-        android:layout_width="200dp"
-        android:layout_height="100dp"
-        android:text="Back to Middle"
+
+    <ImageView
+        style="@style/ButtonStyle"
+        android:layout_width="60dp"
+        android:layout_height="200dp"
         android:id="@+id/backButton"
-        android:layout_marginTop="200dp"
-        android:nestedScrollingEnabled="false"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/actText" />
-
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/arrowlleft">
+    </ImageView>
 
 </RelativeLayout>

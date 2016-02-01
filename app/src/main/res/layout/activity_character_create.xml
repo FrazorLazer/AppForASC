@@ -57,7 +57,6 @@
         android:id="@+id/nameLabel"
         android:layout_marginLeft="120dp"
         android:textSize="20sp"
-        android:textColor="@color/BackgroundWhite"
         android:layout_alignTop="@+id/profilePhotoView"
         android:layout_toRightOf="@+id/profilePhotoView"
 
@@ -68,7 +67,7 @@
         android:layout_width="250dp"
         android:layout_height="40dp"
         android:id="@+id/nameInput"
-        android:textColor="@color/BackgroundWhite"
+
         android:layout_alignLeft="@id/nameLabel"
         android:layout_below="@id/nameLabel"
         android:layout_marginBottom="30dp"/>
@@ -99,7 +98,6 @@
         android:text="Reward"
         android:id="@+id/rewardLabel"
         android:textSize="20sp"
-        android:textColor="@color/BackgroundWhite"
         android:layout_above="@+id/rewardSpinner"
         android:layout_alignStart="@+id/nameInput" />
 

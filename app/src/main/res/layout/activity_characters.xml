@@ -21,8 +21,8 @@
         android:textColor="#FFF"
         android:textSize="60sp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"/>
-
+        android:layout_marginTop="20dp"/>
+<!--
     <ListView
         android:layout_width="700dp"
         android:layout_height="400dp"
@@ -32,8 +32,22 @@
         android:dividerHeight="3dp"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/button7"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="50dp"
         android:layout_marginBottom="50dp"/>
+-->
+    <GridView
+        android:id="@+id/charGridView"
+        android:layout_width="750dp"
+        android:layout_height="500dp"
+        android:columnWidth="230dp"
+        android:numColumns="3"
+        android:verticalSpacing="20dp"
+        android:horizontalSpacing="10dp"
+        android:stretchMode="spacingWidthUniform"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/button7"
+        android:layout_marginTop="50dp"
+        />
 
     <Button
         android:layout_width="wrap_content"
@@ -45,7 +59,7 @@
         android:height="60dp"
         android:textSize="20sp"
         android:layout_below="@+id/textView3"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="30dp"
         android:layout_centerHorizontal="true"
          />
 

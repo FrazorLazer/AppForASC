@@ -38,5 +38,6 @@
         android:layout_height="300dp"
         android:id="@+id/imageVieww"
         android:layout_below="@+id/displayDB"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/giphy" />
 </RelativeLayout>

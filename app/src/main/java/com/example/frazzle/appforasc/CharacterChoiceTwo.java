@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 
@@ -18,6 +19,7 @@ public class CharacterChoiceTwo extends AppCompatActivity {
     CharacterDBHandler dbHandler;
     ListView characterListView;
     Character[] characters;
+    GridView charGrid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,9 +28,10 @@ public class CharacterChoiceTwo extends AppCompatActivity {
 
 
         dbHandler = new CharacterDBHandler(this, null, null, 1);
-        characterListView = (ListView) findViewById(R.id.characterList2);
+        //characterListView = (ListView) findViewById(R.id.characterList2);
+        charGrid = (GridView) findViewById(R.id.charGridView);
         setBackgroundColour();
-        populateAdapter();
+        populateAdapterGrid();
 
     }
 
@@ -49,6 +52,23 @@ public class CharacterChoiceTwo extends AppCompatActivity {
         );
 
     }
+    public void populateAdapterGrid(){
+
+        characters = dbHandler.returnCharacters();
+        ArrayAdapter arrayAdapter = new characterGridAdapter(this, characters);
+        charGrid.setAdapter(arrayAdapter);
+        charGrid.setOnItemClickListener(
+                new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        ((ExtendedApp) getApplication()).setCharacterTwo(characters[position]);
+                        openCharacterChoice();
+                    }
+                }
+        );
+
+    }
+
 
     private void openCharacterChoice(){
         Intent i = new Intent(this, BeginStory.class);

@@ -12,46 +12,56 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="110dp"
-        android:textColor="#fff"/>
+        android:textColor="#fff"
+        android:gravity="center"/>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Button"
+    <ImageView
+        style="@style/ButtonStyle"
+        android:layout_width="60dp"
+        android:layout_height="200dp"
         android:id="@+id/backButton2"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="80dp" />
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/arrowlleft">
+    </ImageView>
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/ButtonStyle"
+        android:layout_width="450dp"
+        android:layout_height="60dp"
         android:text="New Button"
         android:id="@+id/answer1Button"
         android:layout_below="@+id/guessText"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="122dp"
+        android:textSize="20sp"
         />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Button"
+        style="@style/ButtonStyle"
+        android:layout_width="450dp"
+        android:layout_height="60dp"
+        android:textAllCaps="false"
+        android:text="kjhdsck"
         android:id="@+id/answer2Button"
         android:layout_below="@+id/answer1Button"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
+        android:textSize="20sp"
          />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/ButtonStyle"
+        android:layout_width="450dp"
+        android:layout_height="60dp"
         android:text="New Button"
         android:id="@+id/answer3Button"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/answer2Button"
         android:layout_marginTop="40dp"
+        android:textSize="20sp"
+
          />
 
 </RelativeLayout>

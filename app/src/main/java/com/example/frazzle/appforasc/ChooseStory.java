@@ -30,8 +30,10 @@ public class ChooseStory extends AppCompatActivity {
 
     public void setUpListView(){
         storyList = (ListView) findViewById(R.id.storyList);
-        ArrayAdapter storyAdapter = ArrayAdapter.createFromResource(this, R.array.storyNames, android.R.layout.simple_list_item_1);
-        storyList.setAdapter(storyAdapter);
+        //ArrayAdapter storyAdapter = ArrayAdapter.createFromResource(this, R.array.storyNames, android.R.layout.simple_list_item_1);
+        String [] theStories = getResources().getStringArray(R.array.storyNames);
+        ArrayAdapter aa = new storyListAdapter(this, theStories);
+        storyList.setAdapter(aa);
 
         storyList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -40,10 +42,17 @@ public class ChooseStory extends AppCompatActivity {
                 if (storyName.equals("Going to the Park")){
                     ((ExtendedApp) getApplication()).setStory("Park");
                     ((ExtendedApp) getApplication()).setStoryFormat("Options");
-                }else{
+                }else if (storyName.equals("Visiting a Grandparent")){
                     ((ExtendedApp) getApplication()).setStory("Grandparent");
                     ((ExtendedApp) getApplication()).setStoryFormat("NoOptions");
+                }else if (storyName.equals("To the Shops")){
+                    ((ExtendedApp) getApplication()).setStory("Shopping");
+                    ((ExtendedApp) getApplication()).setStoryFormat("NoOptions");
+                }else{
+                    ((ExtendedApp) getApplication()).setStory("Sleepover");
+                    ((ExtendedApp) getApplication()).setStoryFormat("Options");
                 }
+
                 openCharacterChoice();
             }
         });

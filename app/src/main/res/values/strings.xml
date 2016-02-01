@@ -2,7 +2,7 @@
     <string name="app_name">AppForASC</string>
 
     <!-- HomeActivity String Resources -->
-    <string name="HomeScreenTitle">WELCOME TO CHARADIES</string>
+    <string name="HomeScreenTitle">WELCOME</string>
     <string name="HomeScreenPlay">PLAY</string>
     <string name="HomeScreenCharacters">CHARACTERS</string>
     <string name="HomeScreenSettings">SETTINGS</string>
@@ -13,6 +13,8 @@
     <string-array name="storyNames">
         <item>Going to the Park</item>
         <item>Visiting a Grandparent</item>
+        <item>The Sleepover</item>
+        <item>To the Shops</item>
     </string-array>
 
     <!-- CharactersActivity String Resources -->
@@ -63,7 +65,7 @@
     <string name="GrandparentStory5">Mum and Dad arrive to pick Jessica up. Jessica gives her Grandad a hug before she goes and then they head home. </string>
 
     <string name="ParkAct1">NAME2 wants to say hello to NAME1. Let NAME1 know you mean ‘Hello’ without talking.</string>
-    <string name="ParkAct2">Let NAME2 know you want to play football with ThirdXPos2, without talking.</string>
+    <string name="ParkAct2">Let NAME2 know you want to play <u>football</u> with ThirdXPos2, without talking.</string>
     <string name="ParkAct3">NAME2 was too quick when ThirdPron2 left the house and ThirdPron2 didn’t tie ThirdPos2 shoelaces. Without speaking, let NAME1 know that you have to stop and tie your shoelaces.</string>
     <string name="ParkAct4">You saw a bird. Let NAME2 know that you saw a bird fly past.</string>
     <string name="ParkAct5">Let NAME2 know that the bird was blue.</string>
@@ -134,5 +136,157 @@
 
     <string name="ParkAnswerSequence">13123232</string>
 
+    <string name="SleepoverStory1">It’s a Friday after school and NAME1 is going over to ThirdPos1 friend’s house for a sleepover. NAME1 is waiting for ThirdPos1 friend, NAME2, so that they can walk to ThirdPos2 house together. NAME1 is waiting for NAME2 at the school gate and ThirdPron1 thinks it would be fun to do something before NAME2 arrives. </string>
+    <string name="SleepoverStory2">NAME2 arrives at the school gate but ThirdPron2 can’t see NAME1. NAME1 jumps out from behind a wall and tries to scare NAME2. NAME2 jumps but they both start laughing. “I hope I didn’t scare you too much. How are you feeling anyway?” asks NAME1.</string>
+    <string name="SleepoverStory3">“Ah me too” says NAME1. “We better get back to my house and get a drink then.” says NAME2. They walk to NAME2’s home and grab a glass of water. NAME2’s Mum walks into the kitchen and says hello to NAME1 and NAME2. NAME2’s Mum then mentions that dinner will be ready in 2 hours. NAME2 asks NAME1 what ThirdPron1 would like to do until then.</string>
+    <string name="SleepoverStory4">“That sounds fun” say NAME2. They both go through to the sitting room, close the curtains and sit down to watch a movie called Big Hero 6. They finish watching the film just as dinner is ready. NAME1 had seen the movie before, but NAME2 had not. “What did you think of the movie?” asks NAME1.</string>
+    <string name="SleepoverStory5">They sit down to have pizza for dinner with NAME2’s Mum and little brother. Everyone finishes and everyone says thank you to NAME2’s Mum for making the dinner. NAME2 asks NAME1 if ThirdPron1 wants to play a game, to which NAME1 replies “Of course”. “What game would you like to play?” says NAME2.</string>
+    <string name="SleepoverStory6">“Excellent” says NAME2. They decide to play Monopoly and NAME2’s Mum also wants to play. They set up the board and begin playing. NAME1 notices that NAME2’s Dad isn’t home yet and so asks where he is, because ThirdPron1 thinks NAME2’s dad is really funny. NAME2 says that he works late on Fridays. “Ah that cool, what does your Dad work as?” asks NAME1.</string>
+    <string name="SleepoverStory7">Monopoly is a long game and when they finish it is quite late. NAME2 notices that NAME1 is wearing a watch. “What time is it?” asks NAME2.</string>
+    <string name="SleepoverStory8">NAME1 and NAME2 are quite tired now and so they decide to go to bed. They brush their teeth, put their pyjamas on and climb into bed. NAME2 has bunk beds in ThirdPos2 room so NAME2 sleeps on the top bunk and NAME1 sleeps on the bottom bunk… They wake up in the morning and NAME1 and NAME2’s bellies are rumbling. NAME1 asks “What do you usually have for breakfast?”.</string>
+    <string name="SleepoverStory9">NAME1 and NAME2 have their cereal - 2 bowls of Coco Pops - and a glass of orange juice. Just as they finish, they hear the doorbell go. In comes NAME1’s Mum to pick ThirdXPos1 up. NAME2 and NAME1 say goodbye and organise their next sleepover in 2 weeks at NAME1’s house.</string>
+
+    <string name="SleepoverSequence">21212121</string>
+    <string name="SleepoverAnswerSequence">22131223</string>
+
+    <string name="SleepoverAct1">You think it would be fun to hide from NAME2. Do an action that shows you are hiding.</string>
+    <string name="SleepoverAct2">You are feeling very thirsty. Let NAME1 know you are thirsty.</string>
+    <string name="SleepoverAct3">You would like to watch a movie. Let NAME2 know that you would like to watch a movie.</string>
+    <string name="SleepoverAct4">You though the film was funny. Let NAME1 know you thought the film was funny.</string>
+    <string name="SleepoverAct5">You would like to play a board game. Let NAME2 know you would like to play a board game.</string>
+    <string name="SleepoverAct6">Your dad is a builder. Try to pretend to be builder to show NAME1 what your Dad works as.</string>
+    <string name="SleepoverAct7">It is 9 o’clock at night. Let NAME2 know what time it is?</string>
+    <string name="SleepoverAct8">You usually have cereal for breakfast. Let NAME1 know you have cereal.</string>
+
+
+    <string name="SleepoverGuess1">What has NAME1 done while waiting for you?</string>
+    <string name="SleepoverGuess2">How is NAME2 feeling?</string>
+    <string name="SleepoverGuess3">What would NAME1 like to do before dinner?</string>
+    <string name="SleepoverGuess4">What did NAME2 think of the movie?</string>
+    <string name="SleepoverGuess5">What sort of game would NAME1 like to play?</string>
+    <string name="SleepoverGuess6">NAME2 is acting out what ThirdPos2 Dad works as. What does ThirdPos2 Dad do?</string>
+    <string name="SleepoverGuess7">What time does NAME1 say it is?</string>
+    <string name="SleepoverGuess8">What does NAME2 have for breakfast?</string>
+
+    <string-array name="SleepoverAnswers1">
+        <item>NAME1 is trying to get your attention</item>
+        <item>NAME1 is hiding from you</item>
+        <item>NAME1 is playing in the trees</item>
+    </string-array>
+
+    <string-array name="SleepoverAnswers2">
+        <item>NAME2 is excited</item>
+        <item>NAME2 is thirsty</item>
+        <item>NAME2 is hungry</item>
+    </string-array>
+
+    <string-array name="SleepoverAnswers3">
+        <item>Watch a movie</item>
+        <item>Play video games</item>
+        <item>Go to sleep</item>
+    </string-array>
+
+    <string-array name="SleepoverAnswers4">
+        <item>ThirdPron2 thought it was scary</item>
+        <item>ThirdPron2 thought it was sad</item>
+        <item>ThirdPron2 thought it was funny</item>
+    </string-array>
+
+    <string-array name="SleepoverAnswers5">
+        <item>A board game</item>
+        <item>Tig</item>
+        <item>A video game</item>
+    </string-array>
+
+    <string-array name="SleepoverAnswers6">
+        <item>ThirdPos2 Dad is an artist</item>
+        <item>ThirdPos2 Dad is a builder</item>
+        <item>ThirdPos2 Dad works in a bank</item>
+    </string-array>
+
+    <string-array name="SleepoverAnswers7">
+        <item>8 o’clock</item>
+        <item>9 o’clock</item>
+        <item>11 o’clock</item>
+    </string-array>
+
+    <string-array name="SleepoverAnswers8">
+        <item>Pancakes</item>
+        <item>Toast</item>
+        <item>Cereal</item>
+    </string-array>
+
+    <string name="ShoppingStory1">It’s a Sunday afternoon and NAME1 and NAME2 are heading into town to go shopping together. They meet at the bus stop and NAME1 says, “I really like the bus drivers, they are always very interesting people”. The last bus driver I had was really…”</string>
+    <string name="ShoppingStory2">The bus arrives and NAME2 and NAME1 hop on. There was nothing interesting about the bus driver this time though. The bus arrives at the station and they both get off and head to the first shop they see, the sports shop. NAME2 is a big sports fan so ThirdPron2 wants to have a look inside. “What is your favourite sport?” asks NAME1</string>
+    <string name="ShoppingStory3">NAME2 couldn’t find anything ThirdPron2 liked in the sports shop and so they continued to walk around the shopping centre. They come across 2 shops next door to each other. One is a pet shop and the other one sells musical instruments. NAME1 want to see the musical instruments and NAME2 wants to see the pets. They decide to split up and go into the different shops. When they come out NAME2 asks NAME1 what the coolest instrument in the shop was.</string>
+    <string name="ShoppingStory4">“Wow that does sound pretty great” says NAME2. “What about you?” asks NAME1, “Did you see any cool animals in the pet shop?”. </string>
+    <string name="ShoppingStory5">NAME1 and NAME2 continue looking around shops until it is almost time for them to get the bus back home. But before they go. NAME1 mentions ThirdPron1 forgot that ThirdPron1 still has something to buy. “Ah me too!” says NAME2. “What do you need to buy?” ThirdPron2 asks. </string>
+    <string name="ShoppingStory6">“Okay, that’s cool. What do you want to get before we go home?” NAME1 asks NAME2.</string>
+    <string name="ShoppingStory7">The pair get both their items quickly, and run for the bus catching it just in time</string>
+
+    <string name="ShoppingAct1">Think of a personality or emotion that the bus driver had, and try and act that emotion to NAME2.</string>
+    <string name="ShoppingAct2">Think of a sport, and try to act out that sport to NAME1.</string>
+    <string name="ShoppingAct3">Think of a musical instrument, and try to act that instrument to NAME2.</string>
+    <string name="ShoppingAct4">Think of an animal, and try to act out that animal to NAME1.</string>
+    <string name="ShoppingAct5">Think of something that you would like to buy before you go home, and try to act that item out to NAME2. It could be anything so make sure you are able to act it out well.</string>
+    <string name="ShoppingAct6">Think of something that you would like to buy before you go home, and try to act that item out to NAME1. It could be anything so make sure you are able to act it out well.</string>
+
+    <string-array name="ShoppingIdeas1">
+        <item>Happy</item>
+        <item>Funny</item>
+        <item>Grumpy</item>
+        <item>Sad</item>
+    </string-array>
+
+    <string-array name="ShoppingIdeas2">
+        <item>Football</item>
+        <item>Golf</item>
+        <item>Tennis</item>
+        <item>Swimming</item>
+    </string-array>
+
+    <string-array name="ShoppingIdeas3">
+        <item>Guitar</item>
+        <item>Violin</item>
+        <item>Drums</item>
+        <item>Piano</item>
+    </string-array>
+
+    <string-array name="ShoppingIdeas4">
+        <item>Bird</item>
+        <item>Fish</item>
+        <item>Cat</item>
+        <item>Snake</item>
+    </string-array>
+
+    <string-array name="ShoppingIdeas5">
+        <item>Toothbrush</item>
+        <item>Hat</item>
+        <item>Sandwich</item>
+        <item>Ball</item>
+    </string-array>
+
+    <string-array name="ShoppingIdeas6">
+        <item>Toothbrush</item>
+        <item>Hat</item>
+        <item>Sandwich</item>
+        <item>Ball</item>
+    </string-array>
+
+    <string name="ShoppingGuess1">NAME1 is going to act like the bus driver. Can you guess what emotion or characteristic the bus driver had?</string>
+    <string name="ShoppingGuess2">NAME2 is going to act out a sport. Can you guess what sport ThirdPron2 is acting out?</string>
+    <string name="ShoppingGuess3">NAME1 is going to act out someone playing a musical instrument. Can you guess which instrument it is?</string>
+    <string name="ShoppingGuess4">NAME2 is going to act like an animal. Can you guess which animal it is?</string>
+    <string name="ShoppingGuess5">NAME1 is going to act out an item ThirdPron1 might buy at the shops, try and guess what item that may be.</string>
+    <string name="ShoppingGuess6">NAME2 is going to act out an item ThirdPron2 might buy at the shops, try and guess what item that may be.</string>
+
+    <string name="ShoppingHint1">For example NAME2 might be acting out Happy or Sad.</string>
+    <string name="ShoppingHint2">For example it could be Tennis or Golf.</string>
+    <string name="ShoppingHint3">For example it could be a Guitar or Drums.</string>
+    <string name="ShoppingHint4">For example it could be a Bird or a Fish.</string>
+    <string name="ShoppingHint5">Think of something you can buy in the shops</string>
+    <string name="ShoppingHint6">Think of something you can buy in the shops</string>
+
+    <string name="ShoppingSequence">212121</string>
 
 </resources>

@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,7 +24,7 @@ public class Fragment3 extends Fragment {
     int colour;
     int correctAnswer;
     Button toMiddle;
-
+    ImageView ima;
     Fragment3Listener activityCommander;
 
     public interface Fragment3Listener{
@@ -42,12 +43,13 @@ public class Fragment3 extends Fragment {
         colour = args.getInt("colour");
         correctAnswer = args.getInt("answer");
         String [] options = args.getStringArray("options");
+        ima = (ImageView) v.findViewById(R.id.backButton2);
 
 
         TextView storyText = (TextView) v.findViewById(R.id.guessText);
         storyText.setText(index);
 
-        toMiddle = (Button) v.findViewById(R.id.backButton2);
+        //toMiddle = (Button) v.findViewById(R.id.backButton2);
         Button answer1 = (Button) v.findViewById(R.id.answer1Button);
         Button answer2 = (Button) v.findViewById(R.id.answer2Button);
         Button answer3 = (Button) v.findViewById(R.id.answer3Button);
@@ -59,14 +61,21 @@ public class Fragment3 extends Fragment {
         String orient = args.getString("orientation");
         moveButton(orient);
 
-
-        toMiddle.setOnClickListener(new View.OnClickListener() {
+        ima.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 toMiddle(v);
             }
         });
 
+/*
+        toMiddle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toMiddle(v);
+            }
+        });
+*/
         answer1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -93,19 +102,20 @@ public class Fragment3 extends Fragment {
 
 
     private void moveButton(String orient){
-        ViewGroup.LayoutParams vg_lp = toMiddle.getLayoutParams();
+        ViewGroup.LayoutParams vg_lp = ima.getLayoutParams();
         RelativeLayout.LayoutParams rl_lp = new RelativeLayout.LayoutParams(vg_lp);
 
         if (orient.equals("left")){
             rl_lp.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
-            rl_lp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+            rl_lp.addRule(RelativeLayout.CENTER_VERTICAL);
+            ima.setRotation(180);
 
         }else{
             rl_lp.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
-            rl_lp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+            rl_lp.addRule(RelativeLayout.CENTER_VERTICAL);
         }
 
-        toMiddle.setLayoutParams(rl_lp);
+        ima.setLayoutParams(rl_lp);
     }
 
     @Override

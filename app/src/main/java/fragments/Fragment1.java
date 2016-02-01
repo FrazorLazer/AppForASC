@@ -49,8 +49,6 @@ public class Fragment1 extends Fragment {
         goRight = (Button) v.findViewById(R.id.goRight);
         progressButton = (Button) v.findViewById(R.id.progressButton);
         Button exitButton = (Button) v.findViewById(R.id.exitButton);
-        leftArrow = (ImageView) v.findViewById(R.id.leftArrow);
-        rightArrow = (ImageView) v.findViewById(R.id.rightArrow);
         leftArrow.setVisibility(View.GONE);
         rightArrow.setVisibility(View.GONE);
 
@@ -67,9 +65,13 @@ public class Fragment1 extends Fragment {
 
 
         if(orient == 2){
-            leftArrow.setVisibility(View.VISIBLE);
+            //leftArrow.setVisibility(View.VISIBLE);
+            goLeft.setBackground(new ResourcesCompat().getDrawable(getResources(), R.drawable.border_red, null));
+            goRight.setBackground(new ResourcesCompat().getDrawable(getResources(), R.drawable.borders, null));
         }else{
-            rightArrow.setVisibility(View.VISIBLE);
+            //rightArrow.setVisibility(View.VISIBLE);
+            goLeft.setBackground(new ResourcesCompat().getDrawable(getResources(), R.drawable.borders, null));
+            goRight.setBackground(new ResourcesCompat().getDrawable(getResources(), R.drawable.border_red, null));
         }
 
 
@@ -86,28 +88,32 @@ public class Fragment1 extends Fragment {
         Drawable song1 = BitmapDrawable.createFromPath(pathname1);
         Drawable song2 = BitmapDrawable.createFromPath(pathname2);
         Drawable placeholder = new ResourcesCompat().getDrawable(getResources(), R.drawable.placeholder_profile_photo, null);
+        Drawable arrowL = new ResourcesCompat().getDrawable(getResources(), R.drawable.arrowlleft, null);
+        Drawable arrowR = new ResourcesCompat().getDrawable(getResources(), R.drawable.arrowrright, null);
 
+        arrowL.setBounds(0,0,30,50);
+        arrowR.setBounds(0,0,30,50);
 
         //Setting Left Button
         if (song1 != null) {
-            song1.setBounds(0, 0, 120, 120);
-            goLeft.setCompoundDrawables(null, null, song1, null);
+            song1.setBounds(0, 0, 160, 160);
+            goLeft.setCompoundDrawables(arrowL, null, song1, null);
         }else{
-            placeholder.setBounds(0, 0, 120, 120);
-            goLeft.setCompoundDrawables(null, null, placeholder, null);
+            placeholder.setBounds(0, 0, 160, 160);
+            goLeft.setCompoundDrawables(arrowL, null, placeholder, null);
         }
-        goLeft.setText("< " + charName1);
+        goLeft.setText(charName1);
 
 
         //Setting Right Button
         if (song2 != null) {
-            song2.setBounds(0, 0, 120, 120);
-            goRight.setCompoundDrawables(song2, null, null, null);
+            song2.setBounds(0, 0, 160, 160);
+            goRight.setCompoundDrawables(song2, null, arrowR, null);
         }else{
-            placeholder.setBounds(0, 0, 120, 120);
-            goRight.setCompoundDrawables(placeholder , null, null, null);
+            placeholder.setBounds(0, 0, 160, 160);
+            goRight.setCompoundDrawables(placeholder , null, arrowR, null);
         }
-        goRight.setText(charName2 + " >");
+        goRight.setText(charName2);
 
 
 

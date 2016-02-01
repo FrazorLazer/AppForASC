@@ -17,7 +17,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/ChooseStoryTitle"
         android:id="@+id/textView2"
-        android:layout_marginTop="88dp"
+        android:layout_marginTop="30dp"
         android:textSize="60sp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
@@ -27,9 +27,10 @@
         android:layout_width="800dp"
         android:layout_height="400dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="300dp"
+        android:layout_below="@+id/textView2"
+        android:layout_marginTop="100dp"
         android:id="@+id/storyList"
-        android:dividerHeight="10dp">
+        >
     </ListView>
 
 </RelativeLayout>
