@@ -74,6 +74,14 @@ public class Fragment3Alt extends Fragment{
         hintText = (TextView) v.findViewById(R.id.hintText);
         hintText.setText(hintPassage);
         hintText.setVisibility(View.INVISIBLE);
+        Button progress = (Button) v.findViewById(R.id.progressButtonAlt);
+
+        progress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                progress(v);
+            }
+        });
 
         hints.setOnClickListener(new View.OnClickListener() {
             @Override

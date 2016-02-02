@@ -15,27 +15,41 @@
         android:gravity="center"/>
 
     <TextView
-        android:layout_width="400dp"
+        android:layout_width="500dp"
         android:layout_height="wrap_content"
         style="@style/ButtonStyle"
         android:layout_below="@+id/actText"
-        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="true"
         android:layout_marginTop="200dp"
         android:textSize="20dp"
+        android:gravity="center"
         android:id="@+id/hintText"
         android:padding="10dp"/>
 
     <Button
-        android:layout_width="250dp"
-        android:layout_height="40dp"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
         style="@style/ButtonStyle"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
         android:text="Need a Hint?"
         android:textSize="20sp"
         android:layout_marginBottom="20dp"
         android:id="@+id/hints"
         />
+
+    <Button
+        android:layout_width="400dp"
+        android:layout_height="100dp"
+        style="@style/ButtonStyle"
+        android:background="@drawable/border_red"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="Click Here when\nyou Guess Correctly?"
+        android:textSize="25sp"
+        android:layout_marginBottom="20dp"
+        android:id="@+id/progressButtonAlt"
+        />
+
 
     <ImageView
         style="@style/ButtonStyle"
