@@ -8,19 +8,31 @@ import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class HomeActivity extends AppCompatActivity {
 
     RelativeLayout layout;
+    TextView titleText;
+    Button playButton;
+    Button charButton;
+    Button settingsButton;
+    Button tutButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        ((ExtendedApp) this.getApplication()).setStory("Sandwich");
+        titleText = (TextView) findViewById(R.id.titleText);
+        playButton = (Button) findViewById(R.id.button);
+        charButton = (Button) findViewById(R.id.button2);
+        settingsButton = (Button) findViewById(R.id.button3);
+        tutButton = (Button) findViewById(R.id.button4);
+
 
     }
 
@@ -63,19 +75,67 @@ public class HomeActivity extends AppCompatActivity {
 
 
     public void setBackgroundColour(){
+
         SharedPreferences sharedPref = getSharedPreferences("colourInfo", Context.MODE_PRIVATE);
-        String backgroundColour = "Background" + sharedPref.getString("backgroundC", "");
+        String backgroundColour = sharedPref.getString("backgroundC", "");
         layout = (RelativeLayout) findViewById(R.id.homeAct);
-        int colourID = ((ExtendedApp) getApplication()).getColorResourceId(backgroundColour);
+        int colour;
 
-        if (colourID == 0x0){
-            layout.setBackgroundColor(Integer.parseInt("142a78", 16));
-            return;
+        switch(backgroundColour) {
+            case ("Red"):
+                colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundRed, null);
+                layout.setBackgroundColor(colour);
+                titleText.setBackgroundResource(R.drawable.border_red);
+                playButton.setBackgroundResource(R.drawable.border_red);
+                charButton.setBackgroundResource(R.drawable.border_red);
+                settingsButton.setBackgroundResource(R.drawable.border_red);
+                tutButton.setBackgroundResource(R.drawable.border_red);
+                break;
+
+            case ("Blue"):
+                colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundBlue, null);
+                layout.setBackgroundColor(colour);
+                titleText.setBackgroundResource(R.drawable.borders_blue);
+                playButton.setBackgroundResource(R.drawable.roundbutton);
+                charButton.setBackgroundResource(R.drawable.roundbutton);
+                settingsButton.setBackgroundResource(R.drawable.roundbutton);
+                tutButton.setBackgroundResource(R.drawable.roundbutton);
+
+                break;
+
+            case ("Green"):
+                colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundGreen, null);
+                layout.setBackgroundColor(colour);
+                titleText.setBackgroundResource(R.drawable.borders_green);
+                playButton.setBackgroundResource(R.drawable.borders_green);
+                charButton.setBackgroundResource(R.drawable.borders_green);
+                settingsButton.setBackgroundResource(R.drawable.borders_green);
+                tutButton.setBackgroundResource(R.drawable.borders_green);
+                break;
+
+            case ("Purple"):
+                colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundPurple, null);
+                layout.setBackgroundColor(colour);
+                titleText.setBackgroundResource(R.drawable.borders_purple);
+                playButton.setBackgroundResource(R.drawable.borders_purple);
+                charButton.setBackgroundResource(R.drawable.borders_purple);
+                settingsButton.setBackgroundResource(R.drawable.borders_purple);
+                tutButton.setBackgroundResource(R.drawable.borders_purple);
+
+                break;
+
+
+            default:
+                colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundBlue, null);
+                layout.setBackgroundColor(colour);
+                titleText.setBackgroundResource(R.drawable.borders_blue);
+                playButton.setBackgroundResource(R.drawable.borders_blue);
+                charButton.setBackgroundResource(R.drawable.borders_blue);
+                settingsButton.setBackgroundResource(R.drawable.borders_blue);
+                tutButton.setBackgroundResource(R.drawable.borders_blue);
+                break;
+
         }
-
-        int colour = new ResourcesCompat().getColor(getResources(), colourID, null);
-        layout.setBackgroundColor(colour);
-
     }
 
 }

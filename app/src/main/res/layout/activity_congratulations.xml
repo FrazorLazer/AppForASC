@@ -7,18 +7,20 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.frazzle.appforasc.CongratulationsActivity">
+    tools:context="com.example.frazzle.appforasc.CongratulationsActivity"
+    android:id="@+id/congratsAct">
 
 
     <Button
         android:layout_width="500dp"
-        android:layout_height="wrap_content"
+        android:layout_height="80dp"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="40dp"
         android:onClick="continueStory"
-        android:text="Continue"
+        android:text="Continue Story"
         android:textSize="30dp"
+        style="@style/ButtonStyle"
         />
 
     <TextView
@@ -26,11 +28,30 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_alignParentTop="true"
-        android:text="CONGRATULATIONS\nYou got it Right"
+        android:text="WELL DONE!\nYou Guessed Correctly"
         android:textSize="60dp"
         android:gravity="center_horizontal"
-        android:layout_marginTop="100dp"/>
+        android:layout_marginTop="15dp"
+        android:textColor="#fff"/>
 
+    <TextView
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/thumbImage"
+        android:layout_marginLeft="100dp"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:id="@+id/listOfIdeas"
+        style="@style/ButtonStyle"
+        android:textSize="20sp"/>
+
+    <ImageView
+        android:layout_width="250dp"
+        android:layout_height="300dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="150dp"
+        android:src="@drawable/thumbsup"
+        android:id="@+id/thumbImage"/>
 
 
 </RelativeLayout>

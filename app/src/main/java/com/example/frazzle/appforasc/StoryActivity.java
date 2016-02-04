@@ -273,14 +273,18 @@ public class StoryActivity extends AppCompatActivity implements
             return;
         }
 
-        ((ExtendedApp) getApplication()).incrementStoryProgress();
-        Intent i = new Intent(this, StoryActivity.class);
-
-        startActivity(i);
-        this.finish();
 
         Intent i2 = new Intent(this, CongratulationsActivity.class);
         i2.putExtra("seq", whoseGuessing);
+        if(((ExtendedApp) getApplication()).getStoryFormat().equals("Options")){
+            i2.putExtra("options", findTheOptions());
+        }
+
+        ((ExtendedApp) getApplication()).incrementStoryProgress();
+        Intent i = new Intent(this, StoryActivity.class);
+        startActivity(i);
+        this.finish();
+
         startActivity(i2);
 
 
@@ -293,6 +297,8 @@ public class StoryActivity extends AppCompatActivity implements
         keyword += ((ExtendedApp) getApplication()).getStory();
         keyword += context;
         keyword += Integer.toString(((ExtendedApp) getApplication()).getStoryProgress());
+
+        Log.d("STRING SOUGHT: ", keyword + "\n\n");
 
         int id = (((ExtendedApp) getApplication()).getStringResourceId(keyword));
         String raw = getResources().getString(id);
@@ -328,8 +334,6 @@ public class StoryActivity extends AppCompatActivity implements
         int prog = ((ExtendedApp) getApplication()).getStoryProgress();
         String pro = Integer.toString(prog);
         keyword += pro;
-
-        //Log.d("MYTAGGGGGGGGGG", "findTheOptions: " + keyword);
 
         int id = (((ExtendedApp) getApplication()).getStringArrayResourceId(keyword));
         String [] raw = getResources().getStringArray(id);

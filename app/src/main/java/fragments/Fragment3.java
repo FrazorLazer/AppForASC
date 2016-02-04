@@ -26,6 +26,7 @@ public class Fragment3 extends Fragment {
     Button toMiddle;
     ImageView ima;
     Fragment3Listener activityCommander;
+    int IncorrectAnswers = 0;
 
     public interface Fragment3Listener{
         public void backToMiddle();
@@ -148,7 +149,19 @@ public class Fragment3 extends Fragment {
             return;
         }
 
-        Toast.makeText(getActivity(), "Incorrect Answer", Toast.LENGTH_SHORT).show();
+        if(IncorrectAnswers % 2 == 0) {
+            for (int i=0; i < 2; i++)
+            {
+                Toast.makeText(getActivity(), "Good effort! Try giving it another go.", Toast.LENGTH_LONG).show();
+            }
+
+        }else{
+            for (int i=0; i < 2; i++)
+            {
+                Toast.makeText(getActivity(), "Unlucky, try one more.", Toast.LENGTH_LONG).show();
+            }
+        }
+        IncorrectAnswers++;
     }
 
     public void answer2Clicked(View view){
@@ -160,19 +173,42 @@ public class Fragment3 extends Fragment {
             return;
         }
 
-        Toast.makeText(getActivity(), "Incorrect Answer", Toast.LENGTH_SHORT).show();
+        if(IncorrectAnswers % 2 == 0) {
+            for (int i=0; i < 2; i++)
+            {
+                Toast.makeText(getActivity(), "Good try! Try giving it another go.", Toast.LENGTH_LONG).show();
+            }
+
+        }else{
+            for (int i=0; i < 2; i++)
+            {
+                Toast.makeText(getActivity(), "Unlucky, try one more.", Toast.LENGTH_LONG).show();
+            }
+        }
+        IncorrectAnswers++;
     }
 
     public void answer3Clicked(View view){
 
         if (correctAnswer == 3){
             progress(view);
-
-
             return;
         }
 
-        Toast.makeText(getActivity(), "Incorrect Answer", Toast.LENGTH_SHORT).show();
+
+        if(IncorrectAnswers % 2 == 0) {
+            for (int i=0; i < 2; i++)
+            {
+                Toast.makeText(getActivity(), "Good try! Try giving it another go.", Toast.LENGTH_LONG).show();
+            }
+
+        }else{
+            for (int i=0; i < 2; i++)
+            {
+                Toast.makeText(getActivity(), "Unlucky, try one more.", Toast.LENGTH_LONG).show();
+            }
+        }
+        IncorrectAnswers++;
     }
 
 

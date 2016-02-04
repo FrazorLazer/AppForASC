@@ -23,7 +23,7 @@
         android:id="@+id/storyText"
         android:textSize="30sp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="180dp"
+        android:layout_marginTop="150dp"
         android:textColor="#fff"
         android:gravity="center_horizontal"/>
 

@@ -48,6 +48,9 @@ public class CharactersActivity extends AppCompatActivity {
         populateAdapterGrid();
     }
 
+    public void closeWindow(View view){
+        onBackPressed();
+    }
 
     public void populateAdapter(){
 

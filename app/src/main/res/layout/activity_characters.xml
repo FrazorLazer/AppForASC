@@ -63,4 +63,9 @@
         android:layout_centerHorizontal="true"
          />
 
+    <Button
+        style="@style/BackButton"
+        android:id="@+id/closeButton"
+        android:onClick="closeWindow"/>
+
 </RelativeLayout>

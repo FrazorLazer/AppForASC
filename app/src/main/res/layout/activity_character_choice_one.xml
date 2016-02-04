@@ -3,24 +3,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
     tools:context="com.example.frazzle.appforasc.CharacterChoiceOne"
     android:id="@+id/CharacterChoiceOneAct">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
+        style="@style/TitleText"
         android:text="Choose The First Player"
         android:id="@+id/titleCC1"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        android:textSize="60sp"
-        android:textColor="#fff" />
+         />
 
 <!--
     <ListView
@@ -50,4 +46,9 @@
         android:layout_alignParentBottom="true"
 
         />
+
+    <Button
+        style="@style/BackButton"
+        android:id="@+id/closeButton"
+        android:onClick="closeWindow"/>
 </RelativeLayout>

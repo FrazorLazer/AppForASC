@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 public class CharacterChoiceTwo extends AppCompatActivity {
 
@@ -20,6 +21,7 @@ public class CharacterChoiceTwo extends AppCompatActivity {
     ListView characterListView;
     Character[] characters;
     GridView charGrid;
+    TextView titleText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,13 +30,17 @@ public class CharacterChoiceTwo extends AppCompatActivity {
 
 
         dbHandler = new CharacterDBHandler(this, null, null, 1);
-        //characterListView = (ListView) findViewById(R.id.characterList2);
+        titleText = (TextView) findViewById(R.id.titleCC2);
         charGrid = (GridView) findViewById(R.id.charGridView);
         setBackgroundColour();
         populateAdapterGrid();
 
     }
 
+
+    public void closeWindow(View view){
+        onBackPressed();
+    }
 
     public void populateAdapter(){
 
@@ -80,6 +86,7 @@ public class CharacterChoiceTwo extends AppCompatActivity {
 
 
     public void setBackgroundColour(){
+
         SharedPreferences sharedPref = getSharedPreferences("colourInfo", Context.MODE_PRIVATE);
         String backgroundColour = sharedPref.getString("backgroundC", "");
         layout = (RelativeLayout) findViewById(R.id.CharacterChoiceTwoAct);
@@ -89,20 +96,29 @@ public class CharacterChoiceTwo extends AppCompatActivity {
             case ("Red"):
                 colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundRed, null);
                 layout.setBackgroundColor(colour);
-                //Toast.makeText(this, "RedSet", Toast.LENGTH_LONG).show();
+                titleText.setBackgroundResource(R.drawable.border_red);
+
                 break;
 
             case ("Blue"):
                 colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundBlue, null);
                 layout.setBackgroundColor(colour);
-                //Toast.makeText(this, "BlueSet", Toast.LENGTH_LONG).show();
+                titleText.setBackgroundResource(R.drawable.borders_blue);
                 break;
 
-            case ("White"):
-                colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundWhite, null);
+            case ("Green"):
+                colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundGreen, null);
                 layout.setBackgroundColor(colour);
-                //Toast.makeText(this, "RedSet", Toast.LENGTH_LONG).show();
+                titleText.setBackgroundResource(R.drawable.borders_green);
                 break;
+
+            case ("Purple"):
+                colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundPurple, null);
+                layout.setBackgroundColor(colour);
+                titleText.setBackgroundResource(R.drawable.borders_purple);
+
+                break;
+
 
             default:
                 colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundBlue, null);

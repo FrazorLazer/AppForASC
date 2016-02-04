@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme.RedTheme">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:background">@color/BackgroundRed</item>
+    </style>
+
+
+    <style name="ButtonRed">
+        <item name="android:textColor">#fff</item>
+        <item name="android:background">@drawable/border_red</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="TextBoxRed">
+        <item name="android:textColor">#fff</item>
+    </style>
+
+    <style name="BackButtonRed">
+        <item name="android:textColor">#fff</item>
+        <item name="android:background">@drawable/border_red</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:text">Back</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:layout_width">60dp</item>
+        <item name="android:drawableTop">@drawable/backarrow2</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:paddingTop">9dp</item>
+        <item name="android:paddingLeft">1dp</item>
+        <item name="android:layout_x">0dp</item>
+    </style>
+
+    <style name="CharacterGridRed">
+        <item name="android:layout_width">230dp</item>
+        <item name="android:layout_height">260dp</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">@color/LightestRed</item>
+        <item name="android:background">@drawable/border_red</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:typeface">serif</item>
+        <item name="android:shadowDx">2</item>
+        <item name="android:shadowDy">2</item>
+        <item name="android:shadowColor">#000</item>
+        <item name="android:shadowRadius">2</item>
+    </style>
+
+    <style name="BeginStoryRed">
+        <item name="android:layout_width">320dp</item>
+        <item name="android:layout_height">365dp</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">@color/LightestRed</item>
+        <item name="android:background">@drawable/border_red</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:typeface">serif</item>
+        <item name="android:shadowDx">2</item>
+        <item name="android:shadowDy">2</item>
+        <item name="android:shadowColor">#000</item>
+        <item name="android:shadowRadius">2</item>
+    </style>
+
+</resources>

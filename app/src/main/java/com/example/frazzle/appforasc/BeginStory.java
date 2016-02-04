@@ -89,7 +89,9 @@ public class BeginStory extends AppCompatActivity {
     }
 
 
-
+    public void closeWindow(View view){
+        onBackPressed();
+    }
     public void beginStory(View view){
 
         //String storyFormat = ((ExtendedApp) getApplication()).getStoryFormat();

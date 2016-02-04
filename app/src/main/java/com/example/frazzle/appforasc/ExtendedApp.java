@@ -12,8 +12,8 @@ public class ExtendedApp extends Application{
 
     private Character characterOne = new Character("","","","");
     private Character characterTwo = new Character("","","","");;
-    private String story ="";
-    private String storyFormat = "";
+    private String story ="Sleepover";
+    private String storyFormat = "Options";
     private int storyProgress = 1;
     private String pathname = "";
 

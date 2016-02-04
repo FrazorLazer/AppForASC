@@ -12,16 +12,20 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 public class ChooseStory extends AppCompatActivity {
 
     RelativeLayout layout;
+    TextView titleText;
     ListView storyList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_story);
+
+        assignViews();
 
         setUpListView();
         setBackgroundColour();
@@ -38,19 +42,30 @@ public class ChooseStory extends AppCompatActivity {
         storyList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String storyName = parent.getItemAtPosition(position).toString();
-                if (storyName.equals("Going to the Park")){
-                    ((ExtendedApp) getApplication()).setStory("Park");
-                    ((ExtendedApp) getApplication()).setStoryFormat("Options");
-                }else if (storyName.equals("Visiting a Grandparent")){
-                    ((ExtendedApp) getApplication()).setStory("Grandparent");
-                    ((ExtendedApp) getApplication()).setStoryFormat("NoOptions");
-                }else if (storyName.equals("To the Shops")){
-                    ((ExtendedApp) getApplication()).setStory("Shopping");
-                    ((ExtendedApp) getApplication()).setStoryFormat("NoOptions");
-                }else{
-                    ((ExtendedApp) getApplication()).setStory("Sleepover");
-                    ((ExtendedApp) getApplication()).setStoryFormat("Options");
+                //String storyName = parent.getItemAtPosition(position).toString();
+
+                switch (position) {
+
+                    case 0:
+                        ((ExtendedApp) getApplication()).setStory("Park");
+                        ((ExtendedApp) getApplication()).setStoryFormat("Options");
+                        break;
+                    case 1:
+                        ((ExtendedApp) getApplication()).setStory("Grandparent");
+                        ((ExtendedApp) getApplication()).setStoryFormat("NoOptions");
+                        break;
+                    case 2:
+                        ((ExtendedApp) getApplication()).setStory("Sleepover");
+                        ((ExtendedApp) getApplication()).setStoryFormat("Options");
+                        break;
+                    case 3:
+                        ((ExtendedApp) getApplication()).setStory("Shopping");
+                        ((ExtendedApp) getApplication()).setStoryFormat("NoOptions");
+                        break;
+                    default:
+                        ((ExtendedApp) getApplication()).setStory("Sleepover");
+                        ((ExtendedApp) getApplication()).setStoryFormat("Options");
+                        break;
                 }
 
                 openCharacterChoice();
@@ -59,12 +74,24 @@ public class ChooseStory extends AppCompatActivity {
 
     }
 
+    public void closeWindow(View view){
+        onBackPressed();
+    }
+
     private void openCharacterChoice(){
         Intent i = new Intent(this, CharacterChoiceOne.class);
         startActivity(i);
     }
 
+    private void assignViews(){
+
+        titleText = (TextView) findViewById(R.id.titleText);
+        storyList = (ListView) findViewById(R.id.storyList);
+
+}
+
     public void setBackgroundColour(){
+
         SharedPreferences sharedPref = getSharedPreferences("colourInfo", Context.MODE_PRIVATE);
         String backgroundColour = sharedPref.getString("backgroundC", "");
         layout = (RelativeLayout) findViewById(R.id.chooseStoryAct);
@@ -74,20 +101,29 @@ public class ChooseStory extends AppCompatActivity {
             case ("Red"):
                 colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundRed, null);
                 layout.setBackgroundColor(colour);
-                //Toast.makeText(this, "RedSet", Toast.LENGTH_LONG).show();
+                titleText.setBackgroundResource(R.drawable.border_red);
+
                 break;
 
             case ("Blue"):
                 colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundBlue, null);
                 layout.setBackgroundColor(colour);
-                //Toast.makeText(this, "BlueSet", Toast.LENGTH_LONG).show();
+                titleText.setBackgroundResource(R.drawable.borders_blue);
                 break;
 
-            case ("White"):
-                colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundWhite, null);
+            case ("Green"):
+                colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundGreen, null);
                 layout.setBackgroundColor(colour);
-                //Toast.makeText(this, "RedSet", Toast.LENGTH_LONG).show();
+                titleText.setBackgroundResource(R.drawable.borders_green);
                 break;
+
+            case ("Purple"):
+                colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundPurple, null);
+                layout.setBackgroundColor(colour);
+                titleText.setBackgroundResource(R.drawable.borders_purple);
+
+                break;
+
 
             default:
                 colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundBlue, null);

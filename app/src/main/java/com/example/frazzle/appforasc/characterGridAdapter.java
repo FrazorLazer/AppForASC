@@ -1,8 +1,10 @@
 package com.example.frazzle.appforasc;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.support.v4.content.res.ResourcesCompat;
@@ -18,6 +20,8 @@ import android.widget.TextView;
  */
 public class characterGridAdapter extends ArrayAdapter<Character> {
 
+    TextView buckyText;
+
     public characterGridAdapter(Context context, Character[] characters) {
         super(context, R.layout.character_gridview_layout, characters);
     }
@@ -31,8 +35,8 @@ public class characterGridAdapter extends ArrayAdapter<Character> {
         String singleCharacterName = getItem(position).get_name();
         String singleCharacterImagePathname = getItem(position).get_profileImagePath();
 
-        TextView buckyText = (TextView) customView.findViewById(R.id.gridItem);
-
+        buckyText = (TextView) customView.findViewById(R.id.gridItem);
+        setColors();
         buckyText.setText(singleCharacterName);
 
         Drawable song1 = BitmapDrawable.createFromPath(singleCharacterImagePathname);
@@ -46,5 +50,42 @@ public class characterGridAdapter extends ArrayAdapter<Character> {
         }
 
         return customView;
+    }
+
+    private void setColors(){
+
+        SharedPreferences sharedPref = getContext().getSharedPreferences("colourInfo", Context.MODE_PRIVATE);
+        String backgroundColour = sharedPref.getString("backgroundC", "");
+
+        switch(backgroundColour) {
+            case ("Red"):
+                buckyText.setBackgroundResource(R.drawable.border_red);
+                buckyText.setTextColor(new ResourcesCompat().getColor(getContext().getResources(), R.color.LightestRed, null));
+                break;
+
+            case ("Blue"):
+                buckyText.setBackgroundResource(R.drawable.borders_blue);
+                buckyText.setTextColor(new ResourcesCompat().getColor(getContext().getResources(), R.color.LightestBlue, null));
+                break;
+
+            case ("Green"):
+                buckyText.setBackgroundResource(R.drawable.borders_green);
+                buckyText.setTextColor(new ResourcesCompat().getColor(getContext().getResources(), R.color.LightestGreen, null));
+                break;
+
+            case ("Purple"):
+                buckyText.setBackgroundResource(R.drawable.borders_purple);
+                buckyText.setTextColor(new ResourcesCompat().getColor(getContext().getResources(), R.color.LightestPurple, null));
+
+                break;
+
+
+            default:
+                buckyText.setBackgroundResource(R.drawable.borders_blue);
+                buckyText.setTextColor(new ResourcesCompat().getColor(getContext().getResources(), R.color.LightestBlue, null));
+                break;
+
+        }
+
     }
 }

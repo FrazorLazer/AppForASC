@@ -35,8 +35,6 @@ public class Fragment1 extends Fragment {
     int colour;
     Fragment1Listener activityCommander;
     View v;
-    ImageView leftArrow;
-    ImageView rightArrow;
 
 
     @Nullable
@@ -49,8 +47,7 @@ public class Fragment1 extends Fragment {
         goRight = (Button) v.findViewById(R.id.goRight);
         progressButton = (Button) v.findViewById(R.id.progressButton);
         Button exitButton = (Button) v.findViewById(R.id.exitButton);
-        leftArrow.setVisibility(View.GONE);
-        rightArrow.setVisibility(View.GONE);
+
 
 
         Bundle args = getArguments();
@@ -173,10 +170,6 @@ public class Fragment1 extends Fragment {
         }
     }
 
-    public void hideArrows(){
-        rightArrow.setVisibility(View.GONE);
-        leftArrow.setVisibility(View.GONE);
-    }
 
     public void goLeft(View view){
         activityCommander.moveLeft();

@@ -10,16 +10,19 @@ import android.graphics.BitmapFactory;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Environment;
+import android.print.PrintAttributes;
 import android.provider.MediaStore;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 
 import java.io.File;
@@ -38,6 +41,7 @@ public class CharacterCreate extends Activity {
     int id;
     String gender;
     Boolean isNew = false;
+    Button saveButton;
     Button deleteButton;
     EditText nameInput;
     Spinner rewardSpinner;
@@ -54,17 +58,21 @@ public class CharacterCreate extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_character_create);
-
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+
+
+        /*
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
         int width = dm.widthPixels;
         int height = dm.heightPixels;
         getWindow().setLayout((int) (width*.8) , (int) (height*.7));
+        */
 
         dbHandler = new CharacterDBHandler(this, null, null, 1);
         nameInput = (EditText) findViewById(R.id.nameInput);
         deleteButton = (Button) findViewById(R.id.deleteCharacter);
+        saveButton = (Button) findViewById(R.id.saveCharacter);
         Button takePhotoButton = (Button) findViewById(R.id.takePhotoButton);
         profilePhoto = (ImageView) findViewById(R.id.profilePhotoView);
 
@@ -74,6 +82,7 @@ public class CharacterCreate extends Activity {
             gender = "None";
             deleteButton.setEnabled(false);
             isNew = true;
+            setButtons();
             setSpinners();
             return;
         }
@@ -96,6 +105,21 @@ public class CharacterCreate extends Activity {
         }
 
     }
+
+
+    private void setButtons(){
+        deleteButton.setVisibility(View.GONE);
+
+        ViewGroup.LayoutParams vg_lp = saveButton.getLayoutParams();
+        RelativeLayout.LayoutParams rl_lp = new RelativeLayout.LayoutParams(vg_lp);
+        rl_lp.setMargins(0,0,0,50);
+        rl_lp.addRule(RelativeLayout.CENTER_HORIZONTAL);
+        rl_lp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+
+        saveButton.setLayoutParams(rl_lp);
+
+    }
+
 
 
     private boolean hasCamera(){
@@ -140,10 +164,6 @@ public class CharacterCreate extends Activity {
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
-
-
-
-
 
     }
 
@@ -242,7 +262,7 @@ public class CharacterCreate extends Activity {
 
 
     public void closeWindow(View view){
-        this.finish();
+        onBackPressed();
     }
 
 

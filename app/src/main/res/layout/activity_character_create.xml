@@ -4,19 +4,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.frazzle.appforasc.CharacterCreate"
-    android:background="#495dd2">
+    android:background="@color/BackgroundBlue">
+
+    <View
+        android:layout_width="850dp"
+        android:layout_height="450dp"
+        android:layout_marginTop="110dp"
+        android:layout_marginLeft="80dp"
+        style="@style/ButtonStyle"
+        android:id="@+id/backView"
+        android:background="@color/LightBlue"/>
 
     <ImageView
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
         android:id="@+id/profilePhotoView"
         android:background="#fff"
-        android:layout_marginTop="90dp"
-        android:layout_marginLeft="100dp"
-        android:src="@drawable/placeholder_profile_photo" />
+        android:layout_marginTop="150dp"
+        android:layout_marginLeft="120dp"
+        android:src="@drawable/placeholder_profile_photo"
+        style="@style/ButtonStyle"
+        android:padding="5dp"/>
 
     <Button
-        android:layout_width="200dp"
+        android:layout_width="300dp"
         android:layout_height="60dp"
         android:text="Take Photo"
         android:id="@+id/takePhotoButton"
@@ -24,29 +35,36 @@
         android:layout_below="@+id/profilePhotoView"
         android:layout_alignLeft="@id/profilePhotoView"
         android:onClick="launchCamera"
+        style="@style/ButtonStyle"
+        android:textSize="23dp"
+        android:layout_marginTop="5dp"
         />
 
     <Button
-        android:layout_width="250dp"
-        android:layout_height="50dp"
+        android:layout_width="300dp"
+        android:layout_height="70dp"
         android:text="Save Character"
-        android:id="@+id/saveButton"
+        android:id="@+id/saveCharacter"
         android:layout_below="@+id/takePhotoButton"
         android:layout_alignLeft="@id/profilePhotoView"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="130dp"
         android:layout_marginLeft="50dp"
         android:onClick="saveCharacter"
+        android:textSize="23dp"
+        style="@style/ButtonStyle"
         />
     <Button
-        android:layout_width="250dp"
-        android:layout_height="50dp"
+        android:layout_width="300dp"
+        android:layout_height="70dp"
         android:text="Delete Character"
         android:id="@+id/deleteCharacter"
         android:layout_below="@+id/takePhotoButton"
-        android:layout_toRightOf="@id/saveButton"
-        android:layout_alignTop="@id/saveButton"
-        android:layout_marginLeft="50dp"
+        android:layout_toRightOf="@id/saveCharacter"
+        android:layout_alignTop="@id/saveCharacter"
+        android:layout_marginLeft= "100dp"
         android:onClick="deleteCharacter"
+        android:textSize="23dp"
+        style="@style/ButtonStyle"
         />
 
     <TextView
@@ -55,7 +73,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Name"
         android:id="@+id/nameLabel"
-        android:layout_marginLeft="120dp"
+        android:layout_marginLeft="150dp"
         android:textSize="20sp"
         android:layout_alignTop="@+id/profilePhotoView"
         android:layout_toRightOf="@+id/profilePhotoView"
@@ -70,7 +88,7 @@
 
         android:layout_alignLeft="@id/nameLabel"
         android:layout_below="@id/nameLabel"
-        android:layout_marginBottom="30dp"/>
+        android:layout_marginBottom="70dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -111,17 +129,19 @@
         android:layout_alignBottom="@+id/takePhotoButton"
         android:layout_alignStart="@+id/rewardLabel" />
 
-    <Button
-        android:layout_width="60dp"
+    <ImageView
+        android:layout_width="40dp"
         android:layout_height="40dp"
-        android:text="Play"
+        android:src="@drawable/speaker"
         android:id="@+id/playAudio"
         android:layout_toRightOf="@id/rewardSpinner"
         android:layout_alignTop="@id/rewardSpinner"
         android:layout_marginLeft="10dp"
         android:onClick="playAudio"
+        style="@style/ButtonStyle"
+        android:padding="5dp"
         />
-
+<!--
     <Button
         style="?android:attr/buttonStyleSmall"
         android:layout_width="30dp"
@@ -132,8 +152,12 @@
         android:layout_alignRight="@id/playAudio"
         android:textSize="10sp"
         android:onClick="closeWindow"/>
+-->
 
-
+    <Button
+        style="@style/BackButton"
+        android:id="@+id/closeButton"
+        android:onClick="closeWindow"/>
 
 
 </RelativeLayout>
