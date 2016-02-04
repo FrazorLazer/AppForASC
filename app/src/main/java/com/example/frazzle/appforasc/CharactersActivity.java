@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ListAdapter;
@@ -25,6 +26,8 @@ public class CharactersActivity extends AppCompatActivity {
     ListView characterListView;
     ArrayAdapter arrayAdapter;
     Character [] characters;
+    Button newCharButton;
+    Button closeButton;
     GridView grid;
 
 
@@ -32,6 +35,9 @@ public class CharactersActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_characters);
+
+        newCharButton = (Button) findViewById(R.id.newChar);
+        closeButton = (Button) findViewById(R.id.closeButton);
 
         dbHandler = new CharacterDBHandler(this, null, null, 1);
         //characterListView = (ListView) findViewById(R.id.characterList);
@@ -103,33 +109,52 @@ public class CharactersActivity extends AppCompatActivity {
 
 
     public void setBackgroundColour(){
+
         SharedPreferences sharedPref = getSharedPreferences("colourInfo", Context.MODE_PRIVATE);
         String backgroundColour = sharedPref.getString("backgroundC", "");
-        layout = (RelativeLayout) findViewById(R.id.charactersAct);
+        RelativeLayout layout = (RelativeLayout) findViewById(R.id.charactersAct);
         int colour;
 
         switch(backgroundColour) {
             case ("Red"):
                 colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundRed, null);
                 layout.setBackgroundColor(colour);
-                //Toast.makeText(this, "RedSet", Toast.LENGTH_LONG).show();
+                newCharButton.setBackgroundResource(R.drawable.roundbuttonr);
+                closeButton.setBackgroundResource(R.drawable.roundbuttonr);
+
                 break;
 
             case ("Blue"):
                 colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundBlue, null);
                 layout.setBackgroundColor(colour);
-                //Toast.makeText(this, "BlueSet", Toast.LENGTH_LONG).show();
+                newCharButton.setBackgroundResource(R.drawable.roundbutton);
+                closeButton.setBackgroundResource(R.drawable.roundbutton);
+
                 break;
 
-            case ("White"):
-                colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundWhite, null);
+            case ("Green"):
+                colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundGreen, null);
                 layout.setBackgroundColor(colour);
-                //Toast.makeText(this, "RedSet", Toast.LENGTH_LONG).show();
+                newCharButton.setBackgroundResource(R.drawable.roundbuttong);
+                closeButton.setBackgroundResource(R.drawable.roundbuttong);
+
                 break;
+
+            case ("Purple"):
+                colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundPurple, null);
+                layout.setBackgroundColor(colour);
+                newCharButton.setBackgroundResource(R.drawable.roundbuttonp);
+                closeButton.setBackgroundResource(R.drawable.roundbuttonp);
+
+
+                break;
+
 
             default:
                 colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundBlue, null);
                 layout.setBackgroundColor(colour);
+                newCharButton.setBackgroundResource(R.drawable.roundbutton);
+                closeButton.setBackgroundResource(R.drawable.roundbutton);
                 break;
 
         }

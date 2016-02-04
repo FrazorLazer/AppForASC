@@ -176,7 +176,7 @@ public class Fragment3 extends Fragment {
         if(IncorrectAnswers % 2 == 0) {
             for (int i=0; i < 2; i++)
             {
-                Toast.makeText(getActivity(), "Good try! Try giving it another go.", Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), "Good effort! Try giving it another go.", Toast.LENGTH_LONG).show();
             }
 
         }else{
@@ -199,7 +199,7 @@ public class Fragment3 extends Fragment {
         if(IncorrectAnswers % 2 == 0) {
             for (int i=0; i < 2; i++)
             {
-                Toast.makeText(getActivity(), "Good try! Try giving it another go.", Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), "Good effort! Try giving it another go.", Toast.LENGTH_LONG).show();
             }
 
         }else{

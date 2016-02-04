@@ -26,39 +26,38 @@
         </activity>
         <activity
             android:name=".ChooseStory"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/AppTheme.BlueTheme"/>
         <activity
             android:name=".CharactersActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/AppTheme.BlueTheme"/>
         <activity
             android:name=".SettingsActivity"
             android:theme="@style/AppTheme.BlueTheme"/>
         <activity
             android:name=".TutorialActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/AppTheme.BlueTheme"/>
         <activity
             android:name=".CharacterCreate"
-            android:theme="@style/AppTheme.CustomTheme" />
+            android:theme="@style/AppTheme.BlueTheme" />
         <activity
             android:name=".CharacterChoiceOne"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/AppTheme.BlueTheme"/>
         <activity
             android:name=".CharacterChoiceTwo"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/AppTheme.BlueTheme"/>
         <activity
             android:name=".StoryActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/AppTheme.BlueTheme"/>
         <activity android:name=".SwipeTest" />
         <activity
             android:name=".BeginStory"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/AppTheme.BlueTheme"/>
         <activity
             android:name=".CongratulationsActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+            android:theme="@style/AppTheme.BlueTheme"/>
         <activity
             android:name=".EndStoryActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.BlueTheme"/>
     </application>
 
 </manifest>

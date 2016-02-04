@@ -26,12 +26,11 @@
         style="@style/TextBoxBlue" />
 
     <ListView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="800dp"
+        android:layout_height="300dp"
         android:id="@+id/settingsList"
-        android:dividerHeight="5dp"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/textView4" />
+        android:dividerHeight="7dp"
+        android:layout_centerInParent="true"/>
 
     <Button
         style="@style/BackButton"

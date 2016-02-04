@@ -29,6 +29,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="50dp"
         android:onClick="endStory"
+        android:id="@+id/homeButton"
         android:text="Back to Home"
         android:textSize="30dp"
         style="@style/ButtonStyle"

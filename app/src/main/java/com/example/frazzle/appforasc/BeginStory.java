@@ -15,6 +15,7 @@ import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -30,15 +31,20 @@ import fragments.Fragment3;
 
 public class BeginStory extends AppCompatActivity {
 
+    TextView player1Deetz;
+    TextView player2Deetz;
+    TextView storyTitle;
+    Button closeButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_begin_story);
 
-        TextView player1Deetz = (TextView) findViewById(R.id.player1Deetz);
-        TextView player2Deetz = (TextView) findViewById(R.id.player2Deetz);
-        TextView storyTitle = (TextView) findViewById(R.id.storyTitle);
+        player1Deetz = (TextView) findViewById(R.id.player1Deetz);
+        player2Deetz = (TextView) findViewById(R.id.player2Deetz);
+        storyTitle = (TextView) findViewById(R.id.storyTitle);
+        closeButton = (Button) findViewById(R.id.closeButton);
 
         Character character1 = ((ExtendedApp) getApplication()).getCharacterOne();
         Character character2 = ((ExtendedApp) getApplication()).getCharacterTwo();
@@ -99,12 +105,67 @@ public class BeginStory extends AppCompatActivity {
         startActivity(i);
     }
 
-    public void setBackgroundColour() {
+    public void setBackgroundColour(){
+
         SharedPreferences sharedPref = getSharedPreferences("colourInfo", Context.MODE_PRIVATE);
-        String backgroundColour = "Background" + sharedPref.getString("backgroundC", "");
+        String backgroundColour = sharedPref.getString("backgroundC", "");
         RelativeLayout layout = (RelativeLayout) findViewById(R.id.BeginStoryAct);
-        int colourID = ((ExtendedApp) getApplication()).getColorResourceId(backgroundColour);
-        int colour = new ResourcesCompat().getColor(getResources(), colourID, null);
-        layout.setBackgroundColor(colour);
+        int colour;
+
+        switch(backgroundColour) {
+            case ("Red"):
+                colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundRed, null);
+                layout.setBackgroundColor(colour);
+                storyTitle.setBackgroundResource(R.drawable.border_red);
+                player1Deetz.setBackgroundResource(R.drawable.border_red);
+                player2Deetz.setBackgroundResource(R.drawable.border_red);
+                player1Deetz.setTextColor(new ResourcesCompat().getColor(getResources(), R.color.LightestRed, null));
+                player2Deetz.setTextColor(new ResourcesCompat().getColor(getResources(), R.color.LightestRed, null));
+                closeButton.setBackgroundResource(R.drawable.roundbuttonr);
+
+                break;
+
+            case ("Blue"):
+                colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundBlue, null);
+                layout.setBackgroundColor(colour);
+                storyTitle.setBackgroundResource(R.drawable.borders_blue);
+                player1Deetz.setBackgroundResource(R.drawable.borders_blue);
+                player2Deetz.setBackgroundResource(R.drawable.borders_blue);
+                player1Deetz.setTextColor(new ResourcesCompat().getColor(getResources(), R.color.LightestBlue, null));
+                player2Deetz.setTextColor(new ResourcesCompat().getColor(getResources(), R.color.LightestBlue, null));
+                closeButton.setBackgroundResource(R.drawable.roundbutton);
+                break;
+
+            case ("Green"):
+                colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundGreen, null);
+                layout.setBackgroundColor(colour);
+                storyTitle.setBackgroundResource(R.drawable.borders_green);
+                player1Deetz.setBackgroundResource(R.drawable.borders_green);
+                player2Deetz.setBackgroundResource(R.drawable.borders_green);
+                player1Deetz.setTextColor(new ResourcesCompat().getColor(getResources(), R.color.LightestGreen, null));
+                player2Deetz.setTextColor(new ResourcesCompat().getColor(getResources(), R.color.LightestGreen, null));
+                closeButton.setBackgroundResource(R.drawable.roundbuttong);
+                break;
+
+            case ("Purple"):
+                colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundPurple, null);
+                layout.setBackgroundColor(colour);
+                storyTitle.setBackgroundResource(R.drawable.borders_purple);
+                player1Deetz.setBackgroundResource(R.drawable.borders_purple);
+                player2Deetz.setBackgroundResource(R.drawable.borders_purple);
+                player1Deetz.setTextColor(new ResourcesCompat().getColor(getResources(), R.color.LightestPurple, null));
+                player2Deetz.setTextColor(new ResourcesCompat().getColor(getResources(), R.color.LightestPurple, null));
+                closeButton.setBackgroundResource(R.drawable.roundbuttonp);
+
+                break;
+
+
+            default:
+                colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundBlue, null);
+                layout.setBackgroundColor(colour);
+                closeButton.setBackgroundResource(R.drawable.roundbutton);
+                break;
+
+        }
     }
 }

@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -28,6 +29,7 @@ public class SettingsActivity extends AppCompatActivity {
     ListAdapter arrayAdapter;
     RelativeLayout layout;
     TextView title;
+    Button closeButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,7 @@ public class SettingsActivity extends AppCompatActivity {
 
         title = (TextView) findViewById(R.id.textView4);
         settingsView = (ListView) findViewById(R.id.settingsList);
+        closeButton = (Button) findViewById(R.id.closeButton);
         String settingsOptions[] = new String[] {"Background Colour", "Font Size", "Vibration"};
         arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, settingsOptions);
         settingsView.setAdapter(arrayAdapter);
@@ -122,28 +125,33 @@ public class SettingsActivity extends AppCompatActivity {
             case ("Red"):
 
                 title.setBackgroundResource(R.drawable.border_red);
+                closeButton.setBackgroundResource(R.drawable.roundbuttonr);
                 //setTheme(R.style.AppTheme_RedTheme);
                 break;
 
             case ("Blue"):
 
                 title.setBackgroundResource(R.drawable.borders_blue);
+                closeButton.setBackgroundResource(R.drawable.roundbutton);
                 //setTheme(R.style.AppTheme_BlueTheme);
                 break;
 
             case ("Green"):
                 title.setBackgroundResource(R.drawable.borders_green);
+                closeButton.setBackgroundResource(R.drawable.roundbuttong);
                 //setTheme(R.style.AppTheme_BlueTheme);
                 break;
 
             case ("Purple"):
                 title.setBackgroundResource(R.drawable.borders_purple);
+                closeButton.setBackgroundResource(R.drawable.roundbuttonp);
                 //setTheme(R.style.AppTheme_BlueTheme);
                 break;
 
 
             default:
                 title.setBackgroundResource(R.drawable.borders_blue);
+                closeButton.setBackgroundResource(R.drawable.roundbutton);
                 //setTheme(R.style.AppTheme_BlueTheme);
                 break;
         }

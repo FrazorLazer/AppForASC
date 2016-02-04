@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -15,6 +16,8 @@ import android.widget.TextView;
 public class CongratulationsActivity extends AppCompatActivity {
 
     String reward;
+    Button continueButton;
+    TextView otherIdeas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +25,8 @@ public class CongratulationsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_congratulations);
 
         ImageView thumbsUp = (ImageView) findViewById(R.id.thumbImage);
-        TextView otherIdeas = (TextView) findViewById(R.id.listOfIdeas);
+        otherIdeas = (TextView) findViewById(R.id.listOfIdeas);
+        continueButton = (Button) findViewById(R.id.continueButton);
 
         Bundle args = getIntent().getExtras();
         String [] options = args.getStringArray("options");
@@ -81,17 +85,50 @@ public class CongratulationsActivity extends AppCompatActivity {
 
     public void setBackgroundColour(){
         SharedPreferences sharedPref = getSharedPreferences("colourInfo", Context.MODE_PRIVATE);
-        String backgroundColour = "Background" + sharedPref.getString("backgroundC", "");
+        String backgroundColour = sharedPref.getString("backgroundC", "");
         RelativeLayout layout = (RelativeLayout) findViewById(R.id.congratsAct);
-        int colourID = ((ExtendedApp) getApplication()).getColorResourceId(backgroundColour);
+        int colour;
 
-        if (colourID == 0x0){
-            layout.setBackgroundColor(Integer.parseInt("142a78", 16));
-            return;
+        switch(backgroundColour) {
+            case ("Red"):
+                colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundRed, null);
+                layout.setBackgroundColor(colour);
+                continueButton.setBackgroundResource(R.drawable.roundbuttonr);
+                otherIdeas.setBackgroundResource(R.drawable.border_red);
+
+                break;
+
+            case ("Blue"):
+                colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundBlue, null);
+                layout.setBackgroundColor(colour);
+                continueButton.setBackgroundResource(R.drawable.roundbutton);
+                otherIdeas.setBackgroundResource(R.drawable.borders_blue);
+                break;
+
+            case ("Green"):
+                colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundGreen, null);
+                layout.setBackgroundColor(colour);
+                continueButton.setBackgroundResource(R.drawable.roundbuttong);
+                otherIdeas.setBackgroundResource(R.drawable.borders_green);
+                break;
+
+            case ("Purple"):
+                colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundPurple, null);
+                layout.setBackgroundColor(colour);
+                continueButton.setBackgroundResource(R.drawable.roundbuttonp);
+                otherIdeas.setBackgroundResource(R.drawable.borders_purple);
+
+                break;
+
+
+            default:
+                colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundBlue, null);
+                layout.setBackgroundColor(colour);
+                continueButton.setBackgroundResource(R.drawable.roundbutton);
+                otherIdeas.setBackgroundResource(R.drawable.borders_blue);
+                break;
+
         }
-
-        int colour = new ResourcesCompat().getColor(getResources(), colourID, null);
-        layout.setBackgroundColor(colour);
 
     }
 }

@@ -7,16 +7,21 @@ import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class EndStoryActivity extends AppCompatActivity {
+
+
+    Button homeButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_end_story);
 
+        homeButton = (Button) findViewById(R.id.homeButton);
 
         Bundle extras = getIntent().getExtras();
         String lastLineText = extras.getString("lastLine");
@@ -40,17 +45,44 @@ public class EndStoryActivity extends AppCompatActivity {
 
     public void setBackgroundColour(){
         SharedPreferences sharedPref = getSharedPreferences("colourInfo", Context.MODE_PRIVATE);
-        String backgroundColour = "Background" + sharedPref.getString("backgroundC", "");
+        String backgroundColour = sharedPref.getString("backgroundC", "");
         RelativeLayout layout = (RelativeLayout) findViewById(R.id.endAct);
-        int colourID = ((ExtendedApp) getApplication()).getColorResourceId(backgroundColour);
+        int colour;
 
-        if (colourID == 0x0){
-            layout.setBackgroundColor(Integer.parseInt("142a78", 16));
-            return;
+        switch(backgroundColour) {
+            case ("Red"):
+                colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundRed, null);
+                layout.setBackgroundColor(colour);
+                homeButton.setBackgroundResource(R.drawable.roundbuttonr);
+
+                break;
+
+            case ("Blue"):
+                colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundBlue, null);
+                layout.setBackgroundColor(colour);
+                homeButton.setBackgroundResource(R.drawable.roundbutton);
+                break;
+
+            case ("Green"):
+                colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundGreen, null);
+                layout.setBackgroundColor(colour);
+                homeButton.setBackgroundResource(R.drawable.roundbuttong);
+                break;
+
+            case ("Purple"):
+                colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundPurple, null);
+                layout.setBackgroundColor(colour);
+                homeButton.setBackgroundResource(R.drawable.roundbuttonp);
+
+                break;
+
+
+            default:
+                colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundBlue, null);
+                layout.setBackgroundColor(colour);
+                homeButton.setBackgroundResource(R.drawable.roundbutton);
+                break;
+
         }
-
-        int colour = new ResourcesCompat().getColor(getResources(), colourID, null);
-        layout.setBackgroundColor(colour);
-
     }
 }

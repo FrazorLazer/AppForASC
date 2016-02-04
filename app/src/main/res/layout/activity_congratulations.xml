@@ -20,6 +20,7 @@
         android:onClick="continueStory"
         android:text="Continue Story"
         android:textSize="30dp"
+        android:id="@+id/continueButton"
         style="@style/ButtonStyle"
         />
 

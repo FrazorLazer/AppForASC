@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ListView;
@@ -23,6 +24,7 @@ public class CharacterChoiceOne extends AppCompatActivity {
     Character[] characters;
     GridView charGrid;
     TextView titleText;
+    Button closeButton;
 
 
     @Override
@@ -33,6 +35,7 @@ public class CharacterChoiceOne extends AppCompatActivity {
         dbHandler = new CharacterDBHandler(this, null, null, 1);
         titleText = (TextView) findViewById(R.id.titleCC1);
         charGrid = (GridView) findViewById(R.id.charGridView);
+        closeButton = (Button) findViewById(R.id.closeButton);
         setBackgroundColour();
         populateAdapterGrid();
 
@@ -97,6 +100,7 @@ public class CharacterChoiceOne extends AppCompatActivity {
                 colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundRed, null);
                 layout.setBackgroundColor(colour);
                 titleText.setBackgroundResource(R.drawable.border_red);
+                closeButton.setBackgroundResource(R.drawable.roundbuttonr);
 
                 break;
 
@@ -104,18 +108,21 @@ public class CharacterChoiceOne extends AppCompatActivity {
                 colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundBlue, null);
                 layout.setBackgroundColor(colour);
                 titleText.setBackgroundResource(R.drawable.borders_blue);
+                closeButton.setBackgroundResource(R.drawable.roundbutton);
                 break;
 
             case ("Green"):
                 colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundGreen, null);
                 layout.setBackgroundColor(colour);
                 titleText.setBackgroundResource(R.drawable.borders_green);
+                closeButton.setBackgroundResource(R.drawable.roundbuttong);
                 break;
 
             case ("Purple"):
                 colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundPurple, null);
                 layout.setBackgroundColor(colour);
                 titleText.setBackgroundResource(R.drawable.borders_purple);
+                closeButton.setBackgroundResource(R.drawable.roundbuttonp);
 
                 break;
 
@@ -123,6 +130,7 @@ public class CharacterChoiceOne extends AppCompatActivity {
             default:
                 colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundBlue, null);
                 layout.setBackgroundColor(colour);
+                closeButton.setBackgroundResource(R.drawable.roundbutton);
                 break;
 
         }

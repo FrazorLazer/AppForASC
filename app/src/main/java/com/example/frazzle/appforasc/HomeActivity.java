@@ -86,10 +86,10 @@ public class HomeActivity extends AppCompatActivity {
                 colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundRed, null);
                 layout.setBackgroundColor(colour);
                 titleText.setBackgroundResource(R.drawable.border_red);
-                playButton.setBackgroundResource(R.drawable.border_red);
-                charButton.setBackgroundResource(R.drawable.border_red);
-                settingsButton.setBackgroundResource(R.drawable.border_red);
-                tutButton.setBackgroundResource(R.drawable.border_red);
+                playButton.setBackgroundResource(R.drawable.roundbuttonr);
+                charButton.setBackgroundResource(R.drawable.roundbuttonr);
+                settingsButton.setBackgroundResource(R.drawable.roundbuttonr);
+                tutButton.setBackgroundResource(R.drawable.roundbuttonr);
                 break;
 
             case ("Blue"):
@@ -107,20 +107,20 @@ public class HomeActivity extends AppCompatActivity {
                 colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundGreen, null);
                 layout.setBackgroundColor(colour);
                 titleText.setBackgroundResource(R.drawable.borders_green);
-                playButton.setBackgroundResource(R.drawable.borders_green);
-                charButton.setBackgroundResource(R.drawable.borders_green);
-                settingsButton.setBackgroundResource(R.drawable.borders_green);
-                tutButton.setBackgroundResource(R.drawable.borders_green);
+                playButton.setBackgroundResource(R.drawable.roundbuttong);
+                charButton.setBackgroundResource(R.drawable.roundbuttong);
+                settingsButton.setBackgroundResource(R.drawable.roundbuttong);
+                tutButton.setBackgroundResource(R.drawable.roundbuttong);
                 break;
 
             case ("Purple"):
                 colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundPurple, null);
                 layout.setBackgroundColor(colour);
                 titleText.setBackgroundResource(R.drawable.borders_purple);
-                playButton.setBackgroundResource(R.drawable.borders_purple);
-                charButton.setBackgroundResource(R.drawable.borders_purple);
-                settingsButton.setBackgroundResource(R.drawable.borders_purple);
-                tutButton.setBackgroundResource(R.drawable.borders_purple);
+                playButton.setBackgroundResource(R.drawable.roundbuttonp);
+                charButton.setBackgroundResource(R.drawable.roundbuttonp);
+                settingsButton.setBackgroundResource(R.drawable.roundbuttonp);
+                tutButton.setBackgroundResource(R.drawable.roundbuttonp);
 
                 break;
 
@@ -129,10 +129,10 @@ public class HomeActivity extends AppCompatActivity {
                 colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundBlue, null);
                 layout.setBackgroundColor(colour);
                 titleText.setBackgroundResource(R.drawable.borders_blue);
-                playButton.setBackgroundResource(R.drawable.borders_blue);
-                charButton.setBackgroundResource(R.drawable.borders_blue);
-                settingsButton.setBackgroundResource(R.drawable.borders_blue);
-                tutButton.setBackgroundResource(R.drawable.borders_blue);
+                playButton.setBackgroundResource(R.drawable.roundbutton);
+                charButton.setBackgroundResource(R.drawable.roundbutton);
+                settingsButton.setBackgroundResource(R.drawable.roundbutton);
+                tutButton.setBackgroundResource(R.drawable.roundbutton);
                 break;
 
         }

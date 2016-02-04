@@ -4,13 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.frazzle.appforasc.CharacterCreate"
-    android:background="@color/BackgroundBlue">
+    android:background="@color/BackgroundBlue"
+    android:id="@+id/characterCreateAct">
 
     <View
         android:layout_width="850dp"
         android:layout_height="450dp"
         android:layout_marginTop="110dp"
-        android:layout_marginLeft="80dp"
+        android:layout_marginLeft="90dp"
         style="@style/ButtonStyle"
         android:id="@+id/backView"
         android:background="@color/LightBlue"/>
@@ -21,7 +22,7 @@
         android:id="@+id/profilePhotoView"
         android:background="#fff"
         android:layout_marginTop="150dp"
-        android:layout_marginLeft="120dp"
+        android:layout_marginLeft="140dp"
         android:src="@drawable/placeholder_profile_photo"
         style="@style/ButtonStyle"
         android:padding="5dp"/>
@@ -74,9 +75,10 @@
         android:text="Name"
         android:id="@+id/nameLabel"
         android:layout_marginLeft="150dp"
-        android:textSize="20sp"
+        android:textSize="25sp"
         android:layout_alignTop="@+id/profilePhotoView"
         android:layout_toRightOf="@+id/profilePhotoView"
+        android:textColor="#fff"
 
 
         />
@@ -96,7 +98,7 @@
         android:layout_alignStart="@+id/nameInput"
         android:text="Girl/Boy"
         android:layout_below="@id/nameInput"
-        android:textSize="20dp"
+        android:textSize="25dp"
         android:textColor="#fff"
         android:id="@+id/genderLabel"/>
 
@@ -115,9 +117,10 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Reward"
         android:id="@+id/rewardLabel"
-        android:textSize="20sp"
+        android:textSize="25sp"
         android:layout_above="@+id/rewardSpinner"
-        android:layout_alignStart="@+id/nameInput" />
+        android:layout_alignStart="@+id/nameInput"
+        android:textColor="#fff"/>
 
 
 

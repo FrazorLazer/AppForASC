@@ -2,8 +2,10 @@ package com.example.frazzle.appforasc;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -12,6 +14,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.print.PrintAttributes;
 import android.provider.MediaStore;
+import android.support.v4.content.res.ResourcesCompat;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
@@ -39,13 +42,17 @@ public class CharacterCreate extends Activity {
     String reward;
     String pathname;
     int id;
+    View v;
     String gender;
     Boolean isNew = false;
     Button saveButton;
     Button deleteButton;
+    Button closeButton;
     EditText nameInput;
     Spinner rewardSpinner;
     Spinner genderSpinner;
+    Button takePhotoButton;
+    ImageView playButton;
     static final int REQUEST_IMAGE_CAPTURE = 1;
     ImageView profilePhoto;
     Bitmap photo;
@@ -69,12 +76,16 @@ public class CharacterCreate extends Activity {
         getWindow().setLayout((int) (width*.8) , (int) (height*.7));
         */
 
+
         dbHandler = new CharacterDBHandler(this, null, null, 1);
         nameInput = (EditText) findViewById(R.id.nameInput);
         deleteButton = (Button) findViewById(R.id.deleteCharacter);
         saveButton = (Button) findViewById(R.id.saveCharacter);
-        Button takePhotoButton = (Button) findViewById(R.id.takePhotoButton);
+        takePhotoButton = (Button) findViewById(R.id.takePhotoButton);
         profilePhoto = (ImageView) findViewById(R.id.profilePhotoView);
+        closeButton = (Button) findViewById(R.id.closeButton);
+        playButton = (ImageView) findViewById(R.id.playAudio);
+        v = findViewById(R.id.backView);
 
         Bundle characterData = getIntent().getExtras();
         if (characterData == null){
@@ -84,6 +95,7 @@ public class CharacterCreate extends Activity {
             isNew = true;
             setButtons();
             setSpinners();
+            setBackgroundColour();
             return;
         }
         name = characterData.getString("name");
@@ -103,6 +115,8 @@ public class CharacterCreate extends Activity {
         if (!hasCamera()){
             takePhotoButton.setEnabled(false);
         }
+
+        setBackgroundColour();
 
     }
 
@@ -329,5 +343,74 @@ public class CharacterCreate extends Activity {
 
         }
 
+    }
+
+
+
+    public void setBackgroundColour(){
+
+        SharedPreferences sharedPref = getSharedPreferences("colourInfo", Context.MODE_PRIVATE);
+        String backgroundColour = sharedPref.getString("backgroundC", "");
+        RelativeLayout layout = (RelativeLayout) findViewById(R.id.characterCreateAct);
+        int colour;
+
+        switch(backgroundColour) {
+            case ("Red"):
+                colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundRed, null);
+                layout.setBackgroundColor(colour);
+                saveButton.setBackgroundResource(R.drawable.roundbuttonr);
+                closeButton.setBackgroundResource(R.drawable.roundbuttonr);
+                deleteButton.setBackgroundResource(R.drawable.roundbuttonr);
+                v.setBackgroundColor(new ResourcesCompat().getColor(getResources(), R.color.LightRed, null));
+                takePhotoButton.setBackgroundResource(R.drawable.roundbuttonr);
+                playButton.setBackgroundResource(R.drawable.border_red);
+                break;
+
+            case ("Blue"):
+                colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundBlue, null);
+                layout.setBackgroundColor(colour);
+                saveButton.setBackgroundResource(R.drawable.roundbutton);
+                deleteButton.setBackgroundResource(R.drawable.roundbutton);
+                v.setBackgroundColor(new ResourcesCompat().getColor(getResources(), R.color.LightBlue, null));
+                takePhotoButton.setBackgroundResource(R.drawable.roundbutton);
+                closeButton.setBackgroundResource(R.drawable.roundbutton);
+                playButton.setBackgroundResource(R.drawable.borders_blue);
+                break;
+
+            case ("Green"):
+                colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundGreen, null);
+                layout.setBackgroundColor(colour);
+                saveButton.setBackgroundResource(R.drawable.roundbuttong);
+                closeButton.setBackgroundResource(R.drawable.roundbuttong);
+                deleteButton.setBackgroundResource(R.drawable.roundbuttong);
+                v.setBackgroundColor(new ResourcesCompat().getColor(getResources(), R.color.LightGreen, null));
+                takePhotoButton.setBackgroundResource(R.drawable.roundbuttong);
+                playButton.setBackgroundResource(R.drawable.borders_green);
+
+                break;
+
+            case ("Purple"):
+                colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundPurple, null);
+                layout.setBackgroundColor(colour);
+                saveButton.setBackgroundResource(R.drawable.roundbuttonp);
+                closeButton.setBackgroundResource(R.drawable.roundbuttonp);
+                deleteButton.setBackgroundResource(R.drawable.roundbuttonp);
+                v.setBackgroundColor(new ResourcesCompat().getColor(getResources(), R.color.LightPurple, null));
+                takePhotoButton.setBackgroundResource(R.drawable.roundbuttonp);
+                playButton.setBackgroundResource(R.drawable.borders_purple);
+                break;
+
+            default:
+                colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundBlue, null);
+                layout.setBackgroundColor(colour);
+                saveButton.setBackgroundResource(R.drawable.roundbutton);
+                closeButton.setBackgroundResource(R.drawable.roundbutton);
+                deleteButton.setBackgroundResource(R.drawable.roundbutton);
+                v.setBackgroundColor(new ResourcesCompat().getColor(getResources(), R.color.LightBlue, null));
+                takePhotoButton.setBackgroundResource(R.drawable.roundbutton);
+                playButton.setBackgroundResource(R.drawable.borders_blue);
+                break;
+
+        }
     }
 }

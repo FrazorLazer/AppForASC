@@ -45,7 +45,7 @@
         android:horizontalSpacing="10dp"
         android:stretchMode="spacingWidthUniform"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/button7"
+        android:layout_below="@+id/newChar"
         android:layout_marginTop="50dp"
         />
 
@@ -53,7 +53,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Create New Character"
-        android:id="@+id/button7"
+        android:id="@+id/newChar"
         android:onClick="createCharacter"
         android:width="400dp"
         android:height="60dp"
@@ -61,7 +61,7 @@
         android:layout_below="@+id/textView3"
         android:layout_marginTop="30dp"
         android:layout_centerHorizontal="true"
-         />
+        android:textColor="#fff" />
 
     <Button
         style="@style/BackButton"
