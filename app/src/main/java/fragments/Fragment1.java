@@ -32,7 +32,10 @@ public class Fragment1 extends Fragment {
     Button goLeft;
     Button goRight;
     Button progressButton;
-    int colour;
+    Button exitButton;
+    TextView storyNumber;
+    int orient;
+    String colourString;
     Fragment1Listener activityCommander;
     View v;
 
@@ -46,19 +49,19 @@ public class Fragment1 extends Fragment {
         goLeft = (Button) v.findViewById(R.id.goLeft);
         goRight = (Button) v.findViewById(R.id.goRight);
         progressButton = (Button) v.findViewById(R.id.progressButton);
-        Button exitButton = (Button) v.findViewById(R.id.exitButton);
+        exitButton = (Button) v.findViewById(R.id.exitButton);
 
 
 
         Bundle args = getArguments();
         String index = args.getString("story");
-        colour = args.getInt("colour");
+        colourString = args.getString("colourString");
         String pathname1 = args.getString("pathname1");
         String pathname2 = args.getString("pathname2");
         String charName1 = args.getString("name1");
         String charName2 = args.getString("name2");
         String storyProgress = args.getString("progress");
-        int orient = args.getInt("orientation");
+        orient = args.getInt("orientation");
 
 
         if(orient == 2){
@@ -73,9 +76,7 @@ public class Fragment1 extends Fragment {
 
 
 
-
-
-        TextView storyNumber = (TextView) v.findViewById(R.id.storyNumber);
+        storyNumber = (TextView) v.findViewById(R.id.storyNumber);
         TextView storyText = (TextView) v.findViewById(R.id.storyText);
         storyText.setText(index);
         storyNumber.setText(storyProgress);
@@ -150,7 +151,124 @@ public class Fragment1 extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        v.setBackgroundColor(colour);
+        //v.setBackgroundColor(colour);
+        setTheme();
+    }
+
+    public void setTheme(){
+
+
+        int colour;
+
+        switch(colourString) {
+
+
+            case ("Red"):
+                colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundRed, null);
+                v.setBackgroundColor(colour);
+
+                if(orient == 2){
+                    //leftArrow.setVisibility(View.VISIBLE);
+                    goLeft.setBackgroundResource(R.drawable.greenbord_red);
+                    goRight.setBackgroundResource(R.drawable.border_red);
+                }else{
+                    //rightArrow.setVisibility(View.VISIBLE);
+                    goLeft.setBackgroundResource(R.drawable.border_red);
+                    goRight.setBackgroundResource(R.drawable.greenbord_red);
+                }
+
+                goLeft.setTextColor(new ResourcesCompat().getColor(getResources(), R.color.LightestRed, null));
+                goRight.setTextColor(new ResourcesCompat().getColor(getResources(), R.color.LightestRed, null));
+                exitButton.setBackgroundResource(R.drawable.roundbuttonr);
+                storyNumber.setTextColor(new ResourcesCompat().getColor(getResources(), R.color.LightRed, null));
+                break;
+
+            case ("Blue"):
+                colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundBlue, null);
+                v.setBackgroundColor(colour);
+
+                if(orient == 2){
+                    //leftArrow.setVisibility(View.VISIBLE);
+                    goLeft.setBackgroundResource(R.drawable.greenbord_blue);
+                    goRight.setBackgroundResource(R.drawable.borders_blue);
+                }else{
+                    //rightArrow.setVisibility(View.VISIBLE);
+                    goLeft.setBackgroundResource(R.drawable.borders_blue);
+                    goRight.setBackgroundResource(R.drawable.greenbord_blue);
+                }
+
+                goLeft.setTextColor(new ResourcesCompat().getColor(getResources(), R.color.LightestBlue, null));
+                goRight.setTextColor(new ResourcesCompat().getColor(getResources(), R.color.LightestBlue, null));
+                exitButton.setBackgroundResource(R.drawable.roundbutton);
+                storyNumber.setTextColor(new ResourcesCompat().getColor(getResources(), R.color.LightBlue, null));
+
+                break;
+
+            case ("Green"):
+                colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundGreen, null);
+                v.setBackgroundColor(colour);
+
+                if(orient == 2){
+                    //leftArrow.setVisibility(View.VISIBLE);
+                    goLeft.setBackgroundResource(R.drawable.redbord_green);
+                    goRight.setBackgroundResource(R.drawable.borders_green);
+                }else{
+                    //rightArrow.setVisibility(View.VISIBLE);
+                    goLeft.setBackgroundResource(R.drawable.borders_green);
+                    goRight.setBackgroundResource(R.drawable.redbord_green);
+                }
+
+                goLeft.setTextColor(new ResourcesCompat().getColor(getResources(), R.color.LightestGreen, null));
+                goRight.setTextColor(new ResourcesCompat().getColor(getResources(), R.color.LightestGreen, null));
+                exitButton.setBackgroundResource(R.drawable.roundbuttong);
+                storyNumber.setTextColor(new ResourcesCompat().getColor(getResources(), R.color.LightGreen, null));
+                break;
+
+            case ("Purple"):
+                colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundPurple, null);
+                v.setBackgroundColor(colour);
+
+                if(orient == 2){
+                    //leftArrow.setVisibility(View.VISIBLE);
+                    goLeft.setBackgroundResource(R.drawable.greenbord_purple);
+                    goRight.setBackgroundResource(R.drawable.borders_purple);
+                }else{
+                    //rightArrow.setVisibility(View.VISIBLE);
+                    goLeft.setBackgroundResource(R.drawable.borders_purple);
+                    goRight.setBackgroundResource(R.drawable.greenbord_purple);
+                }
+
+                goLeft.setTextColor(new ResourcesCompat().getColor(getResources(), R.color.LightestPurple, null));
+                goRight.setTextColor(new ResourcesCompat().getColor(getResources(), R.color.LightestPurple, null));
+                exitButton.setBackgroundResource(R.drawable.roundbuttonp);
+                storyNumber.setTextColor(new ResourcesCompat().getColor(getResources(), R.color.LightPurple, null));
+
+                break;
+
+
+            default:
+                colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundBlue, null);
+                v.setBackgroundColor(colour);
+
+                if(orient == 2){
+                    //leftArrow.setVisibility(View.VISIBLE);
+                    goLeft.setBackgroundResource(R.drawable.greenbord_blue);
+                    goRight.setBackgroundResource(R.drawable.borders_blue);
+                }else{
+                    //rightArrow.setVisibility(View.VISIBLE);
+                    goLeft.setBackgroundResource(R.drawable.borders_blue);
+                    goRight.setBackgroundResource(R.drawable.greenbord_blue);
+                }
+
+                goLeft.setTextColor(new ResourcesCompat().getColor(getResources(), R.color.LightestBlue, null));
+                goRight.setTextColor(new ResourcesCompat().getColor(getResources(), R.color.LightestBlue, null));
+                exitButton.setBackgroundResource(R.drawable.roundbutton);
+                storyNumber.setTextColor(new ResourcesCompat().getColor(getResources(), R.color.LightBlue, null));
+                break;
+
+        }
+
+
     }
 
     public interface Fragment1Listener{

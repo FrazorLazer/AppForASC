@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.res.ResourcesCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +20,7 @@ import com.example.frazzle.appforasc.StoryActivity;
 public class Fragment2 extends Fragment {
 
     View v;
-    int colour;
+    String colourString;
     ImageView toMiddle;
     Fragment2Listener activityCommander;
 
@@ -32,7 +33,7 @@ public class Fragment2 extends Fragment {
 
         Bundle args = getArguments();
         String index = args.getString("act");
-        colour = args.getInt("colour");
+        colourString = args.getString("colourString");
 
         toMiddle = (ImageView) v.findViewById(R.id.backButton);
         TextView storyText = (TextView) v.findViewById(R.id.actText);
@@ -97,6 +98,55 @@ public class Fragment2 extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        v.setBackgroundColor(colour);
+        //v.setBackgroundColor(colour);
+        setTheme();
+    }
+
+    public void setTheme() {
+
+        int colour;
+
+        switch (colourString) {
+
+
+            case ("Red"):
+                colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundRed, null);
+                v.setBackgroundColor(colour);
+
+                toMiddle.setBackgroundResource(R.drawable.border_red);
+                break;
+
+            case ("Blue"):
+                colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundBlue, null);
+                v.setBackgroundColor(colour);
+
+                toMiddle.setBackgroundResource(R.drawable.borders_blue);
+
+                break;
+
+            case ("Green"):
+                colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundGreen, null);
+                v.setBackgroundColor(colour);
+
+                toMiddle.setBackgroundResource(R.drawable.borders_green);
+                break;
+
+            case ("Purple"):
+                colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundPurple, null);
+                v.setBackgroundColor(colour);
+
+                toMiddle.setBackgroundResource(R.drawable.borders_purple);
+
+                break;
+
+
+            default:
+                colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundBlue, null);
+                v.setBackgroundColor(colour);
+
+                toMiddle.setBackgroundResource(R.drawable.borders_blue);
+                break;
+
+        }
     }
 }

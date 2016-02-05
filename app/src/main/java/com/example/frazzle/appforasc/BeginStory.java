@@ -35,6 +35,7 @@ public class BeginStory extends AppCompatActivity {
     TextView player2Deetz;
     TextView storyTitle;
     Button closeButton;
+    Button begin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +43,7 @@ public class BeginStory extends AppCompatActivity {
         setContentView(R.layout.activity_begin_story);
 
         player1Deetz = (TextView) findViewById(R.id.player1Deetz);
+        begin = (Button) findViewById(R.id.button6);
         player2Deetz = (TextView) findViewById(R.id.player2Deetz);
         storyTitle = (TextView) findViewById(R.id.storyTitle);
         closeButton = (Button) findViewById(R.id.closeButton);
@@ -122,6 +124,8 @@ public class BeginStory extends AppCompatActivity {
                 player1Deetz.setTextColor(new ResourcesCompat().getColor(getResources(), R.color.LightestRed, null));
                 player2Deetz.setTextColor(new ResourcesCompat().getColor(getResources(), R.color.LightestRed, null));
                 closeButton.setBackgroundResource(R.drawable.roundbuttonr);
+                begin.setBackgroundResource(R.drawable.roundbuttonr);
+
 
                 break;
 
@@ -134,6 +138,7 @@ public class BeginStory extends AppCompatActivity {
                 player1Deetz.setTextColor(new ResourcesCompat().getColor(getResources(), R.color.LightestBlue, null));
                 player2Deetz.setTextColor(new ResourcesCompat().getColor(getResources(), R.color.LightestBlue, null));
                 closeButton.setBackgroundResource(R.drawable.roundbutton);
+                begin.setBackgroundResource(R.drawable.roundbutton);
                 break;
 
             case ("Green"):
@@ -145,6 +150,7 @@ public class BeginStory extends AppCompatActivity {
                 player1Deetz.setTextColor(new ResourcesCompat().getColor(getResources(), R.color.LightestGreen, null));
                 player2Deetz.setTextColor(new ResourcesCompat().getColor(getResources(), R.color.LightestGreen, null));
                 closeButton.setBackgroundResource(R.drawable.roundbuttong);
+                begin.setBackgroundResource(R.drawable.roundbuttong);
                 break;
 
             case ("Purple"):
@@ -156,6 +162,7 @@ public class BeginStory extends AppCompatActivity {
                 player1Deetz.setTextColor(new ResourcesCompat().getColor(getResources(), R.color.LightestPurple, null));
                 player2Deetz.setTextColor(new ResourcesCompat().getColor(getResources(), R.color.LightestPurple, null));
                 closeButton.setBackgroundResource(R.drawable.roundbuttonp);
+                begin.setBackgroundResource(R.drawable.roundbuttonp);
 
                 break;
 
@@ -164,6 +171,7 @@ public class BeginStory extends AppCompatActivity {
                 colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundBlue, null);
                 layout.setBackgroundColor(colour);
                 closeButton.setBackgroundResource(R.drawable.roundbutton);
+                begin.setBackgroundResource(R.drawable.roundbutton);
                 break;
 
         }

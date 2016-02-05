@@ -72,12 +72,12 @@ public class StoryActivity extends AppCompatActivity implements
 
     public void setUpFragments(int sequence){
 
-        int colour = getBackgroundColour();
+        String colourString = getColourString();
 
         Fragment1 frag1 = new Fragment1();
         Bundle args1 = new Bundle();
         args1.putString("story", findTheString2("Story"));
-        args1.putInt("colour", colour);
+        args1.putString("colourString", colourString);
         args1.putString("pathname1", c1.get_profileImagePath());
         args1.putString("pathname2", c2.get_profileImagePath());
         args1.putString("name1", c1.get_name());
@@ -89,7 +89,7 @@ public class StoryActivity extends AppCompatActivity implements
         Fragment2 frag2 = new Fragment2();
         Bundle args2 = new Bundle();
         args2.putString("act", findTheString2("Act"));
-        args2.putInt("colour", colour);
+        args2.putString("colourString", colourString);
         if (sequence == 1){
             args2.putString("orientation", "right");
         }else{
@@ -100,7 +100,7 @@ public class StoryActivity extends AppCompatActivity implements
         Fragment3 frag3 = new Fragment3();
         Bundle args3 = new Bundle();
         args3.putString("guess", findTheString2("Guess"));
-        args3.putInt("colour", colour);
+        args3.putString("colourString", colourString);
         args3.putInt("answer", findTheAnswer());
         args3.putStringArray("options", findTheOptions());
         if (sequence == 1){
@@ -125,12 +125,12 @@ public class StoryActivity extends AppCompatActivity implements
 
     public void setUpAltFragments(int sequence){
 
-        int colour = getBackgroundColour();
+        String colourString = getColourString();
 
         Fragment1Alt frag1 = new Fragment1Alt();
         Bundle args1 = new Bundle();
         args1.putString("story", findTheString2("Story"));
-        args1.putInt("colour", colour);
+        args1.putString("colourString", colourString);
         args1.putString("pathname1", c1.get_profileImagePath());
         args1.putString("pathname2", c2.get_profileImagePath());
         args1.putString("name1", c1.get_name());
@@ -141,7 +141,7 @@ public class StoryActivity extends AppCompatActivity implements
 
         Fragment2Alt frag2 = new Fragment2Alt();
         Bundle args2 = new Bundle();
-        args2.putInt("colour", colour);
+        args2.putString("colourString", colourString);
         args2.putString("act", findTheString2("Act"));
         args2.putStringArray("ideas", findTheIdeas());
         if (sequence == 1){
@@ -154,7 +154,7 @@ public class StoryActivity extends AppCompatActivity implements
 
         Fragment3Alt frag3 = new Fragment3Alt();
         Bundle args3 = new Bundle();
-        args3.putInt("colour", colour);
+        args3.putString("colourString", colourString);
         args3.putString("guess", findTheString2("Guess"));
         args3.putString("hint", findTheString2("Hint"));
         if (sequence == 1){
@@ -402,6 +402,15 @@ public class StoryActivity extends AppCompatActivity implements
         return c;
 
     }
+
+
+    public String getColourString() {
+        SharedPreferences sharedPref = getSharedPreferences("colourInfo", Context.MODE_PRIVATE);
+        String backgroundColour = sharedPref.getString("backgroundC", "");
+        return backgroundColour;
+
+    }
+
 
 
     public String personaliseString(String input){

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.res.ResourcesCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,7 +24,10 @@ public class Fragment3 extends Fragment {
     View v;
     int colour;
     int correctAnswer;
-    Button toMiddle;
+    String colourString;
+    Button answer1;
+    Button answer2;
+    Button answer3;
     ImageView ima;
     Fragment3Listener activityCommander;
     int IncorrectAnswers = 0;
@@ -42,6 +46,7 @@ public class Fragment3 extends Fragment {
         Bundle args = getArguments();
         String index = args.getString("guess");
         colour = args.getInt("colour");
+        colourString = args.getString("colourString");
         correctAnswer = args.getInt("answer");
         String [] options = args.getStringArray("options");
         ima = (ImageView) v.findViewById(R.id.backButton2);
@@ -51,9 +56,9 @@ public class Fragment3 extends Fragment {
         storyText.setText(index);
 
         //toMiddle = (Button) v.findViewById(R.id.backButton2);
-        Button answer1 = (Button) v.findViewById(R.id.answer1Button);
-        Button answer2 = (Button) v.findViewById(R.id.answer2Button);
-        Button answer3 = (Button) v.findViewById(R.id.answer3Button);
+        answer1 = (Button) v.findViewById(R.id.answer1Button);
+        answer2 = (Button) v.findViewById(R.id.answer2Button);
+        answer3 = (Button) v.findViewById(R.id.answer3Button);
 
         answer1.setText(options[0]);
         answer2.setText(options[1]);
@@ -217,6 +222,72 @@ public class Fragment3 extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        v.setBackgroundColor(colour);
+        //v.setBackgroundColor(colour);
+        setTheme();
     }
+
+
+    public void setTheme() {
+
+        int colour;
+
+        switch (colourString) {
+
+
+            case ("Red"):
+                colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundRed, null);
+                v.setBackgroundColor(colour);
+
+                answer1.setBackgroundResource(R.drawable.roundbuttonr);
+                answer2.setBackgroundResource(R.drawable.roundbuttonr);
+                answer3.setBackgroundResource(R.drawable.roundbuttonr);
+                ima.setBackgroundResource(R.drawable.border_red);
+                break;
+
+            case ("Blue"):
+                colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundBlue, null);
+                v.setBackgroundColor(colour);
+
+                answer1.setBackgroundResource(R.drawable.roundbutton);
+                answer2.setBackgroundResource(R.drawable.roundbutton);
+                answer3.setBackgroundResource(R.drawable.roundbutton);
+                ima.setBackgroundResource(R.drawable.borders_blue);
+
+                break;
+
+            case ("Green"):
+                colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundGreen, null);
+                v.setBackgroundColor(colour);
+
+                answer1.setBackgroundResource(R.drawable.roundbuttong);
+                answer2.setBackgroundResource(R.drawable.roundbuttong);
+                answer3.setBackgroundResource(R.drawable.roundbuttong);
+                ima.setBackgroundResource(R.drawable.borders_green);
+                break;
+
+            case ("Purple"):
+                colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundPurple, null);
+                v.setBackgroundColor(colour);
+
+                answer1.setBackgroundResource(R.drawable.roundbuttonp);
+                answer2.setBackgroundResource(R.drawable.roundbuttonp);
+                answer3.setBackgroundResource(R.drawable.roundbuttonp);
+                ima.setBackgroundResource(R.drawable.borders_purple);
+
+                break;
+
+
+            default:
+                colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundBlue, null);
+                v.setBackgroundColor(colour);
+
+                answer1.setBackgroundResource(R.drawable.roundbutton);
+                answer2.setBackgroundResource(R.drawable.roundbutton);
+                answer3.setBackgroundResource(R.drawable.roundbutton);
+                ima.setBackgroundResource(R.drawable.borders_blue);
+                break;
+
+        }
+    }
+
 }

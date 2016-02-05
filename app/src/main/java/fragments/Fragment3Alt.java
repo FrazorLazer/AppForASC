@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.res.ResourcesCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,10 +22,11 @@ import junit.framework.TestCase;
  */
 public class Fragment3Alt extends Fragment{
 
-    int colour;
+    String colourString;
     Button hints;
     TextView hintText;
     ImageView ima;
+    Button progress;
     View v;
     Fragment3AltListener activityCommander;
 
@@ -62,7 +64,7 @@ public class Fragment3Alt extends Fragment{
 
         Bundle args = getArguments();
         String index = args.getString("guess");
-        colour = args.getInt("colour");
+        colourString = args.getString("colourString");
         String hintPassage = args.getString("hint");
         String orient = args.getString("orientation");
         ima = (ImageView) v.findViewById(R.id.backButton2);
@@ -74,7 +76,7 @@ public class Fragment3Alt extends Fragment{
         hintText = (TextView) v.findViewById(R.id.hintText);
         hintText.setText(hintPassage);
         hintText.setVisibility(View.INVISIBLE);
-        Button progress = (Button) v.findViewById(R.id.progressButtonAlt);
+        progress = (Button) v.findViewById(R.id.progressButtonAlt);
 
         progress.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -122,7 +124,8 @@ public class Fragment3Alt extends Fragment{
     @Override
     public void onStart() {
         super.onStart();
-        v.setBackgroundColor(colour);
+        //v.setBackgroundColor(colour);
+        setTheme();
     }
 
     public void showHint(View view){
@@ -130,5 +133,68 @@ public class Fragment3Alt extends Fragment{
         hintText.setVisibility(View.VISIBLE);
     }
 
+
+    public void setTheme() {
+
+        int colour;
+
+        switch (colourString) {
+
+
+            case ("Red"):
+                colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundRed, null);
+                v.setBackgroundColor(colour);
+
+                progress.setBackgroundResource(R.drawable.roundbuttonr);
+                hints.setBackgroundResource(R.drawable.roundbuttonr);
+                hintText.setBackgroundResource(R.drawable.border_red);
+                ima.setBackgroundResource(R.drawable.border_red);
+                break;
+
+            case ("Blue"):
+                colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundBlue, null);
+                v.setBackgroundColor(colour);
+
+                progress.setBackgroundResource(R.drawable.roundbutton);
+                hints.setBackgroundResource(R.drawable.roundbutton);
+                hintText.setBackgroundResource(R.drawable.borders_blue);
+                ima.setBackgroundResource(R.drawable.borders_blue);
+
+                break;
+
+            case ("Green"):
+                colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundGreen, null);
+                v.setBackgroundColor(colour);
+
+                progress.setBackgroundResource(R.drawable.roundbuttong);
+                hints.setBackgroundResource(R.drawable.roundbuttong);
+                hintText.setBackgroundResource(R.drawable.borders_green);
+                ima.setBackgroundResource(R.drawable.borders_green);
+                break;
+
+            case ("Purple"):
+                colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundPurple, null);
+                v.setBackgroundColor(colour);
+
+                progress.setBackgroundResource(R.drawable.roundbuttonp);
+                hints.setBackgroundResource(R.drawable.roundbuttonp);
+                hintText.setBackgroundResource(R.drawable.borders_purple);
+                ima.setBackgroundResource(R.drawable.borders_purple);
+
+                break;
+
+
+            default:
+                colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundBlue, null);
+                v.setBackgroundColor(colour);
+
+                progress.setBackgroundResource(R.drawable.roundbutton);
+                hints.setBackgroundResource(R.drawable.roundbutton);
+                hintText.setBackgroundResource(R.drawable.borders_blue);
+                ima.setBackgroundResource(R.drawable.borders_blue);
+                break;
+
+        }
+    }
 
 }

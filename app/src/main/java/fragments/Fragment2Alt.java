@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.res.ResourcesCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +23,7 @@ import com.example.frazzle.appforasc.storyListAdapter;
  */
 public class Fragment2Alt extends Fragment{
 
-    int colour;
+    String colourString;
     View v;
     ListView ideasList;
     Button hints;
@@ -50,7 +51,7 @@ public class Fragment2Alt extends Fragment{
 
         Bundle args = getArguments();
         String index = args.getString("act");
-        colour = args.getInt("colour");
+        colourString = args.getString("colourString");
         String [] theIdeas = args.getStringArray("ideas");
         String orient = args.getString("orientation");
         moveButton(orient);
@@ -101,7 +102,8 @@ public class Fragment2Alt extends Fragment{
     @Override
     public void onStart() {
         super.onStart();
-        v.setBackgroundColor(colour);
+        //v.setBackgroundColor(colour);
+        setTheme();
     }
 
     public void showIdeas(View view){
@@ -117,6 +119,60 @@ public class Fragment2Alt extends Fragment{
             activityCommander = (Fragment2AltListener) context;
         }catch (ClassCastException e){
             throw new ClassCastException(context.toString());
+        }
+    }
+
+
+    public void setTheme() {
+
+        int colour;
+
+        switch (colourString) {
+
+
+            case ("Red"):
+                colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundRed, null);
+                v.setBackgroundColor(colour);
+
+                toMiddle.setBackgroundResource(R.drawable.border_red);
+                hints.setBackgroundResource(R.drawable.roundbuttonr);
+                break;
+
+            case ("Blue"):
+                colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundBlue, null);
+                v.setBackgroundColor(colour);
+
+                toMiddle.setBackgroundResource(R.drawable.borders_blue);
+                hints.setBackgroundResource(R.drawable.roundbutton);
+
+                break;
+
+            case ("Green"):
+                colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundGreen, null);
+                v.setBackgroundColor(colour);
+
+                toMiddle.setBackgroundResource(R.drawable.borders_green);
+                hints.setBackgroundResource(R.drawable.roundbuttong);
+                break;
+
+            case ("Purple"):
+                colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundPurple, null);
+                v.setBackgroundColor(colour);
+
+                toMiddle.setBackgroundResource(R.drawable.borders_purple);
+                hints.setBackgroundResource(R.drawable.roundbuttonp);
+
+                break;
+
+
+            default:
+                colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundBlue, null);
+                v.setBackgroundColor(colour);
+
+                toMiddle.setBackgroundResource(R.drawable.borders_blue);
+                hints.setBackgroundResource(R.drawable.roundbutton);
+                break;
+
         }
     }
 }
