@@ -3,6 +3,7 @@ package com.example.frazzle.appforasc;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.service.wallpaper.WallpaperService;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -51,6 +52,9 @@ public class SettingsActivity extends AppCompatActivity {
                     }
                 }
         );
+
+        Typeface kristen = Typeface.createFromAsset(getAssets(), "ITCKRIST.TTF");
+        title.setTypeface(kristen);
 
         registerForContextMenu(settingsView);
         //setThemes();

@@ -6,6 +6,7 @@ import android.app.Notification;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.support.v4.app.Fragment;
@@ -93,6 +94,9 @@ public class BeginStory extends AppCompatActivity {
 
 
         setBackgroundColour();
+
+        Typeface kristen = Typeface.createFromAsset(getAssets(), "ITCKRIST.TTF");
+        storyTitle.setTypeface(kristen);
 
     }
 

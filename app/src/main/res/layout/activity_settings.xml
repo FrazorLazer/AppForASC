@@ -13,17 +13,10 @@
 
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/SettingsTitle"
         android:id="@+id/textView4"
-        android:layout_marginTop="82dp"
-        android:textColor="#FFF"
-        android:textSize="60sp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        style="@style/TextBoxBlue" />
+        style="@style/TitleText"/>
 
     <ListView
         android:layout_width="800dp"

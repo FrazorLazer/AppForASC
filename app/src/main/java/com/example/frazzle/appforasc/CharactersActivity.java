@@ -3,6 +3,7 @@ package com.example.frazzle.appforasc;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -29,6 +30,7 @@ public class CharactersActivity extends AppCompatActivity {
     Button newCharButton;
     Button closeButton;
     GridView grid;
+    TextView title;
 
 
     @Override
@@ -38,7 +40,7 @@ public class CharactersActivity extends AppCompatActivity {
 
         newCharButton = (Button) findViewById(R.id.newChar);
         closeButton = (Button) findViewById(R.id.closeButton);
-
+        title = (TextView) findViewById(R.id.title);
         dbHandler = new CharacterDBHandler(this, null, null, 1);
         //characterListView = (ListView) findViewById(R.id.characterList);
         grid = (GridView) findViewById(R.id.charGridView);
@@ -46,6 +48,8 @@ public class CharactersActivity extends AppCompatActivity {
 
         String s = ((ExtendedApp) this.getApplication()).getStory();
 
+        Typeface kristen = Typeface.createFromAsset(getAssets(), "ITCKRIST.TTF");
+        title.setTypeface(kristen);
     }
 
     @Override
@@ -121,6 +125,7 @@ public class CharactersActivity extends AppCompatActivity {
                 layout.setBackgroundColor(colour);
                 newCharButton.setBackgroundResource(R.drawable.roundbuttonr);
                 closeButton.setBackgroundResource(R.drawable.roundbuttonr);
+                title.setBackgroundResource(R.drawable.border_red);
 
                 break;
 
@@ -129,6 +134,7 @@ public class CharactersActivity extends AppCompatActivity {
                 layout.setBackgroundColor(colour);
                 newCharButton.setBackgroundResource(R.drawable.roundbutton);
                 closeButton.setBackgroundResource(R.drawable.roundbutton);
+                title.setBackgroundResource(R.drawable.borders_blue);
 
                 break;
 
@@ -137,6 +143,7 @@ public class CharactersActivity extends AppCompatActivity {
                 layout.setBackgroundColor(colour);
                 newCharButton.setBackgroundResource(R.drawable.roundbuttong);
                 closeButton.setBackgroundResource(R.drawable.roundbuttong);
+                title.setBackgroundResource(R.drawable.borders_green);
 
                 break;
 
@@ -145,6 +152,7 @@ public class CharactersActivity extends AppCompatActivity {
                 layout.setBackgroundColor(colour);
                 newCharButton.setBackgroundResource(R.drawable.roundbuttonp);
                 closeButton.setBackgroundResource(R.drawable.roundbuttonp);
+                title.setBackgroundResource(R.drawable.borders_purple);
 
 
                 break;
@@ -155,6 +163,7 @@ public class CharactersActivity extends AppCompatActivity {
                 layout.setBackgroundColor(colour);
                 newCharButton.setBackgroundResource(R.drawable.roundbutton);
                 closeButton.setBackgroundResource(R.drawable.roundbutton);
+                title.setBackgroundResource(R.drawable.borders_blue);
                 break;
 
         }

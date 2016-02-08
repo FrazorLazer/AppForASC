@@ -3,6 +3,7 @@ package com.example.frazzle.appforasc;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -37,6 +38,9 @@ public class CharacterChoiceTwo extends AppCompatActivity {
         closeButton = (Button) findViewById(R.id.closeButton);
         setBackgroundColour();
         populateAdapterGrid();
+
+        Typeface kristen = Typeface.createFromAsset(getAssets(), "ITCKRIST.TTF");
+        titleText.setTypeface(kristen);
 
     }
 
