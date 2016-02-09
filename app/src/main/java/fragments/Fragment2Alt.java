@@ -1,6 +1,7 @@
 package fragments;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -26,6 +27,7 @@ public class Fragment2Alt extends Fragment{
     String colourString;
     View v;
     ListView ideasList;
+    TextView actText;
     Button hints;
     ImageView toMiddle;
     Fragment2AltListener activityCommander;
@@ -55,7 +57,7 @@ public class Fragment2Alt extends Fragment{
         String [] theIdeas = args.getStringArray("ideas");
         String orient = args.getString("orientation");
         moveButton(orient);
-        TextView actText = (TextView) v.findViewById(R.id.actText);
+        actText = (TextView) v.findViewById(R.id.actText);
         actText.setText(index);
 
         ideasList = (ListView) v.findViewById(R.id.ideasList);
@@ -173,6 +175,40 @@ public class Fragment2Alt extends Fragment{
                 hints.setBackgroundResource(R.drawable.roundbutton);
                 break;
 
+        }
+    }
+
+    public void setTextSize(){
+        SharedPreferences sharedPref = getContext().getSharedPreferences("colourInfo", Context.MODE_PRIVATE);
+        String textSize = sharedPref.getString("textSize", "");
+
+        switch(textSize){
+            case ("Small"):
+                actText.setTextSize(25);
+                hints.setTextSize(15);
+
+
+                break;
+
+            case ("Medium"):
+
+                actText.setTextSize(30);
+                hints.setTextSize(20);
+
+                break;
+
+            case ("Large"):
+                actText.setTextSize(35);
+                hints.setTextSize(25);
+
+                break;
+
+
+            default:
+                actText.setTextSize(30);
+                hints.setTextSize(20);
+
+                break;
         }
     }
 }

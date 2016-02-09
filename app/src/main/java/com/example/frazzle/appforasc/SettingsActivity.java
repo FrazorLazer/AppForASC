@@ -31,6 +31,7 @@ public class SettingsActivity extends AppCompatActivity {
     RelativeLayout layout;
     TextView title;
     Button closeButton;
+    int whatMenuItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +58,7 @@ public class SettingsActivity extends AppCompatActivity {
         title.setTypeface(kristen);
 
         registerForContextMenu(settingsView);
-        //setThemes();
+        setTextSize();
 
     }
 
@@ -80,8 +81,15 @@ public class SettingsActivity extends AppCompatActivity {
             menu.add("Green");
             menu.add("Red");
             menu.add("Purple");
+            whatMenuItem = 0;
+        }else if (selection == 1){
+            menu.add("Small");
+            menu.add("Medium");
+            menu.add("Large");
+            whatMenuItem = 1;
         }else{
             menu.add("Waiting for Implementation");
+            whatMenuItem = 2;
         }
 
     }
@@ -94,22 +102,36 @@ public class SettingsActivity extends AppCompatActivity {
     @Override
     public boolean onContextItemSelected(MenuItem item) {
 
-        Toast.makeText(SettingsActivity.this, "Theme Colour Changed: " + item.getTitle() , Toast.LENGTH_SHORT).show();
-        changeColour(item.getTitle().toString());
+        if(whatMenuItem == 0){
+            Toast.makeText(SettingsActivity.this, "Theme Colour Changed: " + item.getTitle() , Toast.LENGTH_SHORT).show();
+        }else if (whatMenuItem == 1){
+            Toast.makeText(SettingsActivity.this, "Text Size Changed: " + item.getTitle() , Toast.LENGTH_SHORT).show();
+        }else if (whatMenuItem == 2){
+            Toast.makeText(SettingsActivity.this, "Voice Over Changed: " + item.getTitle() , Toast.LENGTH_SHORT).show();
+        }
+
+
+        changeSettings(item.getTitle().toString());
         return super.onContextItemSelected(item);
 
     }
 
-    public void changeColour(String colour){
+    public void changeSettings(String item){
         SharedPreferences sharedPref = getSharedPreferences("colourInfo", Context.MODE_PRIVATE);
-
         SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putString("backgroundC", colour);
+
+        if(whatMenuItem == 0){
+            editor.putString("backgroundC", item);
+        }else if (whatMenuItem == 1){
+            editor.putString("textSize", item);
+        }else if (whatMenuItem == 2){
+            editor.putString("voiceOver", item);
+        }
+
         editor.apply();
 
         recreate();
     }
-
 
 
     @Override
@@ -119,6 +141,30 @@ public class SettingsActivity extends AppCompatActivity {
         setThemes();
     }
 
+    public void setTextSize(){
+        SharedPreferences sharedPref = getSharedPreferences("colourInfo", Context.MODE_PRIVATE);
+        String textSize = sharedPref.getString("textSize", "");
+
+        switch(textSize){
+            case ("Small"):
+                title.setTextSize(40);
+                break;
+
+            case ("Medium"):
+
+                title.setTextSize(50);
+                break;
+
+            case ("Large"):
+                title.setTextSize(60);
+                break;
+
+
+            default:
+                title.setTextSize(50);
+                break;
+        }
+    }
 
     public void setThemes(){
 

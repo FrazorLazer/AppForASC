@@ -1,6 +1,7 @@
 package fragments;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -23,7 +24,7 @@ public class Fragment2 extends Fragment {
     String colourString;
     ImageView toMiddle;
     Fragment2Listener activityCommander;
-
+    TextView storyText;
 
     @Nullable
     @Override
@@ -36,7 +37,7 @@ public class Fragment2 extends Fragment {
         colourString = args.getString("colourString");
 
         toMiddle = (ImageView) v.findViewById(R.id.backButton);
-        TextView storyText = (TextView) v.findViewById(R.id.actText);
+        storyText = (TextView) v.findViewById(R.id.actText);
         storyText.setText(index);
 
         String orient = args.getString("orientation");
@@ -48,7 +49,7 @@ public class Fragment2 extends Fragment {
                 toMiddle(v);
             }
         });
-
+        setTextSize();
         return v;
 
     }
@@ -149,4 +150,30 @@ public class Fragment2 extends Fragment {
 
         }
     }
+
+    public void setTextSize(){
+        SharedPreferences sharedPref = getContext().getSharedPreferences("colourInfo", Context.MODE_PRIVATE);
+        String textSize = sharedPref.getString("textSize", "");
+
+        switch(textSize){
+            case ("Small"):
+                storyText.setTextSize(25);
+                break;
+
+            case ("Medium"):
+
+                storyText.setTextSize(30);
+                break;
+
+            case ("Large"):
+                storyText.setTextSize(35);
+                break;
+
+
+            default:
+                storyText.setTextSize(30);
+                break;
+        }
+    }
+
 }

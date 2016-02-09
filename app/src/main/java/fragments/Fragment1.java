@@ -3,6 +3,7 @@ package fragments;
 
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
@@ -38,6 +39,7 @@ public class Fragment1 extends Fragment {
     String colourString;
     Fragment1Listener activityCommander;
     View v;
+    TextView storyText;
 
 
     @Nullable
@@ -77,9 +79,10 @@ public class Fragment1 extends Fragment {
 
 
         storyNumber = (TextView) v.findViewById(R.id.storyNumber);
-        TextView storyText = (TextView) v.findViewById(R.id.storyText);
+        storyText = (TextView) v.findViewById(R.id.storyText);
         storyText.setText(index);
         storyNumber.setText(storyProgress);
+
 
 
 
@@ -113,7 +116,7 @@ public class Fragment1 extends Fragment {
         }
         goRight.setText(charName2);
 
-
+        setTextSize();
 
         goLeft.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -304,5 +307,32 @@ public class Fragment1 extends Fragment {
     public void exit(View view){
         activityCommander.exitStory(view);
     }
+
+
+    public void setTextSize(){
+        SharedPreferences sharedPref = getContext().getSharedPreferences("colourInfo", Context.MODE_PRIVATE);
+        String textSize = sharedPref.getString("textSize", "");
+
+        switch(textSize){
+            case ("Small"):
+                storyText.setTextSize(20);
+                break;
+
+            case ("Medium"):
+
+                storyText.setTextSize(26);
+                break;
+
+            case ("Large"):
+                storyText.setTextSize(32);
+                break;
+
+
+            default:
+                storyText.setTextSize(26);
+                break;
+        }
+    }
+
 
 }

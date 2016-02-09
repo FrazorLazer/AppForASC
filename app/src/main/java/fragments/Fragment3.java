@@ -2,6 +2,7 @@ package fragments;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -29,6 +30,7 @@ public class Fragment3 extends Fragment {
     Button answer2;
     Button answer3;
     ImageView ima;
+    TextView storyText;
     Fragment3Listener activityCommander;
     int IncorrectAnswers = 0;
 
@@ -52,10 +54,10 @@ public class Fragment3 extends Fragment {
         ima = (ImageView) v.findViewById(R.id.backButton2);
 
 
-        TextView storyText = (TextView) v.findViewById(R.id.guessText);
+        storyText = (TextView) v.findViewById(R.id.guessText);
         storyText.setText(index);
 
-        //toMiddle = (Button) v.findViewById(R.id.backButton2);
+
         answer1 = (Button) v.findViewById(R.id.answer1Button);
         answer2 = (Button) v.findViewById(R.id.answer2Button);
         answer3 = (Button) v.findViewById(R.id.answer3Button);
@@ -102,6 +104,8 @@ public class Fragment3 extends Fragment {
                 answer3Clicked(v);
             }
         });
+
+        setTextSize();
 
         return v;
     }
@@ -287,6 +291,44 @@ public class Fragment3 extends Fragment {
                 ima.setBackgroundResource(R.drawable.borders_blue);
                 break;
 
+        }
+    }
+
+
+    public void setTextSize(){
+        SharedPreferences sharedPref = getContext().getSharedPreferences("colourInfo", Context.MODE_PRIVATE);
+        String textSize = sharedPref.getString("textSize", "");
+
+        switch(textSize){
+            case ("Small"):
+                storyText.setTextSize(25);
+                answer1.setTextSize(15);
+                answer2.setTextSize(15);
+                answer3.setTextSize(15);
+                break;
+
+            case ("Medium"):
+
+                storyText.setTextSize(30);
+                answer1.setTextSize(20);
+                answer2.setTextSize(20);
+                answer3.setTextSize(20);
+                break;
+
+            case ("Large"):
+                storyText.setTextSize(35);
+                answer1.setTextSize(25);
+                answer2.setTextSize(25);
+                answer3.setTextSize(25);
+                break;
+
+
+            default:
+                storyText.setTextSize(30);
+                answer1.setTextSize(20);
+                answer2.setTextSize(20);
+                answer3.setTextSize(20);
+                break;
         }
     }
 

@@ -12,7 +12,6 @@
     <string name="ChooseStoryTitle">CHOOSE A STORY</string>
     <string-array name="storyNames">
         <item>Going to the Park</item>
-        <item>Visiting a Grandparent</item>
         <item>The Sleepover</item>
         <item>To the Shops</item>
     </string-array>

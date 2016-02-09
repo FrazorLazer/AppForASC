@@ -59,14 +59,10 @@ public class ChooseStory extends AppCompatActivity {
                         ((ExtendedApp) getApplication()).setStoryFormat("Options");
                         break;
                     case 1:
-                        ((ExtendedApp) getApplication()).setStory("Grandparent");
-                        ((ExtendedApp) getApplication()).setStoryFormat("NoOptions");
-                        break;
-                    case 2:
                         ((ExtendedApp) getApplication()).setStory("Sleepover");
                         ((ExtendedApp) getApplication()).setStoryFormat("Options");
                         break;
-                    case 3:
+                    case 2:
                         ((ExtendedApp) getApplication()).setStory("Shopping");
                         ((ExtendedApp) getApplication()).setStoryFormat("NoOptions");
                         break;

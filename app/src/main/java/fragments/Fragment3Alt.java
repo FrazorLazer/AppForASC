@@ -1,6 +1,7 @@
 package fragments;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -26,6 +27,7 @@ public class Fragment3Alt extends Fragment{
     Button hints;
     TextView hintText;
     ImageView ima;
+    TextView actText;
     Button progress;
     View v;
     Fragment3AltListener activityCommander;
@@ -70,7 +72,7 @@ public class Fragment3Alt extends Fragment{
         ima = (ImageView) v.findViewById(R.id.backButton2);
         moveButton(orient);
 
-        TextView actText = (TextView) v.findViewById(R.id.actText);
+        actText = (TextView) v.findViewById(R.id.actText);
         actText.setText(index);
         hints = (Button) v.findViewById(R.id.hints);
         hintText = (TextView) v.findViewById(R.id.hintText);
@@ -99,7 +101,7 @@ public class Fragment3Alt extends Fragment{
             }
         });
 
-
+        setTextSize();
         return v;
     }
 
@@ -145,7 +147,7 @@ public class Fragment3Alt extends Fragment{
                 colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundRed, null);
                 v.setBackgroundColor(colour);
 
-                progress.setBackgroundResource(R.drawable.roundbuttonr);
+                progress.setBackgroundResource(R.drawable.greenbord_red);
                 hints.setBackgroundResource(R.drawable.roundbuttonr);
                 hintText.setBackgroundResource(R.drawable.border_red);
                 ima.setBackgroundResource(R.drawable.border_red);
@@ -155,7 +157,7 @@ public class Fragment3Alt extends Fragment{
                 colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundBlue, null);
                 v.setBackgroundColor(colour);
 
-                progress.setBackgroundResource(R.drawable.roundbutton);
+                progress.setBackgroundResource(R.drawable.greenbord_blue);
                 hints.setBackgroundResource(R.drawable.roundbutton);
                 hintText.setBackgroundResource(R.drawable.borders_blue);
                 ima.setBackgroundResource(R.drawable.borders_blue);
@@ -166,7 +168,7 @@ public class Fragment3Alt extends Fragment{
                 colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundGreen, null);
                 v.setBackgroundColor(colour);
 
-                progress.setBackgroundResource(R.drawable.roundbuttong);
+                progress.setBackgroundResource(R.drawable.redbord_green);
                 hints.setBackgroundResource(R.drawable.roundbuttong);
                 hintText.setBackgroundResource(R.drawable.borders_green);
                 ima.setBackgroundResource(R.drawable.borders_green);
@@ -176,7 +178,7 @@ public class Fragment3Alt extends Fragment{
                 colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundPurple, null);
                 v.setBackgroundColor(colour);
 
-                progress.setBackgroundResource(R.drawable.roundbuttonp);
+                progress.setBackgroundResource(R.drawable.greenbord_purple);
                 hints.setBackgroundResource(R.drawable.roundbuttonp);
                 hintText.setBackgroundResource(R.drawable.borders_purple);
                 ima.setBackgroundResource(R.drawable.borders_purple);
@@ -188,12 +190,46 @@ public class Fragment3Alt extends Fragment{
                 colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundBlue, null);
                 v.setBackgroundColor(colour);
 
-                progress.setBackgroundResource(R.drawable.roundbutton);
+                progress.setBackgroundResource(R.drawable.greenbord_blue);
                 hints.setBackgroundResource(R.drawable.roundbutton);
                 hintText.setBackgroundResource(R.drawable.borders_blue);
                 ima.setBackgroundResource(R.drawable.borders_blue);
                 break;
 
+        }
+    }
+
+    public void setTextSize(){
+        SharedPreferences sharedPref = getContext().getSharedPreferences("colourInfo", Context.MODE_PRIVATE);
+        String textSize = sharedPref.getString("textSize", "");
+
+        switch(textSize){
+            case ("Small"):
+                actText.setTextSize(25);
+                progress.setTextSize(15);
+                hintText.setTextSize(15);
+
+                break;
+
+            case ("Medium"):
+
+                actText.setTextSize(30);
+                progress.setTextSize(20);
+                hintText.setTextSize(15);
+                break;
+
+            case ("Large"):
+                actText.setTextSize(35);
+                progress.setTextSize(25);
+                hintText.setTextSize(30);
+                break;
+
+
+            default:
+                actText.setTextSize(30);
+                progress.setTextSize(20);
+                hintText.setTextSize(30);
+                break;
         }
     }
 

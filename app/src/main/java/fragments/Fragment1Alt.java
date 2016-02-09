@@ -1,6 +1,7 @@
 package fragments;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -27,6 +28,7 @@ public class Fragment1Alt extends Fragment{
     TextView storyNumber;
     String colourString;
     int orient;
+    TextView storyText;
 
     @Nullable
     @Override
@@ -47,7 +49,7 @@ public class Fragment1Alt extends Fragment{
         goRight = (Button) v.findViewById(R.id.rightButton);
         exitButton = (Button) v.findViewById(R.id.exitButton);
         Button prog = (Button) v.findViewById(R.id.progressButton);
-        TextView storyText = (TextView) v.findViewById(R.id.storyText);
+        storyText = (TextView) v.findViewById(R.id.storyText);
         storyNumber = (TextView) v.findViewById(R.id.storyNumber);
 
         storyText.setText(index);
@@ -107,7 +109,7 @@ public class Fragment1Alt extends Fragment{
             }
         });
 
-
+        setTextSize();
         return v;
     }
 
@@ -274,5 +276,32 @@ public class Fragment1Alt extends Fragment{
 
 
     }
+
+
+    public void setTextSize(){
+        SharedPreferences sharedPref = getContext().getSharedPreferences("colourInfo", Context.MODE_PRIVATE);
+        String textSize = sharedPref.getString("textSize", "");
+
+        switch(textSize){
+            case ("Small"):
+                storyText.setTextSize(20);
+                break;
+
+            case ("Medium"):
+
+                storyText.setTextSize(26);
+                break;
+
+            case ("Large"):
+                storyText.setTextSize(32);
+                break;
+
+
+            default:
+                storyText.setTextSize(26);
+                break;
+        }
+    }
+
 
 }
