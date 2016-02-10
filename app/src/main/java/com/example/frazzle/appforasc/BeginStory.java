@@ -21,6 +21,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,6 +39,8 @@ public class BeginStory extends AppCompatActivity {
     TextView storyTitle;
     Button closeButton;
     Button begin;
+    TextView p1;
+    TextView p2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +52,8 @@ public class BeginStory extends AppCompatActivity {
         player2Deetz = (TextView) findViewById(R.id.player2Deetz);
         storyTitle = (TextView) findViewById(R.id.storyTitle);
         closeButton = (Button) findViewById(R.id.closeButton);
+        p1 = (TextView) findViewById(R.id.player1Text);
+        p2 = (TextView) findViewById(R.id.player2Text);
 
         Character character1 = ((ExtendedApp) getApplication()).getCharacterOne();
         Character character2 = ((ExtendedApp) getApplication()).getCharacterTwo();
@@ -97,6 +103,7 @@ public class BeginStory extends AppCompatActivity {
 
         Typeface kristen = Typeface.createFromAsset(getAssets(), "ITCKRIST.TTF");
         storyTitle.setTypeface(kristen);
+        setTextSize();
 
     }
 
@@ -178,6 +185,43 @@ public class BeginStory extends AppCompatActivity {
                 begin.setBackgroundResource(R.drawable.roundbutton);
                 break;
 
+        }
+    }
+
+    public void setTextSize(){
+        SharedPreferences sharedPref = getSharedPreferences("colourInfo", Context.MODE_PRIVATE);
+        String textSize = sharedPref.getString("textSize", "");
+
+        switch(textSize){
+            case ("Small"):
+                storyTitle.setTextSize(40);
+                begin.setTextSize(20);
+                p1.setTextSize(25);
+                p2.setTextSize(25);
+                break;
+
+            case ("Medium"):
+
+                storyTitle.setTextSize(50);
+                begin.setTextSize(25);
+                p1.setTextSize(30);
+                p2.setTextSize(30);
+                break;
+
+            case ("Large"):
+                storyTitle.setTextSize(60);
+                begin.setTextSize(30);
+                p1.setTextSize(35);
+                p2.setTextSize(35);
+                break;
+
+
+            default:
+                storyTitle.setTextSize(50);
+                begin.setTextSize(25);
+                p1.setTextSize(30);
+                p2.setTextSize(30);
+                break;
         }
     }
 }

@@ -41,7 +41,7 @@ public class SettingsActivity extends AppCompatActivity {
         title = (TextView) findViewById(R.id.textView4);
         settingsView = (ListView) findViewById(R.id.settingsList);
         closeButton = (Button) findViewById(R.id.closeButton);
-        String settingsOptions[] = new String[] {"Background Colour", "Font Size", "Vibration"};
+        String settingsOptions[] = new String[] {"Background Colour", "Text Size", "Voice Over"};
         arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, settingsOptions);
         settingsView.setAdapter(arrayAdapter);
 

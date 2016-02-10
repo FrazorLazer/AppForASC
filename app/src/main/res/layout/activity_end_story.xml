@@ -71,7 +71,8 @@
         android:textSize="60dp"
         android:gravity="center_horizontal"
         android:layout_marginTop="30dp"
-        android:textColor="#fff"/>
+        android:textColor="#fff"
+        android:id="@+id/congrats"/>
 
 
 

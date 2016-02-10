@@ -42,6 +42,7 @@ public class CharacterChoiceTwo extends AppCompatActivity {
         Typeface kristen = Typeface.createFromAsset(getAssets(), "ITCKRIST.TTF");
         titleText.setTypeface(kristen);
 
+        setTextSize();
     }
 
 
@@ -137,6 +138,32 @@ public class CharacterChoiceTwo extends AppCompatActivity {
                 closeButton.setBackgroundResource(R.drawable.roundbutton);
                 break;
 
+        }
+    }
+
+
+    public void setTextSize(){
+        SharedPreferences sharedPref = getSharedPreferences("colourInfo", Context.MODE_PRIVATE);
+        String textSize = sharedPref.getString("textSize", "");
+
+        switch(textSize){
+            case ("Small"):
+                titleText.setTextSize(35);
+                break;
+
+            case ("Medium"):
+
+                titleText.setTextSize(40);
+                break;
+
+            case ("Large"):
+                titleText.setTextSize(50);
+                break;
+
+
+            default:
+                titleText.setTextSize(40);
+                break;
         }
     }
 }

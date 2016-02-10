@@ -15,6 +15,9 @@ public class EndStoryActivity extends AppCompatActivity {
 
 
     Button homeButton;
+    TextView congrats;
+    TextView lastLine;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,14 +25,16 @@ public class EndStoryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_end_story);
 
         homeButton = (Button) findViewById(R.id.homeButton);
+        congrats = (TextView) findViewById(R.id.congrats);
 
         Bundle extras = getIntent().getExtras();
         String lastLineText = extras.getString("lastLine");
 
-        TextView lastLine = (TextView) findViewById(R.id.lastLine);
+        lastLine = (TextView) findViewById(R.id.lastLine);
         lastLine.setText(lastLineText);
 
         setBackgroundColour();
+        setTextSize();
 
     }
 
@@ -83,6 +88,40 @@ public class EndStoryActivity extends AppCompatActivity {
                 homeButton.setBackgroundResource(R.drawable.roundbutton);
                 break;
 
+        }
+    }
+
+
+    public void setTextSize(){
+        SharedPreferences sharedPref = getSharedPreferences("colourInfo", Context.MODE_PRIVATE);
+        String textSize = sharedPref.getString("textSize", "");
+
+        switch(textSize){
+            case ("Small"):
+                congrats.setTextSize(40);
+                lastLine.setTextSize(15);
+                homeButton.setTextSize(25);
+                break;
+
+            case ("Medium"):
+
+                congrats.setTextSize(50);
+                lastLine.setTextSize(20);
+                homeButton.setTextSize(30);
+                break;
+
+            case ("Large"):
+                congrats.setTextSize(60);
+                lastLine.setTextSize(25);
+                homeButton.setTextSize(35);
+                break;
+
+
+            default:
+                congrats.setTextSize(50);
+                lastLine.setTextSize(20);
+                homeButton.setTextSize(30);
+                break;
         }
     }
 }

@@ -36,6 +36,7 @@ public class storyListAdapter extends ArrayAdapter<String> {
         buckyText.setText(storyName);
         setColors();
 
+        setTextSize();
         return customView;
     }
 
@@ -76,6 +77,32 @@ public class storyListAdapter extends ArrayAdapter<String> {
         }
 
     }
+
+    public void setTextSize(){
+        SharedPreferences sharedPref = getContext().getSharedPreferences("colourInfo", Context.MODE_PRIVATE);
+        String textSize = sharedPref.getString("textSize", "");
+
+        switch(textSize){
+            case ("Small"):
+                buckyText.setTextSize(22);
+                break;
+
+            case ("Medium"):
+
+                buckyText.setTextSize(28);
+                break;
+
+            case ("Large"):
+                buckyText.setTextSize(34);
+                break;
+
+
+            default:
+                buckyText.setTextSize(28);
+                break;
+        }
+    }
+
 
 }
 

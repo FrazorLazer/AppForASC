@@ -18,6 +18,7 @@ public class CongratulationsActivity extends AppCompatActivity {
     String reward;
     Button continueButton;
     TextView otherIdeas;
+    TextView wellDone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +28,7 @@ public class CongratulationsActivity extends AppCompatActivity {
         ImageView thumbsUp = (ImageView) findViewById(R.id.thumbImage);
         otherIdeas = (TextView) findViewById(R.id.listOfIdeas);
         continueButton = (Button) findViewById(R.id.continueButton);
+        wellDone = (TextView) findViewById(R.id.wellDone);
 
         Bundle args = getIntent().getExtras();
         String [] options = args.getStringArray("options");
@@ -59,6 +61,7 @@ public class CongratulationsActivity extends AppCompatActivity {
 
 
         setBackgroundColour();
+        setTextSize();
 
     }
 
@@ -130,5 +133,38 @@ public class CongratulationsActivity extends AppCompatActivity {
 
         }
 
+    }
+
+    public void setTextSize(){
+        SharedPreferences sharedPref = getSharedPreferences("colourInfo", Context.MODE_PRIVATE);
+        String textSize = sharedPref.getString("textSize", "");
+
+        switch(textSize){
+            case ("Small"):
+                otherIdeas.setTextSize(15);
+                continueButton.setTextSize(25);
+                wellDone.setTextSize(40);
+                break;
+
+            case ("Medium"):
+
+                otherIdeas.setTextSize(20);
+                continueButton.setTextSize(30);
+                wellDone.setTextSize(50);
+                break;
+
+            case ("Large"):
+                otherIdeas.setTextSize(25);
+                continueButton.setTextSize(35);
+                wellDone.setTextSize(60);
+                break;
+
+
+            default:
+                otherIdeas.setTextSize(20);
+                continueButton.setTextSize(30);
+                wellDone.setTextSize(50);
+                break;
+        }
     }
 }

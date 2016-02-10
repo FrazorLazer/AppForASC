@@ -50,6 +50,8 @@ public class CharactersActivity extends AppCompatActivity {
 
         Typeface kristen = Typeface.createFromAsset(getAssets(), "ITCKRIST.TTF");
         title.setTypeface(kristen);
+
+        setTextSize();
     }
 
     @Override
@@ -169,5 +171,34 @@ public class CharactersActivity extends AppCompatActivity {
         }
     }
 
+
+    public void setTextSize(){
+        SharedPreferences sharedPref = getSharedPreferences("colourInfo", Context.MODE_PRIVATE);
+        String textSize = sharedPref.getString("textSize", "");
+
+        switch(textSize){
+            case ("Small"):
+                title.setTextSize(40);
+                newCharButton.setTextSize(15);
+                break;
+
+            case ("Medium"):
+
+                title.setTextSize(50);
+                newCharButton.setTextSize(20);
+                break;
+
+            case ("Large"):
+                title.setTextSize(60);
+                newCharButton.setTextSize(25);
+                break;
+
+
+            default:
+                title.setTextSize(50);
+                newCharButton.setTextSize(30);
+                break;
+        }
+    }
 
 }

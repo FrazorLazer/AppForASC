@@ -215,13 +215,13 @@ public class Fragment3Alt extends Fragment{
 
                 actText.setTextSize(30);
                 progress.setTextSize(20);
-                hintText.setTextSize(15);
+                hintText.setTextSize(20);
                 break;
 
             case ("Large"):
                 actText.setTextSize(35);
                 progress.setTextSize(25);
-                hintText.setTextSize(30);
+                hintText.setTextSize(25);
                 break;
 
 

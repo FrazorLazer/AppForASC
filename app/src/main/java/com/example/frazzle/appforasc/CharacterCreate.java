@@ -96,6 +96,7 @@ public class CharacterCreate extends Activity {
             setButtons();
             setSpinners();
             setBackgroundColour();
+            setTextSize();
             return;
         }
         name = characterData.getString("name");
@@ -117,6 +118,7 @@ public class CharacterCreate extends Activity {
         }
 
         setBackgroundColour();
+        setTextSize();
 
     }
 
@@ -413,4 +415,39 @@ public class CharacterCreate extends Activity {
 
         }
     }
+
+
+    public void setTextSize(){
+        SharedPreferences sharedPref = getSharedPreferences("colourInfo", Context.MODE_PRIVATE);
+        String textSize = sharedPref.getString("textSize", "");
+
+        switch(textSize){
+            case ("Small"):
+                deleteButton.setTextSize(19);
+                saveButton.setTextSize(19);
+                takePhotoButton.setTextSize(19);
+                break;
+
+            case ("Medium"):
+
+                deleteButton.setTextSize(23);
+                saveButton.setTextSize(23);
+                takePhotoButton.setTextSize(23);
+                break;
+
+            case ("Large"):
+                deleteButton.setTextSize(27);
+                saveButton.setTextSize(27);
+                takePhotoButton.setTextSize(27);
+                break;
+
+
+            default:
+                deleteButton.setTextSize(23);
+                saveButton.setTextSize(23);
+                takePhotoButton.setTextSize(23);
+                break;
+        }
+    }
+
 }

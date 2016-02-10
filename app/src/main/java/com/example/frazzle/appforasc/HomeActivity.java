@@ -34,8 +34,10 @@ public class HomeActivity extends AppCompatActivity {
         settingsButton = (Button) findViewById(R.id.button3);
         tutButton = (Button) findViewById(R.id.button4);
 
+
         Typeface kristen = Typeface.createFromAsset(getAssets(), "ITCKRIST.TTF");
         titleText.setTypeface(kristen);
+
 
     }
 
@@ -74,6 +76,7 @@ public class HomeActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         setBackgroundColour();
+        setTextSize();
     }
 
 
@@ -141,4 +144,46 @@ public class HomeActivity extends AppCompatActivity {
         }
     }
 
+
+
+    public void setTextSize(){
+        SharedPreferences sharedPref = getSharedPreferences("colourInfo", Context.MODE_PRIVATE);
+        String textSize = sharedPref.getString("textSize", "");
+
+        switch(textSize){
+            case ("Small"):
+                titleText.setTextSize(40);
+                playButton.setTextSize(20);
+                charButton.setTextSize(20);
+                settingsButton.setTextSize(20);
+                tutButton.setTextSize(20);
+                break;
+
+            case ("Medium"):
+
+                titleText.setTextSize(50);
+                playButton.setTextSize(28);
+                charButton.setTextSize(28);
+                settingsButton.setTextSize(28);
+                tutButton.setTextSize(28);
+                break;
+
+            case ("Large"):
+                titleText.setTextSize(60);
+                playButton.setTextSize(34);
+                charButton.setTextSize(34);
+                settingsButton.setTextSize(34);
+                tutButton.setTextSize(34);
+                break;
+
+
+            default:
+                titleText.setTextSize(50);
+                playButton.setTextSize(28);
+                charButton.setTextSize(28);
+                settingsButton.setTextSize(28);
+                tutButton.setTextSize(28);
+                break;
+        }
+    }
 }

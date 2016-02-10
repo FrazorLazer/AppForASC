@@ -33,7 +33,8 @@
         android:textSize="60dp"
         android:gravity="center_horizontal"
         android:layout_marginTop="15dp"
-        android:textColor="#fff"/>
+        android:textColor="#fff"
+        android:id="@+id/wellDone"/>
 
     <TextView
         android:layout_width="250dp"
