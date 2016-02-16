@@ -16,6 +16,15 @@ public class ExtendedApp extends Application{
     private String storyFormat = "Options";
     private int storyProgress = 1;
     private String pathname = "";
+    private boolean inTutorial = false;
+
+    public boolean isInTutorial() {
+        return inTutorial;
+    }
+
+    public void setInTutorial(boolean inTutorial) {
+        this.inTutorial = inTutorial;
+    }
 
     public String getPathname() {
         return pathname;

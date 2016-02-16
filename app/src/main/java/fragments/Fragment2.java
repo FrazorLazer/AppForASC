@@ -1,6 +1,7 @@
 package fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -15,6 +16,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.frazzle.appforasc.PopUpVideo;
 import com.example.frazzle.appforasc.R;
 import com.example.frazzle.appforasc.StoryActivity;
 
@@ -25,6 +27,8 @@ public class Fragment2 extends Fragment {
     ImageView toMiddle;
     Fragment2Listener activityCommander;
     TextView storyText;
+    Button helpButton;
+    String videoName;
 
     @Nullable
     @Override
@@ -35,8 +39,10 @@ public class Fragment2 extends Fragment {
         Bundle args = getArguments();
         String index = args.getString("act");
         colourString = args.getString("colourString");
+        videoName = args.getString("videoName");
 
         toMiddle = (ImageView) v.findViewById(R.id.backButton);
+        helpButton = (Button) v.findViewById(R.id.helpButton);
         storyText = (TextView) v.findViewById(R.id.actText);
         storyText.setText(index);
 
@@ -49,11 +55,26 @@ public class Fragment2 extends Fragment {
                 toMiddle(v);
             }
         });
+
+        helpButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showHelp();
+            }
+        });
         setTextSize();
         return v;
 
     }
 
+
+    public void showHelp(){
+
+        Intent i = new Intent(getActivity(), PopUpVideo.class);
+        i.putExtra("videoName", videoName);
+        startActivity(i);
+
+    }
 
     private void moveButton(String orient){
         ViewGroup.LayoutParams vg_lp = toMiddle.getLayoutParams();
@@ -115,6 +136,7 @@ public class Fragment2 extends Fragment {
                 v.setBackgroundColor(colour);
 
                 toMiddle.setBackgroundResource(R.drawable.border_red);
+                helpButton.setBackgroundResource(R.drawable.roundbuttonr);
                 break;
 
             case ("Blue"):
@@ -122,7 +144,7 @@ public class Fragment2 extends Fragment {
                 v.setBackgroundColor(colour);
 
                 toMiddle.setBackgroundResource(R.drawable.borders_blue);
-
+                helpButton.setBackgroundResource(R.drawable.roundbutton);
                 break;
 
             case ("Green"):
@@ -130,6 +152,7 @@ public class Fragment2 extends Fragment {
                 v.setBackgroundColor(colour);
 
                 toMiddle.setBackgroundResource(R.drawable.borders_green);
+                helpButton.setBackgroundResource(R.drawable.roundbuttong);
                 break;
 
             case ("Purple"):
@@ -137,7 +160,7 @@ public class Fragment2 extends Fragment {
                 v.setBackgroundColor(colour);
 
                 toMiddle.setBackgroundResource(R.drawable.borders_purple);
-
+                helpButton.setBackgroundResource(R.drawable.roundbuttonp);
                 break;
 
 
@@ -146,6 +169,7 @@ public class Fragment2 extends Fragment {
                 v.setBackgroundColor(colour);
 
                 toMiddle.setBackgroundResource(R.drawable.borders_blue);
+                helpButton.setBackgroundResource(R.drawable.roundbutton);
                 break;
 
         }

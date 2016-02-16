@@ -17,32 +17,19 @@
         android:onClick="closeWindow"/>
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/TutorialTitle"
-        android:id="@+id/textView5"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="93dp"
-        android:textSize="60sp"
-        android:textColor="#FFF" />
+        style="@style/TitleText"
+        android:text="CHOOSE A TUTORIAL"
+        android:id="@+id/titleText"/>
 
-    <TextView
-        android:layout_width="match_parent"
+
+    <ListView
+        android:layout_width="800dp"
         android:layout_height="400dp"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/displayDB"
-        android:textSize="15sp"
-        android:textColor="#fff"
-        android:layout_below="@+id/textView5"
-        android:layout_centerHorizontal="true" />
-
-    <ImageView
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:id="@+id/imageVieww"
-        android:layout_below="@+id/displayDB"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/giphy" />
+        android:layout_below="@+id/titleText"
+        android:layout_marginTop="100dp"
+        android:id="@+id/tutorialList"
+        />
+
+
 </RelativeLayout>

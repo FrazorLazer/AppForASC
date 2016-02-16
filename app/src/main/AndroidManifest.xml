@@ -8,6 +8,7 @@
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
+    <!-- android:theme="@style/Theme.AppCompat.Light.NoActionBar"> -->
     <application
         android:name=".ExtendedApp"
         android:allowBackup="true"
@@ -26,38 +27,45 @@
         </activity>
         <activity
             android:name=".ChooseStory"
-            android:theme="@style/AppTheme.BlueTheme"/>
+            android:theme="@style/AppTheme.BlueTheme" />
         <activity
             android:name=".CharactersActivity"
-            android:theme="@style/AppTheme.BlueTheme"/>
+            android:theme="@style/AppTheme.BlueTheme" />
         <activity
             android:name=".SettingsActivity"
-            android:theme="@style/AppTheme.BlueTheme"/>
+            android:theme="@style/AppTheme.BlueTheme" />
         <activity
             android:name=".TutorialActivity"
-            android:theme="@style/AppTheme.BlueTheme"/>
+            android:theme="@style/AppTheme.BlueTheme" />
         <activity
             android:name=".CharacterCreate"
             android:theme="@style/AppTheme.BlueTheme" />
         <activity
             android:name=".CharacterChoiceOne"
-            android:theme="@style/AppTheme.BlueTheme"/>
+            android:theme="@style/AppTheme.BlueTheme" />
         <activity
             android:name=".CharacterChoiceTwo"
-            android:theme="@style/AppTheme.BlueTheme"/>
+            android:theme="@style/AppTheme.BlueTheme" />
         <activity
             android:name=".StoryActivity"
-            android:theme="@style/AppTheme.BlueTheme"/>
+            android:theme="@style/AppTheme.BlueTheme" />
         <activity android:name=".SwipeTest" />
         <activity
             android:name=".BeginStory"
-            android:theme="@style/AppTheme.BlueTheme"/>
+            android:theme="@style/AppTheme.BlueTheme" />
         <activity
             android:name=".CongratulationsActivity"
-            android:theme="@style/AppTheme.BlueTheme"/>
+            android:theme="@style/AppTheme.BlueTheme" />
         <activity
             android:name=".EndStoryActivity"
-            android:theme="@style/AppTheme.BlueTheme"/>
+            android:theme="@style/AppTheme.BlueTheme" />
+        <activity
+            android:name=".TutorialSwipeActivity"
+            android:theme="@style/AppTheme.BlueTheme" />
+        <activity
+            android:name=".PopUpVideo"
+            android:theme="@style/AppTheme.BlueTheme.SongTheme">
+        </activity>
     </application>
-    <!--android:theme="@style/Theme.AppCompat.Light.NoActionBar"> -->
+
 </manifest>

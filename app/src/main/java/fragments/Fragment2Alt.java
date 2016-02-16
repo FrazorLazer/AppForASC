@@ -1,6 +1,7 @@
 package fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,6 +10,7 @@ import android.support.v4.content.res.ResourcesCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -16,6 +18,8 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.example.frazzle.appforasc.ExtendedApp;
+import com.example.frazzle.appforasc.PopUpVideo;
 import com.example.frazzle.appforasc.R;
 import com.example.frazzle.appforasc.storyListAdapter;
 
@@ -64,6 +68,16 @@ public class Fragment2Alt extends Fragment{
         ArrayAdapter aa = new storyListAdapter(getActivity(), theIdeas);
         ideasList.setAdapter(aa);
 
+        ideasList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String videoName = parent.getItemAtPosition(position).toString();
+                showVideo(videoName);
+            }
+        });
+
+
+
         ideasList.setVisibility(View.INVISIBLE);
 
         hints.setOnClickListener(new View.OnClickListener() {
@@ -81,6 +95,12 @@ public class Fragment2Alt extends Fragment{
         });
 
         return v;
+    }
+
+    public void showVideo(String x){
+        Intent i = new Intent(getActivity(), PopUpVideo.class);
+        i.putExtra("videoName", x);
+        startActivity(i);
     }
 
 

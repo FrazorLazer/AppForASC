@@ -60,11 +60,18 @@ public class HomeActivity extends AppCompatActivity {
     }
 
 
+/*
+    public void clickTutorial(View view){
+        Intent i = new Intent(this, TutorialActivity.class);
+        startActivity(i);
+    }
+    */
 
     public void clickTutorial(View view){
         Intent i = new Intent(this, TutorialActivity.class);
         startActivity(i);
     }
+
 
     public void openSwipeTest(View view){
         Intent i = new Intent(this, BeginStory.class);

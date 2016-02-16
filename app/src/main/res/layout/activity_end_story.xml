@@ -51,7 +51,8 @@
         android:layout_height="250dp"
         android:src="@drawable/ava1"
         android:layout_alignParentBottom="true"
-        android:layout_margin="30dp"/>
+        android:layout_margin="30dp"
+        android:id="@+id/ava1"/>
 
     <ImageView
         android:layout_width="180dp"
@@ -60,6 +61,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:layout_margin="30dp"
+        android:id="@+id/ava2"
         />
 
     <TextView

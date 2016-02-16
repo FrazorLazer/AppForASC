@@ -1,168 +1,170 @@
 package fragments;
 
+
+
+
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.res.ResourcesCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.frazzle.appforasc.ExtendedApp;
 import com.example.frazzle.appforasc.R;
 
+import java.lang.reflect.Field;
 
-public class Fragment1Alt extends Fragment{
+public class TutorialFragment extends Fragment {
 
-    int colour;
-    Fragment1AltListener activityCommander;
+
+    TutorialFragmentListener activityCommander;
     View v;
-    Button goLeft;
-    Button goRight;
-    Button exitButton;
-    TextView storyNumber;
     String colourString;
-    int orient;
-    TextView storyText;
+    ImageView slide;
+    TextView extraText;
+    Button tryButton;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        v = inflater.inflate(R.layout.fragment1_alt_layout, container, false);
+
+        v = inflater.inflate(R.layout.tutorial_fragment, container, false);
 
         Bundle args = getArguments();
-        String index = args.getString("story");
+        //String text = args.getString("story");
         colourString = args.getString("colourString");
-        String pathname1 = args.getString("pathname1");
-        String pathname2 = args.getString("pathname2");
-        String charName1 = args.getString("name1");
-        String charName2 = args.getString("name2");
-        String storyProgress = args.getString("progress");
-        orient = args.getInt("orientation");
+        String slideFilename = args.getString("slideFilename");
+        String theText = args.getString("theText");
+        boolean first = args.getBoolean("first");
+        boolean last = args.getBoolean("last");
+        boolean showButton = args.getBoolean("butt");
 
-        goLeft = (Button) v.findViewById(R.id.leftButton);
-        goRight = (Button) v.findViewById(R.id.rightButton);
-        exitButton = (Button) v.findViewById(R.id.exitButton);
-        Button prog = (Button) v.findViewById(R.id.progressButton);
-        storyText = (TextView) v.findViewById(R.id.storyText);
-        storyNumber = (TextView) v.findViewById(R.id.storyNumber);
 
-        storyText.setText(index);
-        storyNumber.setText(storyProgress);
 
-        Drawable song1 = BitmapDrawable.createFromPath(pathname1);
-        Drawable song2 = BitmapDrawable.createFromPath(pathname2);
-        Drawable placeholder = new ResourcesCompat().getDrawable(getResources(), R.drawable.placeholder_profile_photo, null);
-        Drawable arrowL = new ResourcesCompat().getDrawable(getResources(), R.drawable.arrowlleft, null);
-        Drawable arrowR = new ResourcesCompat().getDrawable(getResources(), R.drawable.arrowrright, null);
+        slide = (ImageView) v.findViewById(R.id.image);
+        extraText = (TextView) v.findViewById(R.id.extraText);
+        ImageView left = (ImageView) v.findViewById(R.id.left);
+        ImageView right = (ImageView) v.findViewById(R.id.right);
+        tryButton = (Button) v.findViewById(R.id.tryIt);
 
-        arrowL.setBounds(0,0,30,50);
-        arrowR.setBounds(0,0,30,50);
-
-        //Setting Left Button
-        if (song1 != null) {
-            song1.setBounds(0, 0, 160, 160);
-            goLeft.setCompoundDrawables(arrowL, null, song1, null);
-        }else{
-            placeholder.setBounds(0, 0, 160, 160);
-            goLeft.setCompoundDrawables(arrowL, null, placeholder, null);
+        if (first){
+            left.setVisibility(View.INVISIBLE);
         }
-        goLeft.setText(charName1);
-
-        //Setting Right Button
-        if (song2 != null) {
-            song2.setBounds(0, 0, 160, 160);
-            goRight.setCompoundDrawables(song2, null, arrowR, null);
-        }else{
-            placeholder.setBounds(0, 0, 160, 160);
-            goRight.setCompoundDrawables(placeholder , null, arrowR, null);
+        if (last){
+            right.setVisibility(View.INVISIBLE);
         }
-        goRight.setText(charName2);
+        if (showButton) {
+            tryButton.setVisibility(View.VISIBLE);
+        }
 
-        goLeft.setOnClickListener(new View.OnClickListener() {
+        extraText.setText(theText);
+
+        slide.setImageResource(getImageResourceId(slideFilename));
+
+        tryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goLeft(v);
-            }
-        });
-        goRight.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                goRight(v);
-            }
-        });
-        exitButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                exit(v);
-            }
-        });
-        prog.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                progress(v);
+                beginTheTutorial(v);
             }
         });
 
-        prog.setVisibility(View.GONE);
+        //setTextSize();
 
-        setTextSize();
         return v;
+
     }
 
-
+    public interface TutorialFragmentListener{
+        public void begin(View view);
+    }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         try{
-            activityCommander = (Fragment1AltListener) context;
+            activityCommander = (TutorialFragmentListener) context;
         }catch (ClassCastException e){
             throw new ClassCastException(context.toString());
         }
     }
 
 
-
-
-    public interface Fragment1AltListener{
-        public void moveLeft();
-        public void moveRight();
-        public void exitStory(View view);
-        public void progressStory(View view);
+    public void beginTheTutorial(View view){
+        activityCommander.begin(view);
     }
-
-    public void goLeft(View view){
-        activityCommander.moveLeft();
-    }
-
-    public void goRight(View view){
-        activityCommander.moveRight();
-    }
-
-    public void exit(View view){
-        activityCommander.exitStory(view);
-    }
-
-    public void progress(View view){
-        activityCommander.progressStory(view);
-    }
-
-
 
     @Override
     public void onStart() {
         super.onStart();
-        //v.setBackgroundColor(colour);
         setTheme();
     }
 
 
+    public void setTheme() {
+
+
+        int colour;
+
+        switch (colourString) {
+
+
+            case ("Red"):
+                colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundRed, null);
+                v.setBackgroundColor(colour);
+                tryButton.setBackgroundResource(R.drawable.roundbuttonr);
+                break;
+
+            case ("Blue"):
+                colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundBlue, null);
+                v.setBackgroundColor(colour);
+                tryButton.setBackgroundResource(R.drawable.roundbutton);
+                break;
+
+            case ("Green"):
+                colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundGreen, null);
+                v.setBackgroundColor(colour);
+                tryButton.setBackgroundResource(R.drawable.roundbuttong);
+                break;
+
+            case ("Purple"):
+                colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundPurple, null);
+                v.setBackgroundColor(colour);
+                tryButton.setBackgroundResource(R.drawable.roundbuttonp);
+                break;
+
+
+            default:
+                colour = new ResourcesCompat().getColor(getResources(), R.color.BackgroundBlue, null);
+                v.setBackgroundColor(colour);
+                tryButton.setBackgroundResource(R.drawable.roundbutton);
+                break;
+
+        }
+    }
+
+    public int getImageResourceId(String stringName)
+    {
+        try {
+            Class res = R.drawable.class;
+            Field field = res.getField(stringName);
+            return field.getInt(null);
+        }
+        catch (Exception e) {
+            Log.e("MyTag", "Failure to get raw id.", e);
+        }
+
+        return 0;
+    }
+/*
     public void setTheme(){
 
 
@@ -279,6 +281,40 @@ public class Fragment1Alt extends Fragment{
 
     }
 
+    public interface Fragment1Listener{
+        public void moveLeft();
+        public void moveRight();
+        public void progressStory(View view);
+        public void exitStory(View view);
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        try{
+            activityCommander = (Fragment1Listener) context;
+        }catch (ClassCastException e){
+            throw new ClassCastException(context.toString());
+        }
+    }
+
+
+    public void goLeft(View view){
+        activityCommander.moveLeft();
+    }
+
+    public void goRight(View view){
+        activityCommander.moveRight();
+    }
+
+    public void progress(View view){
+        activityCommander.progressStory(view);
+    }
+
+    public void exit(View view){
+        activityCommander.exitStory(view);
+    }
+
 
     public void setTextSize(){
         SharedPreferences sharedPref = getContext().getSharedPreferences("colourInfo", Context.MODE_PRIVATE);
@@ -304,6 +340,6 @@ public class Fragment1Alt extends Fragment{
                 break;
         }
     }
-
+*/
 
 }

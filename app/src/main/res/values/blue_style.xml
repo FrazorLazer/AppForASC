@@ -10,6 +10,11 @@
 
     </style>
 
+    <style name="AppTheme.BlueTheme.SongTheme">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowCloseOnTouchOutside">true</item>
+    </style>
+
 
     <style name="ButtonBlue">
         <item name="android:textColor">#fff</item>

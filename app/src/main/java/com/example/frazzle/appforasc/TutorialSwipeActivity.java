@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v4.view.ViewPager;
@@ -13,10 +12,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,157 +23,171 @@ import fragments.Fragment2;
 import fragments.Fragment2Alt;
 import fragments.Fragment3;
 import fragments.Fragment3Alt;
+import fragments.TutorialFragment;
 
-public class StoryActivity extends AppCompatActivity implements
-        Fragment1.Fragment1Listener,
-        Fragment2.Fragment2Listener,
-        Fragment3.Fragment3Listener,
-        Fragment1Alt.Fragment1AltListener,
-        Fragment2Alt.Fragment2AltListener,
-        Fragment3Alt.Fragment3AltListener{
+public class TutorialSwipeActivity extends AppCompatActivity implements TutorialFragment.TutorialFragmentListener {
 
     MyFragmentPagerAdapter mDemoCollectionPagerAdapter;
     ViewPager mViewPager;
     List<Fragment> fragmentList = new ArrayList<>();
-    Character c1;
-    Character c2;
-    int whoseGuessing;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_story);
+        setContentView(R.layout.activity_tutorial_swipe);
 
-        String storyFormat = ((ExtendedApp) getApplication()).getStoryFormat();
-        c1 = ((ExtendedApp) getApplication()).getCharacterOne();
-        c2 = ((ExtendedApp) getApplication()).getCharacterTwo();
-        whoseGuessing = findSequence();
+        Bundle info = getIntent().getExtras();
+        String type = info.getString("type");
 
-        if (storyFormat.equals("Options")){
-            setUpFragments(whoseGuessing);
-        }else{
-            setUpAltFragments(whoseGuessing);
+        switch (type){
+
+            case "char":
+                setUpCharFragments();
+                break;
+            case "options":
+                setUpOptionsFragments();
+                break;
+            case "noOptions":
+                setUpNoOptionsFragments();
+                break;
         }
+
 
         mDemoCollectionPagerAdapter = new MyFragmentPagerAdapter(getSupportFragmentManager(), fragmentList);
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mDemoCollectionPagerAdapter);
-        mViewPager.setCurrentItem(1);
+
 
 
     }
 
-    public void setUpFragments(int sequence){
+    public void setUpCharFragments(){
 
-        String colourString = getColourString();
+        int numberOfFragements = 5;
+        TutorialFragment[] frags = new TutorialFragment[numberOfFragements];
 
-        Fragment1 frag1 = new Fragment1();
-        Bundle args1 = new Bundle();
-        args1.putString("story", findTheString2("Story"));
-        args1.putString("colourString", colourString);
-        args1.putString("pathname1", c1.get_profileImagePath());
-        args1.putString("pathname2", c2.get_profileImagePath());
-        args1.putString("name1", c1.get_name());
-        args1.putString("name2", c2.get_name());
-        args1.putString("progress", Integer.toString(((ExtendedApp) getApplication()).getStoryProgress()));
-        args1.putInt("orientation", sequence);
-        frag1.setArguments(args1);
+        for (int i = 0; i<frags.length; i++){
+            Bundle args = new Bundle();
+            args.putString("colourString", getColourString());
+            args.putString("slideFilename", "characterscreen" + (i + 1));
+            args.putString("theText", findTheString("CharacterTut", i+1));
+            args.putBoolean("butt", false);
+            if (i == 0) {
+                args.putBoolean("first", true);
+            }else{
+                args.putBoolean("first", false);
+            }
 
-        Fragment2 frag2 = new Fragment2();
-        Bundle args2 = new Bundle();
-        args2.putString("act", findTheString2("Act"));
-        args2.putString("colourString", colourString);
-        args2.putString("videoName", findTheString2("Video"));
-        if (sequence == 1){
-            args2.putString("orientation", "right");
-        }else{
-            args2.putString("orientation", "left");
-        }
-        frag2.setArguments(args2);
+            if (i+1 == numberOfFragements) {
+                args.putBoolean("last", true);
+            }else{
+                args.putBoolean("last", false);
+            }
 
-        Fragment3 frag3 = new Fragment3();
-        Bundle args3 = new Bundle();
-        args3.putString("guess", findTheString2("Guess"));
-        args3.putString("colourString", colourString);
-        args3.putInt("answer", findTheAnswer());
-        args3.putStringArray("options", findTheOptions());
-        if (sequence == 1){
-            args3.putString("orientation", "left");
-        }else{
-            args3.putString("orientation", "right");
-        }
-        frag3.setArguments(args3);
-
-
-        if (sequence == 1) {
-            fragmentList.add(frag3);
-            fragmentList.add(frag1);
-            fragmentList.add(frag2);
-        }else{
-            fragmentList.add(frag2);
-            fragmentList.add(frag1);
-            fragmentList.add(frag3);
+            frags[i] = new TutorialFragment();
+            frags[i].setArguments(args);
+            fragmentList.add(frags[i]);
         }
 
     }
 
-    public void setUpAltFragments(int sequence){
+    @Override
+    public void begin(View view){
 
-        String colourString = getColourString();
+        Character c1 = new Character("James", "bell", "", "Boy");
+        Character c2 = new Character("Sarah", "tropical", "", "Girl");
 
-        Fragment1Alt frag1 = new Fragment1Alt();
-        Bundle args1 = new Bundle();
-        args1.putString("story", findTheString2("Story"));
-        args1.putString("colourString", colourString);
-        args1.putString("pathname1", c1.get_profileImagePath());
-        args1.putString("pathname2", c2.get_profileImagePath());
-        args1.putString("name1", c1.get_name());
-        args1.putString("name2", c2.get_name());
-        args1.putString("progress", Integer.toString(((ExtendedApp) getApplication()).getStoryProgress()));
-        args1.putInt("orientation", sequence);
-        frag1.setArguments(args1);
+        ((ExtendedApp) getApplication()).setInTutorial(true);
+        ((ExtendedApp) getApplication()).setCharacterOne(c1);
+        ((ExtendedApp) getApplication()).setCharacterTwo(c2);
+        ((ExtendedApp) getApplication()).setStoryFormat("Options");
+        ((ExtendedApp) getApplication()).setStory("Park");
 
-        Fragment2Alt frag2 = new Fragment2Alt();
-        Bundle args2 = new Bundle();
-        args2.putString("colourString", colourString);
-        args2.putString("act", findTheString2("Act"));
-        args2.putStringArray("ideas", findTheIdeas());
-        if (sequence == 1){
-            args2.putString("orientation", "right");
-        }else{
-            args2.putString("orientation", "left");
-        }
-        frag2.setArguments(args2);
+        Intent i = new Intent(this, StoryActivity.class);
+        startActivity(i);
 
+    }
 
-        Fragment3Alt frag3 = new Fragment3Alt();
-        Bundle args3 = new Bundle();
-        args3.putString("colourString", colourString);
-        args3.putString("guess", findTheString2("Guess"));
-        args3.putString("hint", findTheString2("Hint"));
-        if (sequence == 1){
-            args3.putString("orientation", "left");
-        }else{
-            args3.putString("orientation", "right");
-        }
-        frag3.setArguments(args3);
+    public void setUpOptionsFragments(){
 
+        int numberOfFragements = 9;
 
-        if (sequence == 1) {
-            fragmentList.add(frag3);
-            fragmentList.add(frag1);
-            fragmentList.add(frag2);
-        }else{
-            fragmentList.add(frag2);
-            fragmentList.add(frag1);
-            fragmentList.add(frag3);
+        TutorialFragment[] frags = new TutorialFragment[numberOfFragements];
+
+        for (int i = 0; i<frags.length; i++){
+            Bundle args = new Bundle();
+            args.putString("colourString", getColourString());
+            args.putString("slideFilename", "optionsscreen" + (i + 1));
+            args.putString("theText", findTheString("OptionsTut", i+1));
+
+            if (i == 0) {
+                args.putBoolean("first", true);
+            }else{
+                args.putBoolean("first", false);
+            }
+            if (i+1 == numberOfFragements) {
+                args.putBoolean("last", true);
+                args.putBoolean("butt", true);
+            }else{
+                args.putBoolean("last", false);
+                args.putBoolean("butt", false);
+            }
+
+            frags[i] = new TutorialFragment();
+            frags[i].setArguments(args);
+            fragmentList.add(frags[i]);
         }
 
     }
 
 
+    public void setUpNoOptionsFragments(){
+
+        int numberOfFragements = 10;
+        TutorialFragment[] frags = new TutorialFragment[numberOfFragements];
+
+        for (int i = 0; i<frags.length; i++){
+            Bundle args = new Bundle();
+            args.putString("colourString", getColourString());
+            //args.putString("theText", findTheString("Character", i+1));
+            args.putString("slideFilename", "nooptionsscreen" + (i+1));
+            args.putString("theText", findTheString("NoOptionsTut", i+1));
+            args.putBoolean("butt", false);
+            if (i == 0) {
+                args.putBoolean("first", true);
+            }else{
+                args.putBoolean("first", false);
+            }
+
+            if (i+1 == numberOfFragements) {
+                args.putBoolean("last", true);
+            }else{
+                args.putBoolean("last", false);
+            }
+
+            frags[i] = new TutorialFragment();
+            frags[i].setArguments(args);
+            fragmentList.add(frags[i]);
+        }
+
+    }
+
+
+
+    public String findTheString(String context, int tutSlideNum){
+
+        String keyword = "";
+        keyword += context;
+        keyword += "Text";
+        keyword += Integer.toString(tutSlideNum);
+
+        int id = (((ExtendedApp) getApplication()).getStringResourceId(keyword));
+        String raw = getResources().getString(id);
+
+        return raw;
+
+    }
+/*
     @Override
     public void moveLeft() {
         mViewPager.setCurrentItem(0);
@@ -204,11 +213,6 @@ public class StoryActivity extends AppCompatActivity implements
 
     public void actuallyClose(){
         ((ExtendedApp) getApplication()).setStoryProgress(1);
-        ((ExtendedApp) getApplication()).setInTutorial(false);
-        ((ExtendedApp) getApplication()).setStoryFormat("Options");
-        ((ExtendedApp) getApplication()).setStory("Sleepover");
-
-
         Intent i = new Intent(this, HomeActivity.class);
         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(i);
@@ -246,15 +250,6 @@ public class StoryActivity extends AppCompatActivity implements
 
         String storyName = ((ExtendedApp) getApplication()).getStory();
         int progress = ((ExtendedApp) getApplication()).getStoryProgress();
-        boolean tut = ((ExtendedApp) getApplication()).isInTutorial();
-
-        if (tut && progress > 3){
-            ((ExtendedApp) getApplication()).incrementStoryProgress();
-            Intent i2 = new Intent(this, EndStoryActivity.class);
-            i2.putExtra("lastLine", findTheString2("Story"));
-            startActivity(i2);
-            return;
-        }
 
         if(storyName.equals("Sleepover") && progress > 7){
             ((ExtendedApp) getApplication()).incrementStoryProgress();
@@ -396,17 +391,7 @@ public class StoryActivity extends AppCompatActivity implements
     }
 
 
-/*
-    public void setBackgroundColour() {
-        SharedPreferences sharedPref = getSharedPreferences("colourInfo", Context.MODE_PRIVATE);
-        String backgroundColour = "Background" + sharedPref.getString("backgroundC", "");
-        RelativeLayout layout = (RelativeLayout) findViewById(R.id.storyAct);
-        int colourID = ((ExtendedApp) getApplication()).getColorResourceId(backgroundColour);
-        int colour = new ResourcesCompat().getColor(getResources(), colourID, null);
-        layout.setBackgroundColor(colour);
-    }
 
-    */
 
     public int getBackgroundColour() {
         SharedPreferences sharedPref = getSharedPreferences("colourInfo", Context.MODE_PRIVATE);
@@ -418,14 +403,14 @@ public class StoryActivity extends AppCompatActivity implements
 
     }
 
-
+*/
     public String getColourString() {
         SharedPreferences sharedPref = getSharedPreferences("colourInfo", Context.MODE_PRIVATE);
         String backgroundColour = sharedPref.getString("backgroundC", "");
         return backgroundColour;
 
     }
-
+/*
 
 
     public String personaliseString(String input){
@@ -561,4 +546,7 @@ public class StoryActivity extends AppCompatActivity implements
         return output;
 
     }
+    */
+
+
 }

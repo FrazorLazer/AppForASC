@@ -138,6 +138,7 @@ public class Fragment1 extends Fragment {
                 progress(v);
             }
         });
+        progressButton.setVisibility(View.GONE);
 
         exitButton.setOnClickListener(new View.OnClickListener() {
             @Override
