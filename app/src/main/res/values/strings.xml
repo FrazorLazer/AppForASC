@@ -304,25 +304,25 @@
 
 
     <string name="OptionsTutText1">To begin a Story press the PLAY button from the Home screen</string>
-    <string name="OptionsTutText2">The next screen you will see will allow you to choose a story to play. The stories that have options in the game are \"Going to the Park\" and \"The Sleepover\"</string>
+    <string name="OptionsTutText2">The next screen allows you to choose a story to play. The stories that have options in the game are \"Going to the Park\" and \"The Sleepover\"</string>
     <string name="OptionsTutText3">Once you have selected your story you have the chance to choose you characters. The first screen you will see allows to choose the FIRST player.</string>
-    <string name="OptionsTutText4">On the next screen you can choose the SECOND player</string>
-    <string name="OptionsTutText5">Once you have chosen the story you want to play and both the playing characters you will see this screen. If you are happy with everything then press BEGIN STORY. If not you can press BACK and change the story or characters.</string>
-    <string name="OptionsTutText6">When you begin the story you will see this screen. This is the middle screen. At the bottom of the screen will be the 2 character buttons, Only press the button of your character. The button with the green outline is the player who is acting.</string>
-    <string name="OptionsTutText7">This is the screen of the acting player. It tells the player what they are expected to act out. Only the acting player should see this screen. If you get stuck and don\'t know what to do you can press the HELP button and a help video will pop up.</string>
-    <string name="OptionsTutText8">This is the screen that the guessing player sees. It asks you a question and you have to guess which option is best from the options below. Simply tap the option the other player is acting out.</string>
+    <string name="OptionsTutText4">On the next screen you can choose the SECOND player.</string>
+    <string name="OptionsTutText5">Once you have chosen the story you want to play and both the playing characters you will see this screen. If you are happy with everything, press BEGIN STORY. If not, press BACK and change the story or characters.</string>
+    <string name="OptionsTutText6">When you begin the story you will see this screen. This is the middle screen. At the bottom there are 2 character buttons. Only press the button of your character. The player with the green outline is acting and goes first.</string>
+    <string name="OptionsTutText7">This is the screen of the acting player, it tells them what action to do. Only the acting player should see this screen. If you get stuck or don\'t know what to do you can press the HELP button and a help video will pop up.</string>
+    <string name="OptionsTutText8">This is the screen that the guessing player sees. It asks you a question and you have to guess which option is correct from the options below. Simply tap the option the other player is acting out.</string>
     <string name="OptionsTutText9">If the guessing player gets it right then the story will move on. Look, this time the second player is the one that is acting.</string>
 
     <string name="NoOptionsTutText1">To begin a Story press the PLAY button from the Home screen</string>
-    <string name="NoOptionsTutText2">The next screen you will see will allow you to choose a story to play. The story with the No Options format is \"To the Shops\"</string>
+    <string name="NoOptionsTutText2">The next screen allows you to choose a story to play. The story with the No Options format is \"To the Shops\"</string>
     <string name="NoOptionsTutText3">Once you have selected your story you have the chance to choose you characters. The first screen you will see allows to choose the FIRST player.</string>
     <string name="NoOptionsTutText4">On the next screen you can choose the SECOND player</string>
-    <string name="NoOptionsTutText5">Once you have chosen the story you want to play and both the playing characters you will see this screen. If you are happy with everything then press BEGIN STORY. If not you can press BACK and change the story or characters.</string>
-    <string name="NoOptionsTutText6">This is the screen you will see when you begin. It is the same as the regular story format, so only press the player button of your character. The player with the green border acts is the one who does the action.</string>
-    <string name="NoOptionsTutText7">This is the screen of the acting player. This time you will have to think of an action on your own, but if you get stuck you can press the NEED SOME IDEAS button.</string>
+    <string name="NoOptionsTutText5">Once you have chosen the story you want to play and both the playing characters you will see this screen. If you are happy with everything, press BEGIN STORY. If not, press BACK and change the story or characters.</string>
+    <string name="NoOptionsTutText6">This is the screen you will see when you begin. It is the same as the regular story format, so only press the player button of your character. The player with the green border is the one who goes first.</string>
+    <string name="NoOptionsTutText7">This is the screen of the acting player. This time you will have to think of an action on your own, but if you get stuck you can press the NEED SOME IDEAS? button.</string>
     <string name="NoOptionsTutText8">Pressing this button, gives you some ideas to try and act out. Pressing these options will make a help video pop up.</string>
-    <string name="NoOptionsTutText9">This is the screen of the guessing player. You must watch the other player and say out loud what you think. Keep guessing until the acting player says that you got it correct. When you geet it right, press the button at the bottom.</string>
-    <string name="NoOptionsTutText10">If you get stuck then you can press the NEED A HINT button in the top corner and a small hint will pop up.</string>
+    <string name="NoOptionsTutText9">This is the screen of the guessing player. You must watch the other player and say out loud what you think they are doing. Keep guessing until the acting player says that you got it correct. When you get it right, press the button at the bottom.</string>
+    <string name="NoOptionsTutText10">If you get stuck then you can press the NEED A HINT? button in the top corner and a small hint will pop up.</string>
 
     <string name="SleepoverVideo1">hiding</string>
     <string name="SleepoverVideo2">thirsty</string>

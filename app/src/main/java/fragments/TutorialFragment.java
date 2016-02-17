@@ -4,6 +4,7 @@ package fragments;
 
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.media.Image;
 import android.os.Bundle;
@@ -32,6 +33,7 @@ public class TutorialFragment extends Fragment {
     ImageView slide;
     TextView extraText;
     Button tryButton;
+    boolean s = false;
 
     @Nullable
     @Override
@@ -50,11 +52,19 @@ public class TutorialFragment extends Fragment {
 
 
 
+
+
         slide = (ImageView) v.findViewById(R.id.image);
         extraText = (TextView) v.findViewById(R.id.extraText);
         ImageView left = (ImageView) v.findViewById(R.id.left);
         ImageView right = (ImageView) v.findViewById(R.id.right);
         tryButton = (Button) v.findViewById(R.id.tryIt);
+
+        if (slideFilename.equals("nooptionsscreen10")){
+            s = true;
+        }
+
+
 
         if (first){
             left.setVisibility(View.INVISIBLE);
@@ -73,11 +83,15 @@ public class TutorialFragment extends Fragment {
         tryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                beginTheTutorial(v);
+                if (s) {
+                    exit(v);
+                } else {
+                    beginTheTutorial(v);
+                }
             }
         });
 
-        //setTextSize();
+        setTextSize();
 
         return v;
 
@@ -85,6 +99,7 @@ public class TutorialFragment extends Fragment {
 
     public interface TutorialFragmentListener{
         public void begin(View view);
+        public void exit(View view);
     }
 
     @Override
@@ -100,6 +115,10 @@ public class TutorialFragment extends Fragment {
 
     public void beginTheTutorial(View view){
         activityCommander.begin(view);
+    }
+
+    public void exit(View view){
+        activityCommander.exit(view);
     }
 
     @Override
@@ -163,6 +182,32 @@ public class TutorialFragment extends Fragment {
         }
 
         return 0;
+    }
+
+
+    public void setTextSize(){
+        SharedPreferences sharedPref = getContext().getSharedPreferences("colourInfo", Context.MODE_PRIVATE);
+        String textSize = sharedPref.getString("textSize", "");
+
+        switch(textSize){
+            case ("Small"):
+                extraText.setTextSize(22);
+                break;
+
+            case ("Medium"):
+
+                extraText.setTextSize(28);
+                break;
+
+            case ("Large"):
+                extraText.setTextSize(32);
+                break;
+
+
+            default:
+                extraText.setTextSize(28);
+                break;
+        }
     }
 /*
     public void setTheme(){
@@ -316,30 +361,7 @@ public class TutorialFragment extends Fragment {
     }
 
 
-    public void setTextSize(){
-        SharedPreferences sharedPref = getContext().getSharedPreferences("colourInfo", Context.MODE_PRIVATE);
-        String textSize = sharedPref.getString("textSize", "");
 
-        switch(textSize){
-            case ("Small"):
-                storyText.setTextSize(20);
-                break;
-
-            case ("Medium"):
-
-                storyText.setTextSize(26);
-                break;
-
-            case ("Large"):
-                storyText.setTextSize(32);
-                break;
-
-
-            default:
-                storyText.setTextSize(26);
-                break;
-        }
-    }
 */
 
 }

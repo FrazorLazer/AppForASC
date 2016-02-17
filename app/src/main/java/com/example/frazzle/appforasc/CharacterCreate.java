@@ -27,6 +27,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -238,7 +239,7 @@ public class CharacterCreate extends Activity {
         }
 
 
-
+        Toast.makeText(CharacterCreate.this, name + " Character Saved", Toast.LENGTH_LONG).show();
         this.finish();
 
     }

@@ -108,6 +108,12 @@ public class TutorialSwipeActivity extends AppCompatActivity implements Tutorial
 
     }
 
+    public void exit(View view){
+        Intent i = new Intent(this, HomeActivity.class);
+        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(i);
+    }
+
     public void setUpOptionsFragments(){
 
         int numberOfFragements = 9;
@@ -151,8 +157,8 @@ public class TutorialSwipeActivity extends AppCompatActivity implements Tutorial
             args.putString("colourString", getColourString());
             //args.putString("theText", findTheString("Character", i+1));
             args.putString("slideFilename", "nooptionsscreen" + (i+1));
-            args.putString("theText", findTheString("NoOptionsTut", i+1));
-            args.putBoolean("butt", false);
+            args.putString("theText", findTheString("NoOptionsTut", i + 1));
+
             if (i == 0) {
                 args.putBoolean("first", true);
             }else{
@@ -161,8 +167,10 @@ public class TutorialSwipeActivity extends AppCompatActivity implements Tutorial
 
             if (i+1 == numberOfFragements) {
                 args.putBoolean("last", true);
+                args.putBoolean("butt", true);
             }else{
                 args.putBoolean("last", false);
+                args.putBoolean("butt", false);
             }
 
             frags[i] = new TutorialFragment();

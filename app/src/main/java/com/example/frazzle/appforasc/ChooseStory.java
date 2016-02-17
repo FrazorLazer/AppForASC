@@ -38,6 +38,7 @@ public class ChooseStory extends AppCompatActivity {
         Typeface kristen = Typeface.createFromAsset(getAssets(), "ITCKRIST.TTF");
         titleText.setTypeface(kristen);
 
+
     }
 
     public void setUpListView(){
@@ -72,6 +73,8 @@ public class ChooseStory extends AppCompatActivity {
                         break;
                 }
 
+                ((ExtendedApp) getApplication()).setInTutorial(false);
+                ((ExtendedApp) getApplication()).setStoryProgress(1);
                 openCharacterChoice();
             }
         });

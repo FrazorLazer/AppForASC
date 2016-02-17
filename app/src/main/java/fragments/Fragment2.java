@@ -41,10 +41,16 @@ public class Fragment2 extends Fragment {
         colourString = args.getString("colourString");
         videoName = args.getString("videoName");
 
+
+
         toMiddle = (ImageView) v.findViewById(R.id.backButton);
         helpButton = (Button) v.findViewById(R.id.helpButton);
         storyText = (TextView) v.findViewById(R.id.actText);
         storyText.setText(index);
+
+        if (videoName.equals("")){
+            helpButton.setVisibility(View.GONE);
+        }
 
         String orient = args.getString("orientation");
         moveButton(orient);

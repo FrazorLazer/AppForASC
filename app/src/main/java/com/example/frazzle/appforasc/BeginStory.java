@@ -113,7 +113,7 @@ public class BeginStory extends AppCompatActivity {
     }
     public void beginStory(View view){
 
-        //String storyFormat = ((ExtendedApp) getApplication()).getStoryFormat();
+
         Intent i = new Intent(this, StoryActivity.class);
         startActivity(i);
     }
